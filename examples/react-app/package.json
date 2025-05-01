@@ -1,0 +1,19 @@
+{
+  "name": "react-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "lint": "eslint src --ext .ts,.tsx,.js,.jsx",
+    "type-check": "tsc --noEmit",
+    "test": "jest",
+    "build": "vite build",
+    "dev": "vite"
+  },
+  "dependencies": {
+    "@aokiapp/reark": "0.1.0",
+    "@aokiapp/reark-submodule-a": "0.1.0",
+    "@aokiapp/reark-submodule-b": "0.1.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  }
+}

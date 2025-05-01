@@ -1,0 +1,29 @@
+# Node modules
+node_modules/
+.pnpm/
+
+# Build outputs
+dist/
+coverage/
+*.log
+
+# Vite/React
+.vite/
+*.local
+
+# IDE/editor
+.vscode/
+.idea/
+.DS_Store
+
+# Turborepo cache
+turbo/
+.turbo/
+.cache/
+
+# Env files
+.env
+.env.*
+
+# Misc
+*.tsbuildinfo
