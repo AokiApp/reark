@@ -7,8 +7,14 @@ export default defineConfig({
   resolve: {
     alias: {
       "@aokiapp/reark": path.resolve(__dirname, "../../packages/core"),
-      "@aokiapp/reark-submodule-a": path.resolve(__dirname, "../../packages/reark-submodule-a"),
-      "@aokiapp/reark-submodule-b": path.resolve(__dirname, "../../packages/reark-submodule-b")
-    }
-  }
+      "@aokiapp/reark-submodule-a": path.resolve(
+        __dirname,
+        "../../packages/submodule-a",
+      ),
+      "@aokiapp/reark-submodule-b": path.resolve(
+        __dirname,
+        "../../packages/submodule-b",
+      ),
+    },
+  },
 });

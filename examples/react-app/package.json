@@ -10,9 +10,9 @@
     "dev": "vite"
   },
   "dependencies": {
-    "@aokiapp/reark": "0.1.0",
-    "@aokiapp/reark-submodule-a": "0.1.0",
-    "@aokiapp/reark-submodule-b": "0.1.0",
+    "@aokiapp/reark": "workspace:*",
+    "@aokiapp/reark-submodule-a": "workspaces:*",
+    "@aokiapp/reark-submodule-b": "workspaces:*",
     "react": "^18.0.0",
     "react-dom": "^18.0.0"
   }

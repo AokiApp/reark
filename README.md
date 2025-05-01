@@ -8,15 +8,15 @@ This monorepo is managed with Turborepo and pnpm.
 /
 ├── packages
 │   ├── reark
-│   ├── reark-submodule-a
-│   └── reark-submodule-b
+│   ├── submodule-a
+│   └── submodule-b
 └── examples
     └── react-app
 ```
 
 - **reark**: Main library package
-- **reark-submodule-a**: Depends on reark
-- **reark-submodule-b**: Independent
+- **submodule-a**: Depends on reark
+- **submodule-b**: Independent
 - **react-app**: Example usage (React app, framework to be decided)
 
 ## Developer Experience
