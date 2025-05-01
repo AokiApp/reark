@@ -1,6 +1,10 @@
 import { css } from "@emotion/react";
 import { useState } from "react";
-import { Converter, CommentList, extractDocId } from "@aokiapp/reark-renderer";
+import {
+  Converter,
+  CommentList,
+  extractDocId,
+} from "@aokiapp/reark-components";
 
 const containerStyle = css({
   display: "flex",

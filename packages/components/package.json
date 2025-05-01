@@ -1,5 +1,5 @@
 {
-  "name": "@aokiapp/reark-renderer",
+  "name": "@aokiapp/reark-components",
   "version": "0.1.0",
   "description": "Lark to React renderer core for Aokiapp monorepo",
   "main": "dist/index.js",
