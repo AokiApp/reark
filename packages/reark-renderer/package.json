@@ -1,0 +1,30 @@
+{
+  "name": "@aokiapp/reark-renderer",
+  "version": "0.1.0",
+  "description": "Lark to React renderer core for Aokiapp monorepo",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "sideEffects": false,
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@emotion/css": "^11.13.5",
+    "@emotion/react": "^11.13.5",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json"
+  },
+  "devDependencies": {
+    "typescript": "~5.6.2"
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}
