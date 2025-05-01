@@ -42,7 +42,7 @@ From the root:
 
 ```sh
 npm run lint
-npm run type-check
+npm run typecheck
 npm run test
 ```
 

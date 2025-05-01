@@ -19,7 +19,7 @@ See `.github/workflows/ci.yml` for the full workflow definition.
 
 ```sh
 npm run lint
-npm run type-check
+npm run typecheck
 npm run test
 npm run build
 ```
