@@ -5,7 +5,7 @@ This document describes the daily workflow for developing, testing, and maintain
 ## 1. Install Dependencies
 
 ```sh
-pnpm install
+npm install
 ```
 
 ## 2. Lint, Type-Check, and Test
@@ -13,9 +13,9 @@ pnpm install
 Run all checks from the root:
 
 ```sh
-pnpm lint
-pnpm type-check
-pnpm test
+npm run lint
+npm run type-check
+npm run test
 ```
 
 ## 3. Build Packages
@@ -23,14 +23,14 @@ pnpm test
 Build all packages in parallel:
 
 ```sh
-pnpm build
+npm run build
 ```
 
 Or build a single package:
 
 ```sh
 cd packages/reark
-pnpm build
+npm run build
 ```
 
 ## 4. Develop the Example App
@@ -39,31 +39,30 @@ Start the dev server:
 
 ```sh
 cd examples/react-app
-pnpm dev
+npm run dev
 ```
 
 ## 5. Making Changes
 
 - Edit code in the relevant package under `packages/`.
 - If you add new exports, update the package's `index.ts`.
-- If you change dependencies between packages, update their `package.json` and re-run `pnpm install`.
+- If you change dependencies between packages, update their `package.json` and re-run `npm install`.
 
 ## 6. Adding a New Package
 
 1. Create a new directory under `packages/`.
 2. Copy and adapt the Vite, TypeScript, and package.json configs from an existing package.
 3. Add your code and exports.
-4. Add the new package to `pnpm-workspace.yaml` if needed.
 
 ## 7. Running CI/CD Locally
 
 You can simulate CI steps locally:
 
 ```sh
-pnpm lint
-pnpm type-check
-pnpm test
-pnpm build
+npm run lint
+npm run type-check
+npm run test
+npm run build
 ```
 
 ## 8. Publishing

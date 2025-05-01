@@ -24,7 +24,6 @@ This monorepo is organized for clarity, modularity, and reproducibility, with al
 - **/docs/**: Comprehensive documentation for all audiences, including LLMs.
 - **/tsconfig.base.json**: Shared TypeScript config.
 - **/turbo.json**: Turborepo pipeline config.
-- **/pnpm-workspace.yaml**: pnpm workspace config.
 - **/.eslintrc.js, .prettierrc**: Centralized linting and formatting configs.
 - **/jest.config.base.js**: Shared Jest config.
 - **/.github/workflows/ci.yml**: GitHub Actions workflow for CI/CD and npm publishing.
@@ -38,7 +37,7 @@ This monorepo is organized for clarity, modularity, and reproducibility, with al
 
 - **Monorepo**: Enables code sharing, atomic changes, and streamlined DX.
 - **Vite**: Used for all packages and apps (library mode for packages, app mode for examples).
-- **pnpm**: Efficient, strict, and monorepo-friendly package manager.
+- **npm**: Default, widely supported, and monorepo-friendly package manager.
 - **Turborepo**: Task orchestration and caching for scalable builds.
 - **TypeScript, ESLint, Prettier, Jest**: Modern DX and code quality, with centralized configs.
 

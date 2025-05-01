@@ -4,7 +4,7 @@ This project uses GitHub Actions for continuous integration and delivery, with a
 
 ## What is Automated?
 
-- **Install & Cache:** Uses pnpm (the chosen package manager) for fast, reliable installs.
+- **Install & Cache:** Uses npm (the package manager) for reliable installs.
 - **Lint:** Runs centralized ESLint across all packages and apps.
 - **Type-Check:** Runs strict TypeScript checks for all code.
 - **Test:** Runs Jest tests for all packages and apps.
@@ -18,10 +18,10 @@ See `.github/workflows/ci.yml` for the full workflow definition.
 ## How to Simulate CI Locally
 
 ```sh
-pnpm lint
-pnpm type-check
-pnpm test
-pnpm build
+npm run lint
+npm run type-check
+npm run test
+npm run build
 ```
 
 ## How to Publish
@@ -34,7 +34,7 @@ pnpm build
 
 - **Reproducibility:** LLMs and humans can follow the same steps, with all tools and choices made explicit.
 - **Reliability:** Automated checks catch issues early.
-- **Speed:** Caching and parallelization via Turborepo and pnpm.
+- **Speed:** Caching and parallelization via Turborepo.
 - **Modern Tooling:** Vite is used for all builds, as explicitly required by project preferences.
 
 ---

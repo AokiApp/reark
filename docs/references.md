@@ -2,14 +2,16 @@
 
 ## Tools & Technologies
 
-- [pnpm](https://pnpm.io/)
-- [Turborepo](https://turbo.build/)
-- [Vite](https://vitejs.dev/)
-- [TypeScript](https://www.typescriptlang.org/)
-- [React](https://react.dev/)
-- [Jest](https://jestjs.io/)
-- [ESLint](https://eslint.org/)
-- [Prettier](https://prettier.io/)
+- [Node.js](https://nodejs.org/) (v22.14.0)
+- [npm](https://www.npmjs.com/) (10.9.2)
+- [Turborepo](https://turbo.build/) (1.13.4)
+- [Vite](https://vitejs.dev/) (5.4.19)
+- [@vitejs/plugin-react](https://vitejs.dev/guide/#scaffolding-your-first-vite-project) (4.4.1)
+- [TypeScript](https://www.typescriptlang.org/) (5.8.3)
+- [React](https://react.dev/) (18.3.1)
+- [Jest](https://jestjs.io/) (29.7.0)
+- [ESLint](https://eslint.org/) (8.57.1)
+- [Prettier](https://prettier.io/) (3.5.3)
 - [GitHub Actions](https://docs.github.com/en/actions)
 
 ## Monorepo Patterns
@@ -25,7 +27,6 @@
 ## Project Inspiration
 
 - [Turborepo Examples](https://github.com/vercel/turbo/tree/main/examples)
-- [pnpm Monorepo Example](https://github.com/pnpm/example-monorepo)
 - [Vite Library Mode Docs](https://vitejs.dev/guide/build.html#library-mode)
 
 ---

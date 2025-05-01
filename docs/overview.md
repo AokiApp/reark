@@ -2,7 +2,7 @@
 
 ## What is Aokiapp Reark?
 
-Aokiapp Reark is a monorepo template for building modular **React libraries and applications**, designed for maintainability, reproducibility, and educational value. It demonstrates modern (2025) monorepo practices using **pnpm** (as the package manager), **Turborepo** (for orchestration), **Vite** (as the bundler for all packages and apps), **TypeScript**, and **React**.
+Aokiapp Reark is a monorepo template for building modular **React libraries and applications**, designed for maintainability, reproducibility, and educational value. It demonstrates modern (2025) monorepo practices using **npm** (as the package manager), **Turborepo** (for orchestration), **Vite** (as the bundler for all packages and apps), **TypeScript**, and **React**.
 
 ## Project Goals
 
@@ -13,7 +13,7 @@ Aokiapp Reark is a monorepo template for building modular **React libraries and 
 
 ## Key Features
 
-- **Monorepo managed by pnpm and Turborepo**
+- **Monorepo managed by npm and Turborepo**
 - **All packages and apps are React projects, bundled with Vite (library mode for packages, app mode for examples)**
 - **Strict TypeScript, centralized ESLint and Prettier, and Jest for developer experience**
 - **Automated CI/CD with GitHub Actions, including npm publishing for libraries**

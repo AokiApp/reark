@@ -4,8 +4,8 @@ This guide will help you (or an LLM) set up, build, and run the Aokiapp Reark mo
 
 ## Prerequisites
 
-- Node.js (>=18)
-- pnpm (>=8)
+- Node.js (>=22)
+- npm (>=10)
 - Git
 
 ## 1. Clone the Repository
@@ -18,20 +18,20 @@ cd <repo-directory>
 ## 2. Install Dependencies
 
 ```sh
-pnpm install
+npm install
 ```
 
 ## 3. Build All Packages
 
 ```sh
-pnpm build
+npm run build
 ```
 
 ## 4. Run the Example App
 
 ```sh
 cd examples/react-app
-pnpm dev
+npm run dev
 ```
 
 Open [http://localhost:5173](http://localhost:5173) in your browser.
@@ -41,16 +41,16 @@ Open [http://localhost:5173](http://localhost:5173) in your browser.
 From the root:
 
 ```sh
-pnpm lint
-pnpm type-check
-pnpm test
+npm run lint
+npm run type-check
+npm run test
 ```
 
 ## 6. Build Individual Packages
 
 ```sh
 cd packages/reark
-pnpm build
+npm run build
 ```
 
 Repeat for other packages as needed.

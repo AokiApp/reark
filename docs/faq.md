@@ -8,9 +8,9 @@
 
 - Vite is fast, modern, and supports both library and app bundling with minimal config.
 
-## Why pnpm and Turborepo?
+## Why npm and Turborepo?
 
-- pnpm is efficient and strict for monorepos. Turborepo orchestrates tasks and caching.
+- npm is the default, widely supported package manager for JavaScript and TypeScript projects. Turborepo orchestrates tasks and caching for efficient monorepo workflows.
 
 ## How do I add a new package?
 

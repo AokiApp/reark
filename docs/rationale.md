@@ -8,11 +8,12 @@ This document explains the reasoning behind the technical and organizational cho
 - **Code sharing:** Reuse code and components easily.
 - **Unified tooling:** Consistent linting, testing, and build across all packages.
 
-## Why pnpm?
+## Why npm?
 
-- **Performance:** Fast installs, efficient disk usage.
-- **Strictness:** Catches dependency issues early.
-- **Monorepo support:** Native workspaces.
+- **Default and Ubiquitous:** npm is the default package manager for Node.js and is widely supported across the JavaScript ecosystem.
+- **Workspaces Support:** Modern npm supports monorepos and workspaces natively, making it easy to manage multiple packages.
+- **Onboarding:** Most developers are familiar with npm, reducing friction for new contributors.
+- **Reliability:** npm is stable, well-documented, and integrates seamlessly with CI/CD and publishing workflows.
 - **Explicitly chosen as the package manager for this project.**
 
 ## Why Turborepo?

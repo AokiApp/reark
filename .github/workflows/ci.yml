@@ -8,59 +8,30 @@ on:
   workflow_dispatch:
 
 jobs:
-  install:
+  ci:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2
-        with:
-          version: 8
       - uses: actions/setup-node@v3
         with:
-          node-version: 18
-          cache: 'pnpm'
-      - run: pnpm install
+          node-version: 22
+          cache: "npm"
+      - run: npm install
 
-  lint:
-    needs: install
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - run: pnpm install
-      - run: pnpm turbo run lint
+      - name: Lint
+        run: npm run lint
 
-  type-check:
-    needs: install
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - run: pnpm install
-      - run: pnpm turbo run type-check
+      - name: Type Check
+        run: npm run type-check
 
-  test:
-    needs: install
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - run: pnpm install
-      - run: pnpm turbo run test
+      - name: Test
+        run: npm run test
 
-  build:
-    needs: [lint, type-check, test]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - run: pnpm install
-      - run: pnpm turbo run build
+      - name: Build
+        run: npm run build
 
-  publish:
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - run: pnpm install
-      - run: pnpm turbo run build
-      - run: pnpm publish -r --access public
+      - name: Publish (main branch only)
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        run: npm publish --workspaces --access public
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
