@@ -46,27 +46,22 @@ const BlockComponentBase: React.FC<BlockComponentProps> = ({ blockId }) => {
   }
 
   // Development-only debug tool
-  const showDebugInfo = (e: React.MouseEvent<HTMLDivElement>) => {
-    // クリックされた要素が <a> タグの場合は処理をスキップ
-    if ((e.target as HTMLElement).tagName === "A") {
-      return;
-    }
+  // const showDebugInfo = (e: React.MouseEvent<HTMLDivElement>) => {
+  //   // クリックされた要素が <a> タグの場合は処理をスキップ
+  //   if ((e.target as HTMLElement).tagName === "A") {
+  //     return;
+  //   }
 
-    if (import.meta.env.DEV) {
-      e.stopPropagation();
-      e.preventDefault();
-      console.group(`Block Debug Info: ${blockId}`);
-      console.log("Block Data:", block);
-      console.log("Parent Block Data:", blocks[block.parent_id]);
-      console.groupEnd();
-    }
-  };
+  //   e.stopPropagation();
+  //   e.preventDefault();
+  //   console.group(`Block Debug Info: ${blockId}`);
+  //   console.log("Block Data:", block);
+  //   console.log("Parent Block Data:", blocks[block.parent_id]);
+  //   console.groupEnd();
+  // };
 
   const inner = (
-    <div
-      style={{ display: "contents" }}
-      onClick={import.meta.env.DEV ? showDebugInfo : undefined}
-    >
+    <div style={{ display: "contents" }}>
       <ErrorBoundary>
         <Component block={block} />
       </ErrorBoundary>

@@ -1,20 +1,11 @@
 import { Block } from "./types/block";
-import { ApiResponse } from "./types/api";
+import { CommentListResponse, DocumentBlockResponse } from "./types/api";
 
 const TOKEN_EXPIRATION_TIME = 2 * 60 * 60 * 1000;
 
 // APIのベースURLを環境に応じて取得する関数
 function getApiBaseUrl(): string {
-  let isDevelopment = false;
-
-  try {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    isDevelopment = (import.meta as any).env.MODE === "development";
-  } catch (e) {
-    isDevelopment = process.env.NODE_ENV === "development";
-  }
-
-  return isDevelopment ? "/proxy" : "https://open.larksuite.com/open-apis";
+  return "https://open.larksuite.com/open-apis";
 }
 
 // urlが絶対パスでなければbaseUrlを付与
@@ -126,10 +117,10 @@ async function getValidAccessToken(): Promise<string> {
 export async function getDocumentBlocks(
   documentId: string,
   pageToken: string = "",
-): Promise<ApiResponse> {
+): Promise<DocumentBlockResponse> {
   const url = `/docx/v1/documents/${documentId}/blocks?document_revision_id=-1&page_size=500&page_token=${pageToken}`;
   // Use the new helper function
-  return await larkApiRequest<ApiResponse>(url, {
+  return await larkApiRequest<DocumentBlockResponse>(url, {
     method: "GET",
   });
 }
@@ -174,7 +165,7 @@ async function fetchNewToken(): Promise<string> {
 
   const url = `/auth/v3/tenant_access_token/internal`;
 
-  const response = await handleFetch(url, {
+  const response = await handleFetch(resolveUrl(url), {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -208,11 +199,11 @@ export async function getFile(fileToken: string): Promise<Blob> {
   );
 }
 
-export async function getCommentContent(fileToken: string) {
+export async function getComments(fileToken: string) {
   const url = `/drive/v1/files/${fileToken}/comments/?file_type=docx`;
   // Use the new helper function
   // Assuming the response structure is similar to ApiResponse or define a specific type
-  return await larkApiRequest<ApiResponse>(url, {
+  return await larkApiRequest<CommentListResponse>(url, {
     // Adjust ApiResponse if needed
     method: "GET",
   });
@@ -226,10 +217,9 @@ export async function batchGetTmpDownloadUrls(
   fileTokens: string[],
 ): Promise<Record<string, string>> {
   if (!fileTokens.length) return {};
-  const url = "/drive/v1/medias/batch_get_tmp_download_url";
-  const body = {
-    file_tokens: fileTokens,
-  };
+  const url =
+    "/drive/v1/medias/batch_get_tmp_download_url?file_tokens=" +
+    fileTokens.join("&file_tokens=");
   // Define a more specific type for the expected response structure
   type BatchUrlResponse = {
     code: number;
@@ -243,11 +233,10 @@ export async function batchGetTmpDownloadUrls(
   };
   // Use the new helper function
   const json = await larkApiRequest<BatchUrlResponse>(url, {
-    method: "POST",
-    body: JSON.stringify(body),
+    method: "GET",
     // Content-Type is automatically handled by larkApiRequest when body is present
   });
-
+  debugger;
   const urls: Record<string, string> = {};
   // Safely access nested properties
   for (const entry of json?.data?.tmp_download_urls || []) {

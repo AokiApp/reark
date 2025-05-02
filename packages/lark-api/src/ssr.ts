@@ -1,10 +1,9 @@
 import fs from "fs";
-import path from "path";
-import fetch from "node-fetch";
+import path from "node:path";
 import mime from "mime-types";
 import {
   fetchAllDocumentBlocks,
-  getCommentContent,
+  getComments,
   batchGetTmpDownloadUrls,
 } from "./apis";
 import type { Block } from "./types/block";
@@ -58,12 +57,12 @@ export async function getLarkInitialDataForSSR(
     try {
       const res = await fetch(url);
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const buffer = await res.buffer();
+      const buffer = await res.arrayBuffer();
       const contentType = res.headers.get("content-type") || "";
       const ext = mime.extension(contentType) || "bin";
       const filename = `${token}.${ext}`;
       const filePath = path.join(publicDir, filename);
-      fs.writeFileSync(filePath, buffer);
+      fs.writeFileSync(filePath, Buffer.from(buffer));
       files[token] = path.posix.join(publicUrlBase, filename);
     } catch (err) {
       console.error(
@@ -93,7 +92,7 @@ export async function getLarkInitialDataForSSR(
   // 6. Fetch comments
   let comments: CommentData[] = [];
   try {
-    const commentRes = await getCommentContent(documentId);
+    const commentRes = await getComments(documentId);
     comments = commentRes.data?.items || [];
   } catch (err) {
     console.error(

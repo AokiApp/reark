@@ -1,17 +1,37 @@
 import { Block } from "./block";
 
-export type ApiResponse = {
+// export type DocumentBlockResponse = {
+//   data: {
+//     items: Array<
+//       Partial<Block> & {
+//         block_id?: string;
+//         block_type?: number;
+//         parent_id?: string;
+//       }
+//     >;
+//     page_token?: string;
+//   };
+// };
+
+type PagedResponse<T> = {
+  code: number;
+  msg: string;
   data: {
-    items: Array<
-      Partial<Block> & {
-        block_id?: string;
-        block_type?: number;
-        parent_id?: string;
-      }
-    >;
+    has_more?: boolean;
     page_token?: string;
+    items: T[];
   };
 };
+
+export type DocumentBlockResponse = PagedResponse<
+  Partial<Block> & {
+    block_id?: string;
+    block_type?: number;
+    parent_id?: string;
+  }
+>;
+
+export type CommentListResponse = PagedResponse<CommentData>;
 
 type CommentReply = {
   content: {

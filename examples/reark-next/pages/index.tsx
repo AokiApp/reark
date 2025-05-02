@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import type { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
-import { LarkApiProvider, LarkRenderer } from "@aokiapp/reark-components";
+import { LarkApiProvider } from "@aokiapp/reark-components";
 import type { LarkApiContextValue } from "@aokiapp/reark-components";
-import { getLarkInitialDataForSSR } from "@aokiapp/reark-lark-api";
+import {
+  getLarkInitialDataForSSR,
+  setCredentials,
+} from "@aokiapp/reark-lark-api";
 
 // Utility to extract documentId from Lark URL or plain ID
 function extractDocId(input: string): string {
@@ -15,7 +18,7 @@ function extractDocId(input: string): string {
   return "";
 }
 
-const PUBLIC_DIR = process.env.LARK_PUBLIC_DIR || "public/lark-files";
+const PUBLIC_DIR = "public/lark-files";
 const PUBLIC_URL_BASE = "/lark-files/";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
@@ -25,6 +28,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       : "";
   let initialData = null;
   if (documentId) {
+    setCredentials(process.env.LARK_APP_ID!, process.env.LARK_APP_SECRET!);
+
     initialData = await getLarkInitialDataForSSR(
       documentId,
       PUBLIC_DIR,
