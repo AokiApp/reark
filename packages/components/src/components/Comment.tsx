@@ -1,4 +1,3 @@
-import { css } from "@emotion/react";
 import React, { createContext, useContext, useEffect, useState } from "react";
 
 type CommentProps = {
@@ -28,17 +27,6 @@ export function Comment({ commentIds, children }: CommentProps) {
   // A leaf comment has no child comments
   const isLeaf = childCount === 0;
 
-  const style = css({
-    display: "contents",
-    ...(isLeaf
-      ? {
-          "& > *": {
-            borderBottom: "2px solid #fc0",
-          },
-        }
-      : {}),
-  });
-
   return (
     <CommentContext.Provider
       value={{
@@ -46,7 +34,10 @@ export function Comment({ commentIds, children }: CommentProps) {
         unregisterChild: () => setChildCount((count) => count - 1),
       }}
     >
-      <div css={style} data-comment-ids={commentIds.join(",")}>
+      <div
+        className={`reark-comment${isLeaf ? " reark-comment--leaf" : ""}`}
+        data-comment-ids={commentIds.join(",")}
+      >
         {children}
       </div>
     </CommentContext.Provider>

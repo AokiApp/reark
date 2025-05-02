@@ -1,39 +1,17 @@
-import { css } from "@emotion/react";
 import type { CommentData } from "@aokiapp/reark-lark-api";
 import { Mention } from "./Mention";
+import "../styles/blocks.css";
 
 export function CommentCard({
   commentData: comment,
 }: {
   commentData: CommentData;
 }) {
-  const containerStyle = css({
-    padding: "16px",
-    marginBottom: "8px",
-    border: "1px solid #ddd",
-    borderRadius: "8px",
-    backgroundColor: "#f9f9f9",
-  });
-
-  const quoteStyle = css({
-    borderLeft: "2px solid lightgray",
-    paddingLeft: "4px",
-    fontSize: "10px",
-    color: "#555",
-    marginBottom: "8px",
-  });
-
-  const replyStyle = css({
-    fontSize: "12px",
-    marginTop: "8px",
-    paddingLeft: "8px",
-  });
-
   return (
-    <div css={containerStyle}>
-      <div css={quoteStyle}>{comment.quote}</div>
+    <div className="reark-comment-card">
+      <div className="reark-comment-card__quote">{comment.quote}</div>
       {comment.reply_list?.replies.map((reply, i) => (
-        <div key={i} css={replyStyle}>
+        <div key={i} className="reark-comment-card__reply">
           {reply.content.elements.map((element, j) => (
             <span key={j}>
               {element.type === "text_run" ? (

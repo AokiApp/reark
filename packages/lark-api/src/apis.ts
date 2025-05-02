@@ -236,7 +236,6 @@ export async function batchGetTmpDownloadUrls(
     method: "GET",
     // Content-Type is automatically handled by larkApiRequest when body is present
   });
-  debugger;
   const urls: Record<string, string> = {};
   // Safely access nested properties
   for (const entry of json?.data?.tmp_download_urls || []) {

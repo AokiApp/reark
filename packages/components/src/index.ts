@@ -7,3 +7,4 @@ export {
 } from "./contexts/BlockStoreContext";
 
 export type { LarkApiContextValue } from "./contexts/LarkApiContext";
+import "./styles/blocks.css";

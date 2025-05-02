@@ -3,6 +3,7 @@ import type { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
 import { LarkApiProvider } from "@aokiapp/reark-components";
 import type { LarkApiContextValue } from "@aokiapp/reark-components";
+import "@aokiapp/reark-components/style.css";
 import {
   getLarkInitialDataForSSR,
   setCredentials,

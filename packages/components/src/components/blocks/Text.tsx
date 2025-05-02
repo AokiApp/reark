@@ -1,29 +1,24 @@
-import { css } from "@emotion/react";
 import { BlockInnerComponent } from "../../types";
 import type { TextElement, TextStyle } from "@aokiapp/reark-lark-api";
 import { containsUrl } from "../../utils/utils";
 import { Comment } from "../Comment";
-
-const textContainerStyle = css({});
 
 export const Text: React.FC<{
   elements: TextElement[];
   style?: TextStyle;
 }> = ({ elements, style }) => {
   const align = style?.align || 1;
-  const containerStyle = css({
-    textAlign:
-      align === 1
-        ? "left"
-        : align === 2
-          ? "center"
-          : align === 3
-            ? "right"
-            : "left",
-  });
+  const textAlign =
+    align === 1
+      ? "left"
+      : align === 2
+        ? "center"
+        : align === 3
+          ? "right"
+          : "left";
 
   return (
-    <div css={[textContainerStyle, containerStyle]}>
+    <div style={{ textAlign }}>
       {elements.map((element, index) => {
         if (!element.text_run) {
           return null;
@@ -31,24 +26,16 @@ export const Text: React.FC<{
 
         const textElementStyle = element.text_run.text_element_style;
 
-        const style = css({
-          color: textElementStyle?.bold ? "#000" : "#333",
-          fontWeight: textElementStyle?.bold ? "bold" : "normal",
-          fontStyle: textElementStyle?.italic ? "italic" : "normal",
-          textDecoration:
-            [
-              textElementStyle?.strikethrough && "line-through",
-              textElementStyle?.underline && "underline",
-            ]
-              .filter(Boolean)
-              .join(" ") || "none",
-          fontFamily: textElementStyle?.inline_code ? "monospace" : "inherit",
-          backgroundColor: textElementStyle?.inline_code
-            ? "#f6f8fa"
-            : "transparent",
-          padding: textElementStyle?.inline_code ? "2px 4px" : "0",
-          borderRadius: textElementStyle?.inline_code ? "3px" : "0",
-        });
+        // Build className for text decorations
+        const classNames = [
+          textElementStyle?.bold ? "reark-text--bold" : "",
+          textElementStyle?.italic ? "reark-text--italic" : "",
+          textElementStyle?.strikethrough ? "reark-text--strikethrough" : "",
+          textElementStyle?.underline ? "reark-text--underline" : "",
+          textElementStyle?.inline_code ? "reark-text--inline-code" : "",
+        ]
+          .filter(Boolean)
+          .join(" ");
 
         //文字列にリンクが紐づいているor文字列がhttps://で始まる場合はリンクとして扱う
         let url = textElementStyle?.link?.url;
@@ -62,7 +49,7 @@ export const Text: React.FC<{
         }
 
         const inner = (
-          <span key={index} css={style}>
+          <span key={index} className={classNames}>
             {isUrl ? (
               <a href={url} target="_blank">
                 {element.text_run.content}

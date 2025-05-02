@@ -3,8 +3,6 @@ import { BlockInnerComponent } from "../../types";
 import { BlockComponent } from "../BlockComponent";
 import { Text } from "./Text";
 
-import { css } from "@emotion/react";
-
 export const OrderedList: BlockInnerComponent = ({ block }) => {
   const blockStore = useBlockStore();
 
@@ -22,20 +20,18 @@ export const OrderedList: BlockInnerComponent = ({ block }) => {
       ) + 1;
   }
 
-  const sty = css({
-    paddingLeft: "24px",
-    position: "relative",
-    "::before": {
-      content: `"${seq}"`,
-      display: "block",
-      position: "absolute",
-      top: "0em",
-      left: "0px",
-    },
-  });
+  // Set the sequence number as a CSS variable for ::before content
+  const style = {
+    "--reark-ordered-list-seq": `"${seq}"`,
+  } as React.CSSProperties;
 
   return (
-    <div css={sty}>
+    <div
+      className="reark-ordered-list"
+      style={{
+        ...style,
+      }}
+    >
       <Text {...ordered} />
       {block.children?.map((childId) => (
         <BlockComponent key={childId} blockId={childId} />

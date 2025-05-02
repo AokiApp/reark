@@ -11,7 +11,6 @@
     "isolatedModules": true,
     "moduleDetection": "force",
     "jsx": "react-jsx",
-    "jsxImportSource": "@emotion/react",
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
