@@ -1,0 +1,27 @@
+{
+  "name": "reark-next-example",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "^14.2.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "@aokiapp/reark-components": "*",
+    "@emotion/react": "^11.13.5",
+    "@emotion/css": "^11.13.5"
+  },
+  "devDependencies": {
+    "typescript": "~5.6.2",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "eslint": "^9.13.0",
+    "prettier": "^3.4.1"
+  }
+}

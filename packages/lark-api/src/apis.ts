@@ -183,3 +183,49 @@ export async function getCommentContent(fileToken: string) {
     },
   });
 }
+/**
+ * Fetch temporary download URLs for multiple file tokens using Lark's batch API.
+ * @param fileTokens Array of file tokens to fetch.
+ * @param accessToken Lark API access token (must be valid).
+ * @returns Mapping of fileToken to temporary download URL.
+ */
+export async function batchGetTmpDownloadUrls(
+  fileTokens: string[],
+  accessToken: string,
+): Promise<Record<string, string>> {
+  if (!fileTokens.length) return {};
+  const url = "/drive/v1/medias/batch_get_tmp_download_url";
+  const body = {
+    file_tokens: fileTokens,
+  };
+  const response = await fetch(resolveUrl(url), {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+    },
+    body: JSON.stringify(body),
+  });
+  if (!response.ok) {
+    const errorData = await response.json().catch(() => ({}));
+    console.error(
+      "[Lark batchGetTmpDownloadUrls] API error:",
+      response.status,
+      errorData,
+    );
+    throw new Error(
+      `Failed to fetch batch download URLs: ${response.status} ${JSON.stringify(
+        errorData,
+      )}`,
+    );
+  }
+  const json = await response.json();
+  // Response: { data: { tmp_download_urls: Array<{ file_token, tmp_download_url }> } }
+  const urls: Record<string, string> = {};
+  for (const entry of json.data?.tmp_download_urls || []) {
+    if (entry.file_token && entry.tmp_download_url) {
+      urls[entry.file_token] = entry.tmp_download_url;
+    }
+  }
+  return urls;
+}

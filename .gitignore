@@ -26,3 +26,6 @@ turbo/
 
 # Misc
 *.tsbuildinfo
+
+# Next.js build output
+.next/
