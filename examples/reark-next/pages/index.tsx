@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import type { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
-import { LarkApiProvider } from "@aokiapp/reark-components";
+import { LarkRenderer } from "@aokiapp/reark-components";
 import type { LarkApiContextValue } from "@aokiapp/reark-components";
 import "@aokiapp/reark-components/style.css";
 import {
@@ -93,7 +93,7 @@ export default function Home({
         </form>
       </header>
       {initialData ? (
-        <LarkApiProvider initialData={initialData} />
+        <LarkRenderer initialData={initialData} />
       ) : (
         <div style={{ color: "#888" }}>
           Please enter a Lark document URL or ID above.

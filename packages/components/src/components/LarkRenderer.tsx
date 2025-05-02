@@ -1,9 +1,12 @@
-import React, { useContext } from "react";
-import { LarkApiContext } from "../contexts/LarkApiContext";
+import { useContext } from "react";
+import {
+  LarkApiContext,
+  LarkApiContextValue,
+} from "../contexts/LarkApiContext";
 import { BlockStoreProvider } from "../contexts/BlockStoreContext";
 import { BlockComponent } from "./BlockComponent";
 
-export const LarkRenderer: React.FC = () => {
+function LarkRendererInner() {
   const { blocks } = useContext(LarkApiContext);
 
   if (!blocks || blocks.length === 0) return null;
@@ -19,4 +22,16 @@ export const LarkRenderer: React.FC = () => {
       <BlockComponent blockId={rootBlock.block_id} />
     </BlockStoreProvider>
   );
+}
+
+type Props = {
+  initialData: LarkApiContextValue;
 };
+
+export function LarkRenderer({ initialData }: Props) {
+  return (
+    <LarkApiContext.Provider value={initialData}>
+      <LarkRendererInner />
+    </LarkApiContext.Provider>
+  );
+}

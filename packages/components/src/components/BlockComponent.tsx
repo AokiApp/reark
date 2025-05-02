@@ -1,15 +1,14 @@
-import React, { memo } from "react";
 import { ErrorBoundary } from "./ErrorBoundary";
 import { useBlockStore } from "../contexts/BlockStoreContext";
 import { Comment } from "./Comment";
 import { BLOCK_COMPONENTS } from "../constants/blockComponents";
 import { UnsupportedBlock } from "./blocks/UnsupportedBlock";
 
-interface BlockComponentProps {
+type Props = {
   blockId: string;
-}
+};
 
-const BlockComponentBase: React.FC<BlockComponentProps> = ({ blockId }) => {
+export function BlockComponent({ blockId }: Props) {
   const { blocks } = useBlockStore();
   const block = blocks[blockId];
 
@@ -50,7 +49,4 @@ const BlockComponentBase: React.FC<BlockComponentProps> = ({ blockId }) => {
     return <Comment commentIds={block.comment_ids}>{inner}</Comment>;
   }
   return inner;
-};
-
-export const BlockComponent = memo(BlockComponentBase);
-BlockComponent.displayName = "BlockComponent";
+}
