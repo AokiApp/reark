@@ -1,5 +1,5 @@
 import { createContext, useContext } from "react";
-import type { Block, CommentData } from "@aokiapp/reark-lark-api";
+import type { Block, CommentData } from "../../lark-api";
 
 // Context value type
 export type LarkApiContextValue = {

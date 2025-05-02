@@ -1,6 +1,6 @@
 import { BlockInnerComponent } from "../../types";
 import { BlockComponent } from "../BlockComponent";
-import type { TextElement } from "@aokiapp/reark-lark-api";
+import type { TextElement } from "../../../lark-api";
 import { Text } from "./Text";
 import "../../styles/blocks.css";
 

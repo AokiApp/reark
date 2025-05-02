@@ -12,8 +12,8 @@ export default defineConfig({
   },
   build: {
     lib: {
-      entry: path.resolve(__dirname, "src/index.ts"),
-      name: "reark-components",
+      entry: path.resolve(__dirname, "index.ts"),
+      name: "renderer",
       fileName: "index",
       formats: ["es", "cjs"],
     },
@@ -25,5 +25,6 @@ export default defineConfig({
         },
       },
     },
+    sourcemap: true,
   },
 });

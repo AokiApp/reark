@@ -1,0 +1,18 @@
+{
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": ".",
+    "composite": true,
+    "declaration": true,
+    "sourceMap": true,
+    "noEmitOnError": false,
+    "noEmit": true
+  },
+  "references": [
+    {
+      "path": "../lark-api"
+    }
+  ],
+  "exclude": ["node_modules", "dist"],
+  "include": ["**/*.ts", "**/*.tsx"]
+}

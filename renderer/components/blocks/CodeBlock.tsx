@@ -1,6 +1,6 @@
 import { BlockInnerComponent } from "../../types";
 import { CODE_LANGUAGE } from "../../constants/codeLanguage";
-import type { Element } from "@aokiapp/reark-lark-api";
+import type { Element } from "../../../lark-api";
 
 export const CodeBlock: BlockInnerComponent = ({ block }) => {
   const code = block.code;

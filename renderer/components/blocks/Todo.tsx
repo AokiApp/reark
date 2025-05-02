@@ -1,5 +1,5 @@
 import { BlockInnerComponent } from "../../types";
-import type { Element } from "@aokiapp/reark-lark-api";
+import type { Element } from "../../../lark-api";
 import { containsUrl } from "../../utils/utils";
 
 export const Todo: BlockInnerComponent = ({ block }) => {

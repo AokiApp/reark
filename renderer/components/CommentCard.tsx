@@ -1,4 +1,4 @@
-import type { CommentData } from "@aokiapp/reark-lark-api";
+import type { CommentData } from "../../lark-api";
 import { Mention } from "./Mention";
 import "../styles/blocks.css";
 
