@@ -4,12 +4,9 @@ import { useRouter } from "next/router";
 import {
   LarkRenderer,
   type LarkApiContextValue,
-} from "@aokiapp/reark-renderer";
-import "@aokiapp/reark-renderer/style.css";
-import {
   getLarkInitialDataForSSR,
   setCredentials,
-} from "@aokiapp/reark-lark-api";
+} from "@aokiapp/reark";
 
 // Utility to extract documentId from Lark URL or plain ID
 function extractDocId(input: string): string {
