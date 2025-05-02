@@ -1,5 +1,5 @@
 {
-  "name": "my-monorepo",
+  "name": "@aokiapp/reark",
   "private": true,
   "version": "0.1.0",
   "workspaces": [
@@ -12,7 +12,9 @@
     "format:write": "prettier --write .",
     "typecheck": "turbo run typecheck",
     "test": "turbo run test",
-    "build": "turbo run build"
+    "build": "turbo run build",
+    "build:watch": "turbo run build:watch",
+    "dev": "turbo run dev"
   },
   "devDependencies": {
     "@types/react": "^19.1.2",

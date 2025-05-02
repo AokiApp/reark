@@ -7,7 +7,9 @@
     "lint": "eslint src --ext .ts,.tsx",
     "typecheck": "tsc --noEmit",
     "test": "jest",
-    "build": "vite build"
+    "build": "vite build",
+    "build:watch": "vite build --watch",
+    "dev": "npm run build:watch"
   },
   "peerDependencies": {
     "react": "^18.0.0"
