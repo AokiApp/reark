@@ -15,6 +15,12 @@ module.exports = {
     react: {
       version: "detect",
     },
+    "import/resolver": {
+      node: {
+        extensions: [".js", ".jsx", ".ts", ".tsx", ".json", ".css"],
+      },
+    },
+    "import/core-modules": ["@aokiapp/reark-renderer/style.css"],
   },
   overrides: [
     {
