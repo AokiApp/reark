@@ -1,18 +1,19 @@
 import { Block } from "./types/block";
 import { ApiResponse } from "./types/api";
 
-const TOKEN_KEY = "tenant_access_token";
-const TOKEN_TIMESTAMP_KEY = "tenant_access_token_timestamp";
 const TOKEN_EXPIRATION_TIME = 2 * 60 * 60 * 1000;
 
-const FILE_CACHE_PREFIX = "file_cache_";
-const FILE_CACHE_TIMESTAMP_PREFIX = "file_cache_timestamp_";
-const FILE_CACHE_EXPIRATION = 24 * 60 * 60 * 1000; // 24時間
-const FILE_CACHE_MIME_PREFIX = "file_cache_mime_";
-
 // APIのベースURLを環境に応じて取得する関数
-export function getApiBaseUrl(): string {
-  const isDevelopment = import.meta.env.DEV;
+function getApiBaseUrl(): string {
+  let isDevelopment = false;
+
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    isDevelopment = (import.meta as any).env.MODE === "development";
+  } catch (e) {
+    isDevelopment = process.env.NODE_ENV === "development";
+  }
+
   return isDevelopment ? "/proxy" : "https://open.larksuite.com/open-apis";
 }
 
@@ -34,18 +35,12 @@ async function handleFetch(url: string, options: RequestInit) {
 }
 
 async function getValidAccessToken(): Promise<string> {
-  const storedToken = localStorage.getItem(TOKEN_KEY);
-  const storedTimestamp = localStorage.getItem(TOKEN_TIMESTAMP_KEY);
-
-  if (storedToken && storedTimestamp) {
-    const timestamp = parseInt(storedTimestamp, 10);
+  if (_accessToken && _accessTokenTimestamp) {
     const currentTime = Date.now();
-
-    if (currentTime - timestamp < TOKEN_EXPIRATION_TIME) {
-      return storedToken;
+    if (currentTime - _accessTokenTimestamp < TOKEN_EXPIRATION_TIME) {
+      return _accessToken;
     }
   }
-
   return await fetchNewToken();
 }
 
@@ -85,7 +80,23 @@ export async function fetchAllDocumentBlocks(
   return allItems;
 }
 
+let _appId: string | null = null;
+let _appSecret: string | null = null;
+let _accessToken: string | null = null;
+let _accessTokenTimestamp: number | null = null;
+
+export function setCredentials(appId: string, appSecret: string): void {
+  _appId = appId;
+  _appSecret = appSecret;
+}
+
 async function fetchNewToken(): Promise<string> {
+  if (!_appId || !_appSecret) {
+    throw new Error(
+      "App ID and App Secret must be set before fetching a token.",
+    );
+  }
+
   const url = `/auth/v3/tenant_access_token/internal`;
 
   const response = await handleFetch(url, {
@@ -94,8 +105,8 @@ async function fetchNewToken(): Promise<string> {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      app_id: import.meta.env.VITE_APP_ID,
-      app_secret: import.meta.env.VITE_APP_SECRET,
+      app_id: _appId,
+      app_secret: _appSecret,
     }),
   });
 
@@ -104,36 +115,14 @@ async function fetchNewToken(): Promise<string> {
   if (!newToken) {
     throw new Error("Failed to fetch new token");
   }
-  localStorage.setItem(TOKEN_KEY, newToken);
-  localStorage.setItem(TOKEN_TIMESTAMP_KEY, Date.now().toString());
+  _accessToken = newToken;
+  _accessTokenTimestamp = Date.now();
 
   return newToken;
 }
 
 export async function getFile(fileToken: string): Promise<Blob> {
-  // キャッシュをチェック
-  const cachedData = localStorage.getItem(FILE_CACHE_PREFIX + fileToken);
-  const cachedTimestamp = localStorage.getItem(
-    FILE_CACHE_TIMESTAMP_PREFIX + fileToken,
-  );
-  const cachedMimeType = localStorage.getItem(
-    FILE_CACHE_MIME_PREFIX + fileToken,
-  );
-
-  if (cachedData && cachedTimestamp && cachedMimeType) {
-    const timestamp = parseInt(cachedTimestamp, 10);
-    if (Date.now() - timestamp < FILE_CACHE_EXPIRATION) {
-      // キャッシュが有効な場合はBase64からBlobに変換して返す
-      const byteString = atob(cachedData);
-      const arrayBuffer = new ArrayBuffer(byteString.length);
-      const uint8Array = new Uint8Array(arrayBuffer);
-      for (let i = 0; i < byteString.length; i++) {
-        uint8Array[i] = byteString.charCodeAt(i);
-      }
-      return new Blob([arrayBuffer], { type: cachedMimeType });
-    }
-  }
-
+  // キャッシュは利用しない
   const url = `/drive/v1/medias/${fileToken}/download`;
   const accessToken = await getValidAccessToken();
 
@@ -151,24 +140,6 @@ export async function getFile(fileToken: string): Promise<Blob> {
   }
 
   const blob = await response.blob();
-
-  // Blobをbase64に変換してキャッシュ
-  const reader = new FileReader();
-  reader.readAsDataURL(blob);
-  await new Promise((resolve) => {
-    reader.onloadend = () => {
-      const base64data = reader.result as string;
-      const base64Content = base64data.split(",")[1];
-      localStorage.setItem(FILE_CACHE_PREFIX + fileToken, base64Content);
-      localStorage.setItem(
-        FILE_CACHE_TIMESTAMP_PREFIX + fileToken,
-        Date.now().toString(),
-      );
-      localStorage.setItem(FILE_CACHE_MIME_PREFIX + fileToken, blob.type);
-      resolve(null);
-    };
-  });
-
   return blob;
 }
 

@@ -5,3 +5,5 @@ export {
   BlockStoreProvider,
   useBlockStore,
 } from "./contexts/BlockStoreContext";
+
+export type { LarkApiContextValue } from "./contexts/LarkApiContext";

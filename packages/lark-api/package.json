@@ -15,5 +15,8 @@
   },
   "peerDependencies": {
     "react": "^18.0.0"
+  },
+  "devDependencies": {
+    "@types/mime-types": "^2.1.4"
   }
 }
