@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@aokiapp/reark": "*",
-    "@aokiapp/reark-submodule-a": "*",
+    "@aokiapp/reark-lark-api": "*",
     "@aokiapp/reark-submodule-b": "*",
     "react": "^18.0.0",
     "react-dom": "^18.0.0"

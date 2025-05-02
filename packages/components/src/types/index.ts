@@ -1,4 +1,4 @@
-import { Block } from "./block";
+import type { Block } from "@aokiapp/reark-lark-api";
 
 // I want truly empty object type
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type

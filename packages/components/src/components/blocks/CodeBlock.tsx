@@ -1,7 +1,7 @@
 import { css } from "@emotion/react";
 import { BlockInnerComponent } from "../../types";
 import { CODE_LANGUAGE } from "../../constants/codeLanguage";
-import { Element } from "../../types/block";
+import type { Element } from "@aokiapp/reark-lark-api";
 
 const boxStyle = css({
   backgroundColor: "#f5f5f5",

@@ -12,6 +12,7 @@
     "@emotion/css": "^11.13.5",
     "@emotion/react": "^11.13.5",
     "react": "^18.3.1",
+    "@aokiapp/reark-lark-api": "*",
     "react-dom": "^18.3.1"
   },
   "scripts": {

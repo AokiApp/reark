@@ -1,5 +1,5 @@
 {
-  "name": "@aokiapp/reark-submodule-a",
+  "name": "@aokiapp/reark-lark-api",
   "version": "0.1.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -7,11 +7,9 @@
     "lint": "eslint src --ext .ts,.tsx",
     "typecheck": "tsc --noEmit",
     "test": "jest",
-    "build": "vite build"
+    "build": "tsc --outDir dist"
   },
-  "dependencies": {
-    "@aokiapp/reark": "0.1.0"
-  },
+  "dependencies": {},
   "peerDependencies": {
     "react": "^18.0.0"
   }

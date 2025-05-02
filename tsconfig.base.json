@@ -12,12 +12,7 @@
     "sourceMap": true,
     "outDir": "dist",
     "jsx": "react-jsx",
-    "baseUrl": ".",
-    "paths": {
-      "@aokiapp/reark/*": ["packages/core/src/*"],
-      "@aokiapp/reark-submodule-a/*": ["packages/submodule-a/src/*"],
-      "@aokiapp/reark-submodule-b/*": ["packages/submodule-b/src/*"]
-    }
+    "baseUrl": "."
   },
   "exclude": ["node_modules", "dist"]
 }

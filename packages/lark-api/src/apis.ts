@@ -16,8 +16,15 @@ export function getApiBaseUrl(): string {
   return isDevelopment ? "/proxy" : "https://open.larksuite.com/open-apis";
 }
 
+// urlが絶対パスでなければbaseUrlを付与
+function resolveUrl(url: string): string {
+  if (/^https?:\/\//.test(url)) return url;
+  return getApiBaseUrl() + (url.startsWith("/") ? url : "/" + url);
+}
+
 async function handleFetch(url: string, options: RequestInit) {
-  const response = await fetch(url, options);
+  const fullUrl = resolveUrl(url);
+  const response = await fetch(fullUrl, options);
   if (!response.ok) {
     const errorData = await response.json();
     console.error(JSON.stringify(errorData, null, 4));
@@ -45,9 +52,8 @@ async function getValidAccessToken(): Promise<string> {
 export async function getDocumentBlocks(
   documentId: string,
   pageToken: string = "",
-): Promise<any> {
-  const baseUrl = getApiBaseUrl();
-  const url = `${baseUrl}/docx/v1/documents/${documentId}/blocks?document_revision_id=-1&page_size=500&page_token=${pageToken}`;
+): Promise<ApiResponse> {
+  const url = `/docx/v1/documents/${documentId}/blocks?document_revision_id=-1&page_size=500&page_token=${pageToken}`;
   const accessToken = await getValidAccessToken();
 
   return await handleFetch(url, {
@@ -65,10 +71,7 @@ export async function fetchAllDocumentBlocks(
   let pageToken: string | undefined = "";
 
   do {
-    const json = (await getDocumentBlocks(
-      documentId,
-      pageToken,
-    )) as ApiResponse;
+    const json = await getDocumentBlocks(documentId, pageToken);
     const validatedItems = json.data.items.map((item) => ({
       ...item,
       parent_id: item.parent_id || "",
@@ -83,8 +86,7 @@ export async function fetchAllDocumentBlocks(
 }
 
 async function fetchNewToken(): Promise<string> {
-  const baseUrl = getApiBaseUrl();
-  const url = `${baseUrl}/auth/v3/tenant_access_token/internal`;
+  const url = `/auth/v3/tenant_access_token/internal`;
 
   const response = await handleFetch(url, {
     method: "POST",
@@ -132,11 +134,10 @@ export async function getFile(fileToken: string): Promise<Blob> {
     }
   }
 
-  const baseUrl = getApiBaseUrl();
-  const url = `${baseUrl}/drive/v1/medias/${fileToken}/download`;
+  const url = `/drive/v1/medias/${fileToken}/download`;
   const accessToken = await getValidAccessToken();
 
-  const response = await fetch(url, {
+  const response = await fetch(resolveUrl(url), {
     method: "GET",
     headers: {
       Authorization: `Bearer ${accessToken}`,
@@ -172,8 +173,7 @@ export async function getFile(fileToken: string): Promise<Blob> {
 }
 
 export async function getCommentContent(fileToken: string) {
-  const baseUrl = getApiBaseUrl();
-  const url = `${baseUrl}/drive/v1/files/${fileToken}/comments/?file_type=docx`;
+  const url = `/drive/v1/files/${fileToken}/comments/?file_type=docx`;
   const accessToken = await getValidAccessToken();
 
   return await handleFetch(url, {

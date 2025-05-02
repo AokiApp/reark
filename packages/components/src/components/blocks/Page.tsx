@@ -1,7 +1,7 @@
 import { BlockInnerComponent } from "../../types";
 import { BlockComponent } from "../BlockComponent";
 import { css } from "@emotion/react";
-import { TextElement } from "../../types/block";
+import type { TextElement } from "@aokiapp/reark-lark-api";
 import { Text } from "./Text";
 
 export const Page: BlockInnerComponent = ({ block }) => {

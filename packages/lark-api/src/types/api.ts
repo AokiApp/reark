@@ -1,6 +1,6 @@
 import { Block } from "./block";
 
-export interface ApiResponse {
+export type ApiResponse = {
   data: {
     items: Array<
       Partial<Block> & {
@@ -11,7 +11,7 @@ export interface ApiResponse {
     >;
     page_token?: string;
   };
-}
+};
 
 type CommentReply = {
   content: {

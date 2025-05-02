@@ -1,5 +1,5 @@
 import React, { createContext, useContext } from "react";
-import { Block } from "../types/block";
+import type { Block } from "@aokiapp/reark-lark-api";
 
 interface BlockStore {
   blocks: Record<string, Block>;

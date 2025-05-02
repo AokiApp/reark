@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
 import { BlockInnerComponent } from "../../types";
-import { Element } from "../../types/block";
+import type { Element } from "@aokiapp/reark-lark-api";
 import { containsUrl } from "../../utils/utils";
 
 const todoContainerStyle = css({

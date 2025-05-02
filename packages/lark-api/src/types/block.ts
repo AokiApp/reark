@@ -1,17 +1,17 @@
-export interface TextStyle {
+export type TextStyle = {
   align?: number; // enum Align
   done?: boolean;
   folded?: boolean;
   language?: string; // enum CodeLanguage
   wrap?: boolean;
-}
+};
 
-export interface TextRun {
+export type TextRun = {
   content: string;
   text_element_style?: TextElementStyle;
-}
+};
 
-export interface TextElementStyle {
+export type TextElementStyle = {
   text_color?: number;
   background_color?: number;
   bold?: boolean;
@@ -21,15 +21,15 @@ export interface TextElementStyle {
   underline?: boolean;
   comment_ids?: string[];
   link?: Link;
-}
+};
 
-export interface Link {
+export type Link = {
   url: string;
-}
+};
 
-export interface Element {
+export type Element = {
   text_run: TextRun;
-}
+};
 
 export interface TextElement extends Element {
   mention_user?: unknown; // object(MentionUser)
@@ -41,44 +41,44 @@ export interface TextElement extends Element {
   undefined_element?: unknown; // object(UndefinedElement)
 }
 
-interface BlockStyle {
+type BlockStyle = {
   align?: number;
   folded?: boolean;
   done?: boolean;
   sequence?: number | "auto";
-}
+};
 
-export interface BlockContent {
+export type BlockContent = {
   elements: Element[];
   style?: BlockStyle;
-}
+};
 
-interface ImageContent {
+type ImageContent = {
   token: string;
   width: number;
   height: number;
-}
+};
 
-interface Table {
+type Table = {
   cells: string[];
   property: TableProperty;
-}
+};
 
-interface TableProperty {
+type TableProperty = {
   row_size: number;
   column_size: number;
   column_width?: number[];
   header_row?: boolean;
   header_column?: boolean;
   merge_info?: TableMergeInfo[];
-}
+};
 
-interface TableMergeInfo {
+type TableMergeInfo = {
   row_span: number;
   col_span: number;
-}
+};
 
-export interface Block {
+export type Block = {
   block_id: string;
   block_type: number;
   parent_id: string;
@@ -115,15 +115,15 @@ export interface Block {
   table?: Table;
   quote?: BlockContent;
   comment_ids?: string[];
-}
+};
 
-export interface Document {
+export type Document = {
   blocks: Block[];
-}
+};
 
-export interface BlockContext {
+export type BlockContext = {
   block: Block;
   parent?: Block;
   level: number;
   document: Document;
-}
+};

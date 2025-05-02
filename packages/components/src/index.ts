@@ -4,4 +4,3 @@ export {
   BlockStoreProvider,
   useBlockStore,
 } from "./contexts/BlockStoreContext";
-export type { Block } from "./types/block";

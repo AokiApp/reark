@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { CommentData } from "../types/api";
+import type { CommentData } from "@aokiapp/reark-lark-api";
 import { Mention } from "./Mention";
 
 export function CommentCard({
