@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import type { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
-import { LarkApiProvider } from "@aokiapp/reark-components";
+import { LarkApiProvider, LarkRenderer } from "@aokiapp/reark-components";
+import type { LarkApiContextValue } from "@aokiapp/reark-components";
 import { getLarkInitialDataForSSR } from "@aokiapp/reark-lark-api";
 
 // Utility to extract documentId from Lark URL or plain ID
@@ -39,9 +40,15 @@ export default function Home({
   initialData,
   documentId,
 }: {
-  initialData: any;
+  initialData: LarkApiContextValue | null;
   documentId: string;
 }) {
+  // Runtime check: ensure initialData is not a Promise
+  if (initialData && typeof (initialData as any).then === "function") {
+    throw new Error(
+      "initialData is a Promise. It must be resolved before rendering.",
+    );
+  }
   const [input, setInput] = useState(documentId || "");
   const router = useRouter();
 

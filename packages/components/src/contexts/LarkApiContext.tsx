@@ -1,27 +1,24 @@
-import React, { createContext, useContext } from "react";
-import type { Block } from "@aokiapp/reark-lark-api";
-import type { CommentData } from "@aokiapp/reark-lark-api";
+import { createContext, useContext } from "react";
+import type { Block, CommentData } from "@aokiapp/reark-lark-api";
 import { LarkRenderer } from "../components/LarkRenderer";
 
 // Context value type
-export interface LarkApiContextValue {
+export type LarkApiContextValue = {
   blocks?: Block[];
   comments?: CommentData[];
   files?: Record<string, string>; // fileToken → public URL
-}
+};
 
 // Props for the provider
-export interface LarkApiProviderProps {
+type LarkApiProviderProps = {
   initialData: LarkApiContextValue;
-}
+};
 
 // Create the context
 export const LarkApiContext = createContext<LarkApiContextValue>({});
 
 // Provider: supplies context and renders the fixed renderer
-export const LarkApiProvider: React.FC<LarkApiProviderProps> = ({
-  initialData,
-}) => {
+export const LarkApiProvider = ({ initialData }: LarkApiProviderProps) => {
   return (
     <LarkApiContext.Provider value={initialData}>
       <LarkRenderer />
