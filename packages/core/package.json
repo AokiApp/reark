@@ -13,5 +13,9 @@
   },
   "peerDependencies": {
     "react": "^18.0.0"
+  },
+  "dependencies": {
+    "@aokiapp/reark-lark-api": "0.1.0",
+    "@aokiapp/reark-renderer": "0.1.0"
   }
 }
