@@ -9,16 +9,17 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "@aokiapp/reark-lark-api": "*",
     "@emotion/css": "^11.13.5",
     "@emotion/react": "^11.13.5",
     "react": "^18.3.1",
-    "@aokiapp/reark-lark-api": "*",
     "react-dom": "^18.3.1"
   },
   "scripts": {
     "build": "tsc -p tsconfig.json"
   },
   "devDependencies": {
+    "autoprefixer": "^10.4.21",
     "typescript": "~5.6.2"
   },
   "files": [
