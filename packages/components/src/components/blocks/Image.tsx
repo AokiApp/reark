@@ -1,7 +1,7 @@
 import { css } from "@emotion/react";
 import { BlockInnerComponent } from "../../types";
-import { useState, useEffect } from "react";
-import { getFile } from "../../apis";
+import { useContext } from "react";
+import { LarkApiContext } from "../../contexts/LarkApiContext";
 
 const imageWrapperStyle = css({
   position: "relative",
@@ -35,46 +35,8 @@ const placeholderStyle = css({
   fontSize: "14px",
 });
 
-const errorStyle = css({
-  padding: "16px",
-  backgroundColor: "#fff3f3",
-  color: "#dc3545",
-  borderRadius: "4px",
-  fontSize: "14px",
-  textAlign: "center",
-});
-
 export const Image: BlockInnerComponent = ({ block }) => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const [imageUrl, setImageUrl] = useState("");
-
-  useEffect(() => {
-    if (!block.image?.token) {
-      return;
-    }
-    async function fetchData() {
-      setIsLoading(true);
-      setError(null);
-      try {
-        const blob = await getFile(block.image?.token ?? "");
-        const url = URL.createObjectURL(blob);
-        setImageUrl(url);
-      } catch (err) {
-        console.error("API Error:", err);
-        setError("Failed to load image");
-      } finally {
-        setIsLoading(false);
-      }
-    }
-    fetchData();
-    return () => {
-      if (imageUrl) {
-        URL.revokeObjectURL(imageUrl);
-      }
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [block.image?.token]);
+  const { files } = useContext(LarkApiContext);
 
   if (!block.image) {
     return null;
@@ -85,25 +47,18 @@ export const Image: BlockInnerComponent = ({ block }) => {
     return null;
   }
 
+  const url = files?.[token];
+
   return (
     <div css={imageWrapperStyle}>
       <div css={containerStyle}>
-        {isLoading && <div css={placeholderStyle}>Loading...</div>}
-        {error ? (
-          <div css={errorStyle}>{error}</div>
+        {!url ? (
+          <div css={placeholderStyle}>Image not available</div>
         ) : (
           <img
-            src={imageUrl}
+            src={url}
             alt=""
-            css={[imageStyle, { opacity: isLoading ? 0 : 1 }]}
-            onLoad={() => {
-              setIsLoading(false);
-              setError(null);
-            }}
-            onError={() => {
-              setIsLoading(false);
-              setError("Cannot show image");
-            }}
+            css={imageStyle}
             width={width}
             height={height}
           />

@@ -1,5 +1,6 @@
 export { BlockComponent } from "./components/BlockComponent";
-export { Converter } from "./components/Converter";
+export { LarkApiProvider } from "./contexts/LarkApiContext";
+export { LarkRenderer } from "./components/LarkRenderer";
 export {
   BlockStoreProvider,
   useBlockStore,
