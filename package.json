@@ -2,6 +2,14 @@
   "name": "@aokiapp/reark",
   "private": true,
   "version": "0.1.0",
+  "files": [
+    "dist/",
+    "renderer/dist/",
+    "lark-api/dist/",
+    "LICENSE",
+    "README.md",
+    "package.json"
+  ],
   "scripts": {
     "lint": "eslint .",
     "format": "prettier --check .",
@@ -34,6 +42,7 @@
       "types": "./renderer/dist/index.d.ts",
       "default": "./renderer/dist/index.js"
     },
+    "./renderer/style.css": "./renderer/dist/style.css",
     "./lark-api": {
       "types": "./lark-api/dist/index.d.ts",
       "default": "./lark-api/dist/index.js"

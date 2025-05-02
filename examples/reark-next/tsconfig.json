@@ -14,7 +14,14 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "types": ["node"]
+    "types": ["node"],
+    "baseUrl": ".",
+    "paths": {
+      "@aokiapp/renderer": ["../../renderer"],
+      "@aokiapp/renderer/*": ["../../renderer/*"],
+      "@aokiapp/lark-api": ["../../lark-api"],
+      "@aokiapp/lark-api/*": ["../../lark-api/*"]
+    }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]

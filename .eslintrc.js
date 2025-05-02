@@ -1,3 +1,4 @@
+/* eslint-env node */
 // Root ESLint config for monorepo
 
 module.exports = {
@@ -14,6 +15,15 @@ module.exports = {
   settings: {
     react: {
       version: "detect",
+    },
+    "import/resolver": {
+      typescript: {
+        project: [
+          "./renderer/tsconfig.json",
+          "./lark-api/tsconfig.json",
+          "./examples/reark-next/tsconfig.json",
+        ],
+      },
     },
   },
   overrides: [
