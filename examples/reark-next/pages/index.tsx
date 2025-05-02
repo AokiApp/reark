@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import type { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
 import {

@@ -8,7 +8,7 @@ export default defineConfig({
     lib: {
       entry: "./src/index.ts",
       name: "Reark",
-      fileName: "reark",
+      fileName: "index",
       formats: ["es", "cjs"],
     },
     rollupOptions: {
