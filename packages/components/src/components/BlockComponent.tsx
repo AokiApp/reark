@@ -1,31 +1,9 @@
 import React, { memo } from "react";
 import { ErrorBoundary } from "./ErrorBoundary";
 import { useBlockStore } from "../contexts/BlockStoreContext";
-import { css } from "@emotion/react";
 import { Comment } from "./Comment";
 import { BLOCK_COMPONENTS } from "../constants/blockComponents";
-
-const unsupportedBlockStyle = css({
-  fontSize: "14px",
-  padding: "12px",
-  margin: "8px 0",
-  backgroundColor: "#fff3f3",
-  border: "1px solid #dc3545",
-  borderRadius: "4px",
-  color: "#dc3545",
-});
-
-interface UnsupportedBlockProps {
-  type: number;
-  error?: string;
-}
-
-const UnsupportedBlock: React.FC<UnsupportedBlockProps> = ({ type, error }) => (
-  <div css={unsupportedBlockStyle}>
-    <strong>Unsupported block type: {type}</strong>
-    {error && <div>{error}</div>}
-  </div>
-);
+import { UnsupportedBlock } from "./blocks/UnsupportedBlock";
 
 interface BlockComponentProps {
   blockId: string;
@@ -36,7 +14,7 @@ const BlockComponentBase: React.FC<BlockComponentProps> = ({ blockId }) => {
   const block = blocks[blockId];
 
   if (!block) {
-    return <UnsupportedBlock type={-1} error={`Block ${blockId} not found`} />;
+    throw new Error(`Fatal: Block with ID ${blockId} not found`);
   }
 
   const Component = BLOCK_COMPONENTS[block.block_type];
