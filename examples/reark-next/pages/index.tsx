@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import type { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
-import { LarkRenderer } from "@aokiapp/reark-components";
-import type { LarkApiContextValue } from "@aokiapp/reark-components";
-import "@aokiapp/reark-components/style.css";
+import { LarkRenderer } from "@aokiapp/reark-renderer";
+import type { LarkApiContextValue } from "@aokiapp/reark-renderer";
+import "@aokiapp/reark-renderer/style.css";
 import {
   getLarkInitialDataForSSR,
   setCredentials,
