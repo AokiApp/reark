@@ -5,7 +5,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "lint": "eslint src --ext .ts,.tsx",
-    "type-check": "tsc --noEmit",
+    "typecheck": "tsc --noEmit",
     "test": "jest",
     "build": "vite build"
   },

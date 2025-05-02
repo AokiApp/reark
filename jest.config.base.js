@@ -6,8 +6,8 @@ module.exports = {
   moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
   roots: [
     "<rootDir>/packages/reark",
-    "<rootDir>/packages/reark-submodule-a",
-    "<rootDir>/packages/reark-submodule-b",
+    "<rootDir>/packages/submodule-a",
+    "<rootDir>/packages/submodule-b",
     "<rootDir>/examples/react-app",
   ],
   testMatch: [

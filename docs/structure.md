@@ -8,8 +8,8 @@ This monorepo is organized for clarity, modularity, and reproducibility, with al
 /
 ├── packages
 │   ├── reark                # Core React library (Vite library mode)
-│   ├── reark-submodule-a    # Submodule A (depends on reark, Vite library mode)
-│   └── reark-submodule-b    # Submodule B (independent, Vite library mode)
+│   ├── submodule-a    # Submodule A (depends on reark, Vite library mode)
+│   └── submodule-b    # Submodule B (independent, Vite library mode)
 ├── examples
 │   └── react-app            # Example React app using all packages (Vite app mode)
 ├── docs                     # Project documentation

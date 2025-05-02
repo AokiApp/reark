@@ -14,7 +14,7 @@ Run all checks from the root:
 
 ```sh
 npm run lint
-npm run type-check
+npm run typecheck
 npm run test
 ```
 
@@ -60,7 +60,7 @@ You can simulate CI steps locally:
 
 ```sh
 npm run lint
-npm run type-check
+npm run typecheck
 npm run test
 npm run build
 ```
