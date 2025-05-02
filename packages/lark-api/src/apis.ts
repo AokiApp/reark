@@ -23,15 +23,94 @@ function resolveUrl(url: string): string {
   return getApiBaseUrl() + (url.startsWith("/") ? url : "/" + url);
 }
 
+// Base fetch handler (mostly for JSON responses)
 async function handleFetch(url: string, options: RequestInit) {
   const fullUrl = resolveUrl(url);
   const response = await fetch(fullUrl, options);
   if (!response.ok) {
-    const errorData = await response.json();
-    console.error(JSON.stringify(errorData, null, 4));
-    throw new Error(`HTTP error! status: ${response.status}`);
+    let errorData;
+    try {
+      errorData = await response.json();
+      console.error(
+        `Error fetching ${fullUrl}: ${JSON.stringify(errorData, null, 2)}`,
+      );
+    } catch (e) {
+      // Handle cases where the error response is not JSON
+      console.error(
+        `HTTP error fetching ${fullUrl}! status: ${response.status}, Response not JSON.`,
+      );
+    }
+    throw new Error(
+      `HTTP error! status: ${response.status} fetching ${fullUrl}`,
+    );
+  }
+  // Handle cases where response might be empty (e.g., 204 No Content)
+  if (
+    response.status === 204 ||
+    response.headers.get("content-length") === "0"
+  ) {
+    return null; // Or return {}; depending on expected behavior
   }
   return response.json();
+}
+
+// Helper for authenticated Lark API requests
+async function larkApiRequest<T>(
+  urlPath: string,
+  options: Omit<RequestInit, "headers"> & { headers?: Record<string, string> },
+  responseType: "json" | "blob" = "json",
+): Promise<T> {
+  const accessToken = await getValidAccessToken();
+  const fullUrl = resolveUrl(urlPath);
+
+  // Construct headers object conditionally
+  const headers: HeadersInit = {
+    ...options.headers,
+    Authorization: `Bearer ${accessToken}`,
+  };
+  // Add Content-Type only if body exists and it's not already set
+  if (options.body && !options.headers?.["Content-Type"]) {
+    headers["Content-Type"] = "application/json";
+  }
+
+  const response = await fetch(fullUrl, {
+    ...options,
+    headers: headers, // Use the constructed headers object
+  });
+
+  if (!response.ok) {
+    let errorData;
+    try {
+      errorData = await response.json();
+      console.error(
+        `Error fetching ${urlPath}: ${JSON.stringify(errorData, null, 2)}`,
+      );
+    } catch (e) {
+      console.error(
+        `Error fetching ${urlPath}: Status ${response.status}, Response not JSON.`,
+      );
+    }
+    throw new Error(
+      `HTTP error! status: ${response.status} fetching ${urlPath}`,
+    );
+  }
+
+  if (responseType === "blob") {
+    // Ensure the return type matches the generic T, casting might be needed depending on usage
+    return response.blob() as Promise<T>;
+  }
+
+  // Handle empty JSON response
+  if (
+    response.status === 204 ||
+    response.headers.get("content-length") === "0"
+  ) {
+    // Ensure the return type matches the generic T
+    return null as T; // Or {} as T, adjust as needed based on expected API behavior
+  }
+
+  // Ensure the return type matches the generic T
+  return response.json() as Promise<T>;
 }
 
 async function getValidAccessToken(): Promise<string> {
@@ -49,13 +128,9 @@ export async function getDocumentBlocks(
   pageToken: string = "",
 ): Promise<ApiResponse> {
   const url = `/docx/v1/documents/${documentId}/blocks?document_revision_id=-1&page_size=500&page_token=${pageToken}`;
-  const accessToken = await getValidAccessToken();
-
-  return await handleFetch(url, {
+  // Use the new helper function
+  return await larkApiRequest<ApiResponse>(url, {
     method: "GET",
-    headers: {
-      Authorization: `Bearer ${accessToken}`,
-    },
   });
 }
 
@@ -122,36 +197,24 @@ async function fetchNewToken(): Promise<string> {
 }
 
 export async function getFile(fileToken: string): Promise<Blob> {
-  // キャッシュは利用しない
   const url = `/drive/v1/medias/${fileToken}/download`;
-  const accessToken = await getValidAccessToken();
-
-  const response = await fetch(resolveUrl(url), {
-    method: "GET",
-    headers: {
-      Authorization: `Bearer ${accessToken}`,
+  // Use the new helper function, specifying 'blob' response type
+  return await larkApiRequest<Blob>(
+    url,
+    {
+      method: "GET",
     },
-  });
-
-  if (!response.ok) {
-    const errorData = await response.json();
-    console.error(JSON.stringify(errorData, null, 4));
-    throw new Error(`HTTP error! status: ${response.status}`);
-  }
-
-  const blob = await response.blob();
-  return blob;
+    "blob",
+  );
 }
 
 export async function getCommentContent(fileToken: string) {
   const url = `/drive/v1/files/${fileToken}/comments/?file_type=docx`;
-  const accessToken = await getValidAccessToken();
-
-  return await handleFetch(url, {
+  // Use the new helper function
+  // Assuming the response structure is similar to ApiResponse or define a specific type
+  return await larkApiRequest<ApiResponse>(url, {
+    // Adjust ApiResponse if needed
     method: "GET",
-    headers: {
-      Authorization: `Bearer ${accessToken}`,
-    },
   });
 }
 /**
@@ -164,21 +227,30 @@ export async function batchGetTmpDownloadUrls(
 ): Promise<Record<string, string>> {
   if (!fileTokens.length) return {};
   const url = "/drive/v1/medias/batch_get_tmp_download_url";
-  const accessToken = await getValidAccessToken();
   const body = {
     file_tokens: fileTokens,
   };
-  const json = await handleFetch(url, {
+  // Define a more specific type for the expected response structure
+  type BatchUrlResponse = {
+    code: number;
+    msg: string;
+    data?: {
+      tmp_download_urls?: Array<{
+        file_token: string;
+        tmp_download_url: string;
+      }>;
+    };
+  };
+  // Use the new helper function
+  const json = await larkApiRequest<BatchUrlResponse>(url, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${accessToken}`,
-    },
     body: JSON.stringify(body),
+    // Content-Type is automatically handled by larkApiRequest when body is present
   });
-  // Response: { data: { tmp_download_urls: Array<{ file_token, tmp_download_url }> } }
+
   const urls: Record<string, string> = {};
-  for (const entry of json.data?.tmp_download_urls || []) {
+  // Safely access nested properties
+  for (const entry of json?.data?.tmp_download_urls || []) {
     if (entry.file_token && entry.tmp_download_url) {
       urls[entry.file_token] = entry.tmp_download_url;
     }

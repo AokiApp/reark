@@ -28,7 +28,6 @@ export async function getLarkInitialDataForSSR(
   documentId: string,
   publicDir: string,
   publicUrlBase: string = "/lark-files/",
-  accessToken: string,
 ): Promise<LarkInitialData> {
   // 1. Fetch all blocks
   const blocks = await fetchAllDocumentBlocks(documentId);
@@ -43,7 +42,7 @@ export async function getLarkInitialDataForSSR(
   );
 
   // 3. Fetch S3 URLs in bulk
-  const s3Urls = await batchGetTmpDownloadUrls(fileTokens, accessToken);
+  const s3Urls = await batchGetTmpDownloadUrls(fileTokens);
 
   // 4. Download files and write to publicDir, build files map
   if (!fs.existsSync(publicDir)) {

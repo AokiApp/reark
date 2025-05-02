@@ -17,7 +17,6 @@ function extractDocId(input: string): string {
 
 const PUBLIC_DIR = process.env.LARK_PUBLIC_DIR || "public/lark-files";
 const PUBLIC_URL_BASE = "/lark-files/";
-const ACCESS_TOKEN = process.env.LARK_ACCESS_TOKEN || "";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const documentId =
@@ -30,7 +29,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       documentId,
       PUBLIC_DIR,
       PUBLIC_URL_BASE,
-      ACCESS_TOKEN,
     );
   }
   return { props: { initialData, documentId } };
