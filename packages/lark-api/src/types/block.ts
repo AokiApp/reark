@@ -1,9 +1,34 @@
+/**
+ * Updated to match the latest Lark API Block Data Structure and Document Block List API.
+ * All block types and their fields are included as per the latest documentation.
+ */
+
+export type Align = 1 | 2 | 3; // 1: left, 2: center, 3: right
+
+export type CodeLanguage = number; // See Lark docs for mapping
+
 export type TextStyle = {
-  align?: number; // enum Align
+  align?: Align;
   done?: boolean;
   folded?: boolean;
-  language?: string; // enum CodeLanguage
+  language?: CodeLanguage;
   wrap?: boolean;
+};
+
+export type TextElementStyle = {
+  bold?: boolean;
+  italic?: boolean;
+  strikethrough?: boolean;
+  underline?: boolean;
+  inline_code?: boolean;
+  text_color?: number; // FontColor enum
+  background_color?: number; // FontBackgroundColor enum
+  link?: Link;
+  comment_ids?: string[];
+};
+
+export type Link = {
+  url: string;
 };
 
 export type TextRun = {
@@ -11,60 +36,75 @@ export type TextRun = {
   text_element_style?: TextElementStyle;
 };
 
-export type TextElementStyle = {
-  text_color?: number;
-  background_color?: number;
-  bold?: boolean;
-  inline_code?: boolean;
-  italic?: boolean;
-  strikethrough?: boolean;
-  underline?: boolean;
-  comment_ids?: string[];
-  link?: Link;
+export type MentionUser = {
+  user_id: string;
+  text_element_style?: TextElementStyle;
 };
 
-export type Link = {
+export type MentionDoc = {
+  token: string;
+  obj_type: number;
   url: string;
+  title?: string;
+  text_element_style?: TextElementStyle;
 };
 
-export type Element = {
-  text_run: TextRun;
+export type Reminder = {
+  create_user_id: string;
+  is_notify?: boolean;
+  is_whole_day?: boolean;
+  expire_time: string;
+  notify_time: string;
+  text_element_style?: TextElementStyle;
 };
 
-export interface TextElement extends Element {
-  mention_user?: unknown; // object(MentionUser)
-  mention_doc?: unknown; // object(MentionDoc)
-  reminder?: unknown; // object(Reminder)
-  file?: unknown; // object(InlineFile)
-  inline_block?: unknown; // object(InlineBlock)
-  equation?: unknown; // object(Equation)
-  undefined_element?: unknown; // object(UndefinedElement)
-}
+export type InlineFile = {
+  file_token?: string;
+  source_block_id?: string;
+  text_element_style?: TextElementStyle;
+};
 
-type BlockStyle = {
-  align?: number;
-  folded?: boolean;
-  done?: boolean;
-  sequence?: number | "auto";
+export type InlineBlock = {
+  block_id: string;
+  text_element_style?: TextElementStyle;
+};
+
+export type Equation = {
+  content: string;
+  text_element_style?: TextElementStyle;
+};
+
+export type UndefinedElement = Record<string, never>;
+
+export type TextElement = {
+  text_run?: TextRun;
+  mention_user?: MentionUser;
+  mention_doc?: MentionDoc;
+  reminder?: Reminder;
+  file?: InlineFile;
+  inline_block?: InlineBlock;
+  equation?: Equation;
+  undefined_element?: UndefinedElement;
 };
 
 export type BlockContent = {
-  elements: Element[];
-  style?: BlockStyle;
+  elements: TextElement[];
+  style?: TextStyle;
 };
 
-type ImageContent = {
-  token: string;
-  width: number;
-  height: number;
+export type ImageBlock = {
+  token?: string;
+  width?: number;
+  height?: number;
+  align?: Align;
 };
 
-type Table = {
-  cells: string[];
-  property: TableProperty;
+export type TableMergeInfo = {
+  row_span: number;
+  col_span: number;
 };
 
-type TableProperty = {
+export type TableProperty = {
   row_size: number;
   column_size: number;
   column_width?: number[];
@@ -73,16 +113,153 @@ type TableProperty = {
   merge_info?: TableMergeInfo[];
 };
 
-type TableMergeInfo = {
-  row_span: number;
-  col_span: number;
+export type TableBlock = {
+  cells?: string[];
+  property: TableProperty;
+};
+
+export type CalloutBlock = {
+  background_color?: number;
+  border_color?: number;
+  text_color?: number;
+  emoji_id?: string;
+};
+
+export type ChatCardBlock = {
+  chat_id: string;
+  align?: Align;
+};
+
+export type DiagramBlock = {
+  diagram_type?: number;
+};
+
+export type DividerBlock = Record<string, never>;
+
+export type FileBlock = {
+  token?: string;
+  name?: string;
+  view_type?: number;
+};
+
+export type GridBlock = {
+  column_size: number;
+};
+
+export type GridColumnBlock = {
+  width_ratio?: number;
+};
+
+export type IframeBlock = {
+  component: {
+    iframe_type: number;
+    url: string;
+  };
+};
+
+export type ISVBlock = {
+  component_id?: string;
+  component_type_id?: string;
+};
+
+export type MindnoteBlock = {
+  token: string;
+};
+
+export type SheetBlock = {
+  token?: string;
+  row_size?: number;
+  column_size?: number;
+};
+
+export type TableCellBlock = Record<string, never>;
+
+export type ViewBlock = {
+  view_type?: number;
+};
+
+export type QuoteContainerBlock = Record<string, never>;
+
+export type TaskBlock = {
+  task_id: string;
+};
+
+export type OKRBlock = {
+  okr_id?: string;
+  period_display_status?: string;
+  period_name_zh?: string;
+  period_name_en?: string;
+  user_id?: string;
+  visible_setting?: {
+    progress_fill_area_visible?: boolean;
+    progress_status_visible?: boolean;
+    score_visible?: boolean;
+  };
+};
+
+export type OkrObjectiveBlock = {
+  objective_id?: string;
+  confidential?: boolean;
+  position?: number;
+  score?: number;
+  visible?: boolean;
+  weight?: number;
+  progress_rate?: {
+    mode?: string;
+    current?: number;
+    percent?: number;
+    progress_status?: string;
+    status_type?: string;
+    start?: number;
+    target?: number;
+  };
+  content?: BlockContent;
+};
+
+export type OkrKeyResultBlock = {
+  kr_id?: string;
+  confidential?: boolean;
+  position?: number;
+  score?: number;
+  visible?: boolean;
+  weight?: number;
+  progress_rate?: {
+    mode?: string;
+    current?: number;
+    percent?: number;
+    progress_status?: string;
+    status_type?: string;
+    start?: number;
+    target?: number;
+  };
+  content?: BlockContent;
+};
+
+export type OkrProgressBlock = Record<string, never>;
+
+export type AddOnsBlock = {
+  component_id?: string;
+  component_type_id?: string;
+  record?: string;
+};
+
+export type JiraIssueBlock = {
+  id?: string;
+  key?: string;
+};
+
+export type WikiCatalogBlock = {
+  wiki_token?: string;
 };
 
 export type Block = {
   block_id: string;
   block_type: number;
-  parent_id: string;
+  parent_id?: string;
   children?: string[];
+  comment_ids?: string[];
+
+  // BlockData (one of the following, depending on block_type)
   page?: BlockContent;
   text?: BlockContent;
   heading1?: BlockContent;
@@ -96,25 +273,35 @@ export type Block = {
   heading9?: BlockContent;
   bullet?: BlockContent;
   ordered?: BlockContent;
-  code?: BlockContent & {
-    style?: {
-      language: number;
-    };
-  };
-  todo?: BlockContent & {
-    style?: BlockStyle & {
-      done?: boolean;
-    };
-  };
-  callout?: {
-    background_color: number;
-    border_color: number;
-    emoji_id: string;
-  };
-  image?: ImageContent;
-  table?: Table;
+  code?: BlockContent;
   quote?: BlockContent;
-  comment_ids?: string[];
+  todo?: BlockContent;
+  bitable?: { token: string; view_type: number };
+  callout?: CalloutBlock;
+  chat_card?: ChatCardBlock;
+  diagram?: DiagramBlock;
+  divider?: DividerBlock;
+  file?: FileBlock;
+  grid?: GridBlock;
+  grid_column?: GridColumnBlock;
+  iframe?: IframeBlock;
+  image?: ImageBlock;
+  isv?: ISVBlock;
+  mindnote?: MindnoteBlock;
+  sheet?: SheetBlock;
+  table?: TableBlock;
+  table_cell?: TableCellBlock;
+  view?: ViewBlock;
+  undefined?: Record<string, never>;
+  quote_container?: QuoteContainerBlock;
+  task?: TaskBlock;
+  okr?: OKRBlock;
+  okr_objective?: OkrObjectiveBlock;
+  okr_key_result?: OkrKeyResultBlock;
+  okr_progress?: OkrProgressBlock;
+  add_ons?: AddOnsBlock;
+  jira_issue?: JiraIssueBlock;
+  wiki_catalog?: WikiCatalogBlock;
 };
 
 export type Document = {

@@ -31,24 +31,62 @@ export type DocumentBlockResponse = PagedResponse<
   }
 >;
 
+/**
+ * Response for listing comments on a document.
+ * See: https://open.larksuite.com/document/server-docs/docs/drive-v1/CommentAPI/list
+ */
 export type CommentListResponse = PagedResponse<CommentData>;
 
-type CommentReply = {
+/**
+ * Represents a single comment on a document.
+ */
+export type CommentData = {
+  comment_id: string;
+  user_id: string;
+  create_time: number;
+  update_time: number;
+  is_solved: boolean;
+  solved_time: number;
+  solver_user_id: string;
+  has_more: boolean;
+  page_token: string;
+  is_whole: boolean;
+  quote: string;
+  reply_list?: ReplyList;
+};
+
+/**
+ * List of replies to a comment.
+ */
+export type ReplyList = {
+  replies: CommentReply[];
+};
+
+/**
+ * Represents a single reply to a comment.
+ */
+export type CommentReply = {
+  reply_id: string;
+  user_id: string;
+  create_time: number;
+  update_time: number;
   content: {
     elements: ReplyElement[];
   };
-  reply_id: string;
+  extra?: ReplyExtra;
 };
 
-export type CommentData = {
-  comment_id: string;
-  quote: string;
-  reply_list?: {
-    replies: CommentReply[];
-  };
+/**
+ * Extra data for a reply (e.g., image attachments).
+ */
+export type ReplyExtra = {
+  image_list?: string[];
 };
 
-type ReplyElement =
+/**
+ * Elements that make up the content of a reply.
+ */
+export type ReplyElement =
   | {
       type: "text_run";
       text_run: {

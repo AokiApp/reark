@@ -114,6 +114,18 @@ async function getValidAccessToken(): Promise<string> {
   return await fetchNewToken();
 }
 
+/**
+ * Fetch a page of blocks for a given document.
+ *
+ * @param documentId - The ID of the document to fetch blocks from.
+ * @param pageToken - (Optional) Token for pagination.
+ * @returns DocumentBlockResponse containing block data.
+ *
+ * Important fields in the returned blocks include:
+ * - `is_solved`: Indicates if a block (e.g., a comment) is marked as solved.
+ * - `solver_user_id`: The user ID of the person who solved the block, if applicable.
+ * - Other new fields as defined in the latest Block type.
+ */
 export async function getDocumentBlocks(
   documentId: string,
   pageToken: string = "",
@@ -125,6 +137,17 @@ export async function getDocumentBlocks(
   });
 }
 
+/**
+ * Fetch all blocks for a given document, handling pagination.
+ *
+ * @param documentId - The ID of the document to fetch all blocks from.
+ * @returns Array of Block objects.
+ *
+ * Each Block may include new fields such as:
+ * - `is_solved`: Whether the block (e.g., comment) is solved.
+ * - `solver_user_id`: The user ID who solved the block, if any.
+ * - Other new fields as defined in the latest Block type.
+ */
 export async function fetchAllDocumentBlocks(
   documentId: string,
 ): Promise<Block[]> {
@@ -199,6 +222,17 @@ export async function getFile(fileToken: string): Promise<Blob> {
   );
 }
 
+/**
+ * Fetch comments for a given file (docx).
+ *
+ * @param fileToken - The file token to fetch comments for.
+ * @returns CommentListResponse containing the list of comments.
+ *
+ * Important fields in the returned comments include:
+ * - `is_solved`: Indicates if a comment thread is marked as solved.
+ * - `solver_user_id`: The user ID of the person who solved the comment, if applicable.
+ * - Other new fields as defined in the latest CommentListResponse type.
+ */
 export async function getComments(fileToken: string) {
   const url = `/drive/v1/files/${fileToken}/comments/?file_type=docx`;
   // Use the new helper function
