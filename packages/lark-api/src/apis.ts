@@ -279,3 +279,68 @@ export async function batchGetTmpDownloadUrls(
   }
   return urls;
 }
+
+import { ListBaseRecordsParams, ListBaseRecordsResponse } from "./types/base";
+
+/**
+ * Fetch records from a Lark Base (Bitable) table.
+ * @param params - Parameters including appToken, tableId, and optional query options.
+ * @returns ListBaseRecordsResponse containing records and pagination info.
+ */
+export async function listBaseRecords(
+  params: ListBaseRecordsParams,
+): Promise<ListBaseRecordsResponse> {
+  const {
+    appToken,
+    tableId,
+    viewId,
+    pageSize = 500,
+    pageToken,
+    filter,
+    sort,
+    fieldNames,
+    textFieldAsArray,
+    userIdType,
+    displayFormulaRef,
+    automaticFields,
+  } = params;
+
+  // Build query string
+  const query: Record<string, string> = {};
+  if (viewId) query.view_id = viewId;
+  if (pageSize) query.page_size = String(pageSize);
+  if (pageToken) query.page_token = pageToken;
+  if (filter) query.filter = filter;
+  if (sort && sort.length > 0) {
+    query.sort = JSON.stringify(sort);
+  }
+  if (fieldNames && fieldNames.length > 0) {
+    query.field_names = JSON.stringify(fieldNames);
+  }
+  if (typeof textFieldAsArray === "boolean") {
+    query.text_field_as_array = String(textFieldAsArray);
+  }
+  if (userIdType) {
+    query.user_id_type = userIdType;
+  }
+  if (typeof displayFormulaRef === "boolean") {
+    query.display_formula_ref = String(displayFormulaRef);
+  }
+  if (typeof automaticFields === "boolean") {
+    query.automatic_fields = String(automaticFields);
+  }
+
+  const queryString =
+    Object.keys(query).length > 0
+      ? "?" +
+        Object.entries(query)
+          .map(([k, v]) => `${encodeURIComponent(k)}=${encodeURIComponent(v)}`)
+          .join("&")
+      : "";
+
+  const url = `/bitable/v1/apps/${appToken}/tables/${tableId}/records${queryString}`;
+
+  return await larkApiRequest<ListBaseRecordsResponse>(url, {
+    method: "GET",
+  });
+}
