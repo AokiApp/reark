@@ -21,6 +21,8 @@ import { Image } from "../components/blocks/Image";
 import { QuoteContainer } from "../components/blocks/QuoteContainer";
 import { Table } from "../components/blocks/Table";
 import { TableCell } from "../components/blocks/TableCell";
+import { GridBlock } from "../components/blocks/GridBlock";
+import { GridColumnBlock } from "../components/blocks/GridColumnBlock";
 import { BlockInnerComponent } from "../types";
 
 export const BLOCK_COMPONENTS: Record<number, BlockInnerComponent> = {
@@ -45,4 +47,6 @@ export const BLOCK_COMPONENTS: Record<number, BlockInnerComponent> = {
   31: Table, // Table
   32: TableCell, // TableCell
   34: QuoteContainer, // QuoteContainer
+  24: GridBlock, // GridBlock
+  25: GridColumnBlock, // GridColumnBlock
 };
