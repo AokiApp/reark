@@ -9,6 +9,8 @@ import {
   type CommentData,
 } from "@aokiapp/reark-lark-api";
 
+export { setCredentials } from "@aokiapp/reark-lark-api";
+
 export interface LarkInitialData {
   version: number;
   blocks: Block[];

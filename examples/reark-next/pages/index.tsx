@@ -1,12 +1,12 @@
 import { useState } from "react";
 import type { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
+
+import { LarkRenderer, type LarkApiContextValue } from "@aokiapp/reark";
 import {
-  LarkRenderer,
-  type LarkApiContextValue,
-  getLarkInitialDataForSSR,
   setCredentials,
-} from "@aokiapp/reark";
+  getLarkInitialDataForSSR,
+} from "@aokiapp/reark-server";
 
 // Utility to extract documentId from Lark URL or plain ID
 function extractDocId(input: string): string {
