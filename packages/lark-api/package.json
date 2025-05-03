@@ -11,15 +11,5 @@
     "build:watch": "tsc --outDir dist --watch",
     "dev": "npm run build:watch"
   },
-  "dependencies": {
-    "mime-types": "^3.0.1",
-    "node-fetch": "^3.3.2"
-  },
-  "peerDependencies": {
-    "react": "^18.0.0"
-  },
-  "devDependencies": {
-    "@types/mime-types": "^2.1.4"
-  },
   "sideEffects": false
 }
