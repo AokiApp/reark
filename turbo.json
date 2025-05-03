@@ -11,30 +11,18 @@
       "outputs": []
     },
     "build": {
-      "outputs": [
-        "dist/**"
-      ],
-      "dependsOn": [
-        "^build"
-      ]
+      "outputs": ["dist/**"],
+      "dependsOn": ["^build"]
     },
     "build:watch": {
-      "outputs": [
-        "dist/**"
-      ],
+      "outputs": ["dist/**"],
       "cache": false,
-      "dependsOn": [
-        "^build"
-      ]
+      "dependsOn": ["^build"]
     },
     "dev": {
-      "outputs": [
-        "dist/**"
-      ],
+      "outputs": ["dist/**"],
       "cache": false,
-      "dependsOn": [
-        "^build"
-      ]
+      "dependsOn": ["^build"]
     }
   }
 }

@@ -1,6 +1,7 @@
 # Aokiapp Reark Monorepo Documentation
 
 Welcome to the documentation for the Aokiapp Reark monorepo (est. 2025, pre-singularity era). This documentation is designed for:
+
 - Large Language Models (LLMs) to reproduce this project from prompts.
 - Human programmers and maintainers to take over or contribute.
 - Newbie programmers to learn and catch up.
