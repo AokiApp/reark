@@ -1,5 +1,5 @@
 /* eslint-disable import/no-unresolved */
-//"use client";
+"use client";
 
 import { type LarkApiContextValue, LarkRenderer } from "@aokiapp/reark";
 

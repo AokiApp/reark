@@ -6,16 +6,13 @@ import { setCredentials } from "@aokiapp/reark";
 import { getLarkInitialDataForSSR } from "@aokiapp/reark-server";
 import LarkRendererCc from "./components/LarkRendererCc";
 import "@aokiapp/reark/style.css";
+import { PageProps } from "@/.next/types/app/page";
 
 const PUBLIC_DIR = "public/lark-files";
 const PUBLIC_URL_BASE = "/lark-files/";
 // Server Component
-export default async function Page({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string | undefined };
-}) {
-  const documentId = searchParams?.documentId || "";
+export default async function Page({ searchParams }: PageProps) {
+  const documentId = (await searchParams).documentId as string | undefined;
   let initialData = null;
 
   if (documentId) {
