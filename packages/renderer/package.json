@@ -8,6 +8,7 @@
   "sideEffects": false,
   "author": "",
   "license": "MIT",
+  "private": false,
   "exports": {
     ".": {
       "import": "./dist/index.js",
