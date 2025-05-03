@@ -6,7 +6,7 @@ import "../../styles/blocks.css";
 
 export const Page: BlockInnerComponent = ({ block }) => {
   return (
-    <div>
+    <div className="reark-page">
       <div className="reark-page-title">
         <Text
           elements={block.page?.elements as unknown as TextElement[]} // todo: safer way

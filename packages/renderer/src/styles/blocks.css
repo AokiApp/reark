@@ -1,165 +1,268 @@
 /* Global BEM-style CSS for block components, all classes prefixed with reark- */
 
+/* Base typography */
+:root {
+  --reark-color-primary: #1a73e8;
+  --reark-color-text: #333333;
+  --reark-color-text-secondary: #666666;
+  --reark-color-border: #e1e4e8;
+  --reark-color-background-light: #f8f9fa;
+  --reark-color-background-code: #f6f8fa;
+  --reark-border-radius: 8px;
+  --reark-font-monospace:
+    "Source Code Pro", Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", "Microsoft Yahei", "Noto Sans Mono", "BIZ UDゴシック",
+    monospace;
+  --reark-table-padding: 4px 6px;
+}
+
+.reark-page {
+  font-family:
+    system-ui,
+    LarkHackSafariFont,
+    LarkEmojiFont,
+    ヒラギノ角ゴシック,
+    Hiragino Sans,
+    Yu Gothic UI,
+    Microsoft Jhenghei UI,
+    Microsoft Yahei UI,
+    ＭＳ Ｐゴシック,
+    PingFang SC,
+    Hiragino Sans GB,
+    Arial,
+    sans-serif,
+    Apple Color Emoji,
+    Segoe UI Emoji,
+    Segoe UI Symbol,
+    Noto Color Emoji;
+  & a {
+    color: var(--reark-color-primary);
+    text-decoration: none;
+  }
+  color: var(--reark-color-text);
+}
+
+.reark-block {
+  display: contents;
+}
+
 /* Callout */
 .reark-callout {
   display: flex;
   align-items: flex-start;
-  padding: 16px;
-  background-color: #f5f6f7;
-  border-radius: 4px;
-  margin-top: 16px;
-  margin-bottom: 16px;
-  gap: 12px;
+  padding: 12px;
+  background-color: var(--reark-color-background-light);
+  border-radius: var(--reark-border-radius);
+  gap: 16px;
 }
+
 .reark-callout--custom {
   /* These will be set inline for dynamic background/border colors */
-  border-radius: 8px;
+  border-radius: var(--reark-border-radius);
 }
+
 .reark-callout__emoji {
-  font-size: 20px;
-  line-height: 24px;
-  width: 24px;
-  height: 24px;
+  font-size: 22px;
+  line-height: 28px;
+  width: 28px;
+  height: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
+
 .reark-callout__content {
   flex: 1;
+  line-height: 1.6;
 }
+
 .reark-callout__content > *:last-child {
   margin-bottom: 0;
 }
 
 /* CodeBlock */
 .reark-codeblock {
-  background-color: #f5f5f5;
-  border: 1px solid #a9a9a9;
-  border-radius: 3px;
-  margin-top: 16px;
-  margin-bottom: 16px;
+  background-color: var(--reark-color-background-code);
+  border: 1px solid var(--reark-color-border);
+  border-radius: var(--reark-border-radius);
+  margin: 20px 0;
+  overflow: hidden;
 }
+
 .reark-codeblock__language {
   display: inline-block;
-  padding: 6px 6px;
-  border-radius: 3px;
-  font-size: 12px;
-  color: gray;
+  padding: 8px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--reark-color-text-secondary);
+  background-color: rgba(0, 0, 0, 0.03);
+  border-bottom: 1px solid var(--reark-color-border);
+  width: 100%;
 }
+
 .reark-codeblock__pre {
-  padding: 8px 8px 8px 8px;
-  font-family: monospace;
+  padding: 16px;
   font-size: 14px;
-  line-height: 1.5;
+  font-family: var(--reark-font-monospace);
+  line-height: 1.6;
   overflow-x: auto;
   white-space: pre;
+  margin: 0;
 }
 
 /* Divider */
 .reark-divider {
   height: 1px;
-  background-color: #e1e4e8;
+  background-color: var(--reark-color-border);
   border: none;
-  margin: 24px 0;
+  margin: 32px 0;
   width: 100%;
 }
 
 /* Heading */
 .reark-heading {
-  font-weight: bold;
-  padding-top: 12px;
-  padding-bottom: 12px;
+  font-weight: 600;
+  color: var(--reark-color-text);
+  line-height: 1.6;
+  padding: 0.4rem 0;
 }
+
 .reark-heading--1 {
   font-size: 32px;
 }
+
 .reark-heading--2 {
   font-size: 28px;
 }
+
 .reark-heading--3 {
   font-size: 24px;
 }
+
 .reark-heading--4 {
   font-size: 20px;
 }
+
 .reark-heading--5 {
   font-size: 18px;
 }
+
 .reark-heading--6 {
   font-size: 16px;
 }
+
 .reark-heading--7 {
   font-size: 14px;
 }
+
 .reark-heading--8 {
   font-size: 13px;
 }
+
 .reark-heading--9 {
   font-size: 12px;
 }
 
-/* Inline text styles (shared for Text, Heading, Todo, etc.) */
-.reark-text--bold {
-  color: #000;
-  font-weight: bold;
+.reark-text-block {
+  line-height: 1.6;
+  margin: 0.5rem 0;
 }
+
+/* Inline text styles (shared for Text, Heading, Todo, etc.) */
+.reark-text {
+}
+
+.reark-text--bold {
+  font-weight: 600;
+  color: var(--reark-color-text);
+}
+
 .reark-text--italic {
   font-style: italic;
 }
+
 .reark-text--strikethrough {
   text-decoration: line-through;
+  color: var(--reark-color-text-secondary);
 }
+
 .reark-text--underline {
   text-decoration: underline;
 }
+
 .reark-text--inline-code {
-  font-family: monospace;
-  background-color: #f6f8fa;
-  padding: 2px 4px;
-  border-radius: 3px;
+  background-color: var(--reark-color-background-code);
+  font-family: var(--reark-font-monospace);
+  font-weight: 500;
+  padding: 2px 5px;
+  border-radius: 4px;
+  font-size: 0.9em;
+  border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 /* QuoteContainer */
 .reark-quote-container {
-  border-left: 4px solid lightgray;
+  border-left: 4px solid #dfe2e5;
   padding-left: 16px;
-  margin-top: 8px;
-  margin-bottom: 8px;
+  color: var(--reark-color-text-secondary);
+
+  & .reark-heading {
+    color: var(--reark-color-text-secondary);
+  }
 }
 
 /* Table */
 .reark-table {
   border-collapse: collapse;
   width: 100%;
-  margin: 16px 0;
+  margin: 20px 0;
+  font-size: 14px;
+  overflow: hidden;
+  border-radius: var(--reark-border-radius);
 }
+
 .reark-table__th {
-  border: 1px solid #ccc;
-  padding: 8px;
+  border: 1px solid #dfe2e5;
+  padding: var(--reark-table-padding);
   text-align: left;
-  background-color: #f5f5f5;
+  background-color: var(--reark-color-background-light);
+  font-weight: 600;
   vertical-align: top;
 }
+
 .reark-table__td {
-  border: 1px solid #ccc;
-  padding: 8px;
+  border: 1px solid #dfe2e5;
+  padding: var(--reark-table-padding);
   text-align: left;
   vertical-align: top;
 }
 
+.reark-table-wrapper {
+  overflow-x: auto;
+}
+
+/* Image */
 .reark-image-container {
   position: relative;
   overflow: hidden;
-  border-radius: 4px;
+  border-radius: var(--reark-border-radius);
   max-width: 100%;
   display: flex;
+  padding: 4px;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.02);
+  }
 }
+
 .reark-image {
   display: block;
   max-width: 100%;
   height: auto;
   transition: opacity 0.3s ease;
 }
+
 .reark-image-placeholder {
   position: absolute;
   top: 0;
@@ -170,96 +273,108 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #666;
+  color: var(--reark-color-text-secondary);
   font-size: 14px;
 }
 
 /* OrderedList */
-.reark-ordered-list {
-  padding-left: 24px;
+.reark-ordered-list,
+.reark-unordered-list {
+  padding-left: 28px;
   position: relative;
+  line-height: 1.6;
 }
+
 .reark-ordered-list::before {
   content: var(--reark-ordered-list-seq, "");
   display: block;
   position: absolute;
-  top: 0em;
-  left: 0px;
+  top: 0;
+  left: 0;
+  color: var(--reark-color-primary);
+  font-weight: 500;
 }
 
-/* UnorderedList */
-.reark-unordered-list {
-  padding-left: 24px;
-  position: relative;
-}
 .reark-unordered-list::before {
   content: "";
   display: block;
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
-  background-color: #000;
+  background-color: var(--reark-color-primary);
   position: absolute;
-  top: 0.5em;
-  left: 0px;
+  top: 0.6em;
+  left: 10px;
 }
 
 /* Todo */
 .reark-todo {
   display: flex;
-  align-items: center;
-  gap: 8px;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 8px 0;
 }
+
 .reark-todo__checkbox {
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
   appearance: none;
-  border: 2px solid #666;
-  border-radius: 3px;
+  border: 2px solid #aaa;
+  border-radius: 4px;
   position: relative;
   cursor: pointer;
+  margin-top: 2px;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
 }
+
 .reark-todo__checkbox:checked {
-  background-color: #1a73e8;
-  border-color: #1a73e8;
+  background-color: var(--reark-color-primary);
+  border-color: var(--reark-color-primary);
 }
+
 .reark-todo__checkbox:checked::after {
   content: "";
   position: absolute;
-  left: 4px;
-  top: 1px;
-  width: 4px;
-  height: 8px;
+  left: 5px;
+  top: 2px;
+  width: 5px;
+  height: 9px;
   border: solid white;
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
 }
+
 .reark-todo__checkbox:focus {
   outline: none;
-  box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
 }
+
 .reark-todo__content {
   flex: 1;
+  line-height: 1.5;
 }
+
 .reark-todo__content--done {
   text-decoration: line-through;
-  color: #666;
+  color: var(--reark-color-text-secondary);
 }
 
 /* UnsupportedBlock */
 .reark-unsupported-block {
   font-size: 14px;
-  padding: 12px;
-  margin: 8px 0;
+  padding: 16px;
+  margin: 16px 0;
   background-color: #fff3f3;
   border: 1px solid #dc3545;
-  border-radius: 4px;
+  border-radius: var(--reark-border-radius);
   color: #dc3545;
 }
+
 /* Comment */
 .reark-comment {
   display: contents;
 }
+
 .reark-comment--leaf > * {
   border-bottom: 2px solid #fc0;
 }
@@ -267,34 +382,43 @@
 /* CommentCard */
 .reark-comment-card {
   padding: 16px;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
   border: 1px solid #ddd;
-  border-radius: 8px;
+  border-radius: var(--reark-border-radius);
   background-color: #f9f9f9;
 }
+
 .reark-comment-card__quote {
-  border-left: 2px solid lightgray;
-  padding-left: 4px;
-  font-size: 10px;
-  color: #555;
-  margin-bottom: 8px;
+  border-left: 3px solid #ddd;
+  padding-left: 12px;
+  font-size: 13px;
+  color: var(--reark-color-text-secondary);
+  margin-bottom: 12px;
+  line-height: 1.5;
 }
+
 .reark-comment-card__reply {
-  font-size: 12px;
-  margin-top: 8px;
-  padding-left: 8px;
+  font-size: 14px;
+  margin-top: 12px;
+  padding-left: 12px;
+  line-height: 1.5;
 }
 
 /* Page */
 .reark-page-title {
   font-size: 2.5em;
+  font-weight: 700;
+  color: var(--reark-color-text);
+  margin-bottom: 24px;
+  padding-bottom: 12px;
 }
 
 /* Grid block layout */
 .reark-grid {
   display: grid;
-  gap: 16px;
+  gap: 20px;
   width: 100%;
+  margin: 16px 0;
 }
 
 /* Grid column layout */
@@ -302,5 +426,5 @@
   min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
 }

@@ -18,7 +18,7 @@ export const Text: React.FC<{
           : "left";
 
   return (
-    <div style={{ textAlign }}>
+    <div style={{ textAlign }} className="reark-text-block">
       {elements.map((element, index) => {
         if (!element.text_run) {
           return null;
@@ -33,6 +33,7 @@ export const Text: React.FC<{
           textElementStyle?.strikethrough ? "reark-text--strikethrough" : "",
           textElementStyle?.underline ? "reark-text--underline" : "",
           textElementStyle?.inline_code ? "reark-text--inline-code" : "",
+          "reark-text",
         ]
           .filter(Boolean)
           .join(" ");

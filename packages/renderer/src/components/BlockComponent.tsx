@@ -38,7 +38,7 @@ export function BlockComponent({ blockId }: Props) {
   // };
 
   const inner = (
-    <div style={{ display: "contents" }}>
+    <div className="reark-block" /*onClick={showDebugInfo}*/>
       <ErrorBoundary>
         <Component block={block} />
       </ErrorBoundary>

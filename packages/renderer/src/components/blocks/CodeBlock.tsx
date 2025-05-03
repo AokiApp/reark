@@ -1,23 +1,23 @@
 import { BlockInnerComponent } from "../../types";
 import { CODE_LANGUAGE } from "../../constants/codeLanguage";
-import type { TextElement } from "@aokiapp/reark-lark-api";
+import { Text } from "./Text";
 
 export const CodeBlock: BlockInnerComponent = ({ block }) => {
   const code = block.code;
+  if (!code) {
+    return null;
+  }
   const codeLanguage = code?.style?.language
     ? CODE_LANGUAGE[code.style.language]
     : "Unknown";
-
-  const content = code?.elements
-    .map((element: TextElement) => element.text_run?.content || "")
-    .join("");
 
   return (
     <div className="reark-codeblock">
       <div className="reark-codeblock__language">{codeLanguage}</div>
       <pre className="reark-codeblock__pre">
-        <code>{content}</code>
+        <Text elements={code.elements} style={code.style} />
       </pre>
     </div>
   );
 };
+// todo : copy button
