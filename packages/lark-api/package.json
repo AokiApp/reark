@@ -1,0 +1,20 @@
+{
+  "name": "@aokiapp/reark-lark-api",
+  "version": "0.1.1",
+  "private": false,
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "lint": "eslint src --ext .ts,.tsx",
+    "typecheck": "tsc --noEmit",
+    "test": "jest",
+    "build": "tsc --outDir dist",
+    "build:watch": "tsc --outDir dist --watch",
+    "dev": "npm run build:watch"
+  },
+  "sideEffects": false
+}

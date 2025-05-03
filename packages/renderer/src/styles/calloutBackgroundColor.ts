@@ -1,0 +1,16 @@
+export const CALLOUT_BACKGROUND_COLOR: Record<number, string> = {
+  1: "#FDE2E2",
+  2: "#FEEAD2",
+  3: "#FFFFCC",
+  4: "#D9F5D6",
+  5: "#E1EAFF",
+  6: "#ECE2FE",
+  7: "#F5F6F7",
+  8: "#FBBFBC",
+  9: "#FED4A4",
+  10: "#FFFCA3",
+  11: "#B7EDB1",
+  12: "#BACEFD",
+  13: "#CDB2FA",
+  14: "#DDDFE1",
+};
