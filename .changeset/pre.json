@@ -1,5 +1,5 @@
 {
-  "mode": "pre",
+  "mode": "exit",
   "tag": "pre",
   "initialVersions": {
     "next-app-router": "0.1.0",
