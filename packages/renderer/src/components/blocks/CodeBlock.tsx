@@ -1,6 +1,6 @@
 import { BlockInnerComponent } from "../../types";
 import { CODE_LANGUAGE } from "../../constants/codeLanguage";
-import type { Element } from "@aokiapp/reark-lark-api";
+import type { TextElement } from "@aokiapp/reark-lark-api";
 
 export const CodeBlock: BlockInnerComponent = ({ block }) => {
   const code = block.code;
@@ -9,7 +9,7 @@ export const CodeBlock: BlockInnerComponent = ({ block }) => {
     : "Unknown";
 
   const content = code?.elements
-    .map((element: Element) => element.text_run?.content || "")
+    .map((element: TextElement) => element.text_run?.content || "")
     .join("");
 
   return (

@@ -14,10 +14,18 @@ export const OrderedList: BlockInnerComponent = ({ block }) => {
 
   let seq = ordered.style?.sequence;
   if (seq === "auto") {
-    seq =
-      blockStore.blocks[block.parent_id].children!.findIndex(
+    if (
+      block.parent_id &&
+      blockStore.blocks[block.parent_id] &&
+      Array.isArray(blockStore.blocks[block.parent_id].children)
+    ) {
+      const idx = blockStore.blocks[block.parent_id].children!.findIndex(
         (childId) => childId === block.block_id,
-      ) + 1;
+      );
+      seq = idx >= 0 ? String(idx + 1) : "";
+    } else {
+      seq = "";
+    }
   }
 
   // Set the sequence number as a CSS variable for ::before content

@@ -1,5 +1,5 @@
 import { BlockInnerComponent } from "../../types";
-import type { Element } from "@aokiapp/reark-lark-api";
+import type { TextElement } from "@aokiapp/reark-lark-api";
 import { containsUrl } from "../../utils/utils";
 
 export const Todo: BlockInnerComponent = ({ block }) => {
@@ -33,7 +33,7 @@ export const Todo: BlockInnerComponent = ({ block }) => {
           "reark-todo__content" + (isDone ? " reark-todo__content--done" : "")
         }
       >
-        {todo.elements.map((element: Element, index: number) => {
+        {todo.elements.map((element: TextElement, index: number) => {
           if (!element.text_run) {
             return null;
           }

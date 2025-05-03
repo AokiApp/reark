@@ -13,6 +13,7 @@ export type TextStyle = {
   folded?: boolean;
   language?: CodeLanguage;
   wrap?: boolean;
+  sequence?: string; // "auto" or a number
 };
 
 export type TextElementStyle = {
@@ -119,10 +120,10 @@ export type TableBlock = {
 };
 
 export type CalloutBlock = {
-  background_color?: number;
-  border_color?: number;
-  text_color?: number;
-  emoji_id?: string;
+  background_color: number;
+  border_color: number;
+  text_color: number;
+  emoji_id: string;
 };
 
 export type ChatCardBlock = {
