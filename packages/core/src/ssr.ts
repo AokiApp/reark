@@ -1,13 +1,13 @@
-import fs from "fs";
+import fs from "node:fs";
 import path from "node:path";
 import mime from "mime-types";
 import {
   fetchAllDocumentBlocks,
   getComments,
   batchGetTmpDownloadUrls,
-} from "./apis";
-import type { Block } from "./types/block";
-import type { CommentData } from "./types/api";
+  type Block,
+  type CommentData,
+} from "@aokiapp/reark-lark-api";
 
 export interface LarkInitialData {
   version: number;

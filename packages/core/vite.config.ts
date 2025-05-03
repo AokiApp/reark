@@ -12,7 +12,12 @@ export default defineConfig({
       formats: ["es", "cjs"],
     },
     rollupOptions: {
-      external: ["react"],
+      external: [
+        "react",
+        "@aokiapp/reark-lark-api",
+        "@aokiapp/reark-renderer",
+        "node:fs",
+      ],
       output: {
         globals: {
           react: "React",

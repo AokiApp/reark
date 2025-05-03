@@ -1,5 +1,3 @@
 export * from "./apis";
-export * from "./types/api";
-export * from "./types/block";
-
-export * from "./ssr";
+export type * from "./types/api";
+export type * from "./types/block";
