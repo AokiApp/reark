@@ -1,5 +1,13 @@
 # next-app-router
 
+## 0.1.2
+
+### Patch Changes
+
+- Updated dependencies
+  - @aokiapp/reark@0.2.0
+  - @aokiapp/reark-server@0.2.0
+
 ## 0.1.1
 
 ### Patch Changes
