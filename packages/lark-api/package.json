@@ -14,7 +14,10 @@
     "test": "jest",
     "build": "tsc --outDir dist",
     "build:watch": "tsc --outDir dist --watch",
-    "dev": "npm run build:watch"
+    "dev": "npm run build:watch",
+    "prepublishOnly": "npm run build",
+    "publish": "npm publish --access public",
+    "postpublish": "echo Published!"
   },
   "sideEffects": false
 }

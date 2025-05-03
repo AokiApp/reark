@@ -27,7 +27,10 @@
   "scripts": {
     "build": "vite build",
     "build:watch": "vite build --watch",
-    "dev": "npm run build:watch"
+    "dev": "npm run build:watch",
+    "prepublishOnly": "npm run build",
+    "publish": "npm publish --access public",
+    "postpublish": "echo Published!"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.21",
