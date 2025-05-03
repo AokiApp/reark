@@ -147,15 +147,12 @@
   vertical-align: top;
 }
 
-/* Image */
-.reark-image-wrapper {
-  position: relative;
-  max-width: 100%;
-}
 .reark-image-container {
   position: relative;
   overflow: hidden;
   border-radius: 4px;
+  max-width: 100%;
+  display: flex;
 }
 .reark-image {
   display: block;
@@ -291,4 +288,19 @@
 /* Page */
 .reark-page-title {
   font-size: 2.5em;
+}
+
+/* Grid block layout */
+.reark-grid {
+  display: grid;
+  gap: 16px;
+  width: 100%;
+}
+
+/* Grid column layout */
+.reark-grid-column {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
