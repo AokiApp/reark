@@ -11,7 +11,7 @@
   "scripts": {
     "lint": "eslint src --ext .ts,.tsx",
     "typecheck": "tsc --noEmit",
-    "test": "jest",
+    "test": "jest --passWithNoTests",
     "build": "tsc --outDir dist",
     "build:watch": "tsc --outDir dist --watch",
     "dev": "npm run build:watch",

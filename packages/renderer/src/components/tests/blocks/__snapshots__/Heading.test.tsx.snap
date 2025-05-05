@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Heading1 block renders heading1 text 1`] = `
+<div>
+  <div
+    class="reark-heading reark-heading--1"
+    style="text-align: left;"
+  >
+    <span
+      class=""
+    >
+      本文書
+    </span>
+    <span
+      class="reark-text--bold"
+    >
+      について
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Heading1 block renders heading1 with bold element 1`] = `
+<div>
+  <div
+    class="reark-heading reark-heading--1"
+    style="text-align: left;"
+  >
+    <span
+      class=""
+    >
+      本文書
+    </span>
+    <span
+      class="reark-text--bold"
+    >
+      について
+    </span>
+  </div>
+</div>
+`;

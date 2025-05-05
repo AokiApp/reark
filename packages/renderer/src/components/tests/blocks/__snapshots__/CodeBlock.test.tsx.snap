@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CodeBlock block renders code block with code and language 1`] = `
+<div>
+  <div
+    class="reark-codeblock"
+  >
+    <div
+      class="reark-codeblock__header"
+    >
+      <span
+        class="reark-codeblock__language"
+      >
+        Python
+      </span>
+      <button
+        aria-label="Copy code"
+        class="reark-codeblock__copy-btn"
+        type="button"
+      >
+        Copy
+      </button>
+    </div>
+    <pre
+      class="reark-codeblock__pre"
+    >
+      <div
+        class="reark-text-block"
+        style="text-align: left;"
+      >
+        <div
+          class="reark-comment reark-comment--leaf"
+          data-comment-ids="7500745501210312738"
+        >
+          <span
+            class="reark-text"
+          >
+            def add(a,b):
+          </span>
+        </div>
+        <span
+          class="reark-text"
+        >
+          
+
+        </span>
+        <div
+          class="reark-comment reark-comment--leaf"
+          data-comment-ids="7500745501210312738"
+        >
+          <span
+            class="reark-text"
+          >
+                return a+b
+          </span>
+        </div>
+      </div>
+    </pre>
+  </div>
+</div>
+`;
+
+exports[`renders nothing when code elements is empty 1`] = `
+<div>
+  <div
+    class="reark-codeblock"
+  >
+    <div
+      class="reark-codeblock__header"
+    >
+      <span
+        class="reark-codeblock__language"
+      >
+        Python
+      </span>
+      <button
+        aria-label="Copy code"
+        class="reark-codeblock__copy-btn"
+        type="button"
+      >
+        Copy
+      </button>
+    </div>
+    <pre
+      class="reark-codeblock__pre"
+    >
+      <div
+        class="reark-text-block"
+        style="text-align: left;"
+      />
+    </pre>
+  </div>
+</div>
+`;

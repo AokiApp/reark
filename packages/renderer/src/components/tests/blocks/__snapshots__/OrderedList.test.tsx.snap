@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OrderedList block renders ordered list text 1`] = `
+<div>
+  <div
+    class="reark-ordered-list"
+    style="--reark-ordered-list-seq: "1";"
+  >
+    <div
+      class="reark-text-block"
+      style="text-align: left;"
+    >
+      <span
+        class="reark-text"
+      >
+        Ordered
+      </span>
+    </div>
+  </div>
+</div>
+`;
