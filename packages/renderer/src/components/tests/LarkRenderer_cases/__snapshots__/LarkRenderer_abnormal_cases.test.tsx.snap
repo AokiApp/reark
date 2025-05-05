@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LarkRenderer 異常系: childrenが空配列 childrenが空配列でも正常にレンダリングできる 2`] = `
+<div>
+  <div
+    class="reark-block"
+  >
+    <div
+      class="reark-text-block"
+      style="text-align: left;"
+    >
+      <span
+        class="reark-text"
+      >
+        children空配列
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`LarkRenderer 異常系: childrenプロパティ欠損 childrenプロパティが存在しないブロックもレンダリングできる 2`] = `
+<div>
+  <div
+    class="reark-block"
+  >
+    <div
+      class="reark-text-block"
+      style="text-align: left;"
+    >
+      <span
+        class="reark-text"
+      >
+        children欠損
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`LarkRenderer 異常系: 不正なblock_type 未知のblock_typeを含む場合もUnsupportedBlockとしてレンダリングされる 2`] = `
+<div>
+  <div
+    class="reark-unsupported-block"
+  >
+    <strong>
+      Unsupported block type: 
+      9999
+    </strong>
+  </div>
+</div>
+`;
+
+exports[`LarkRenderer 異常系: 親無し子ブロック 親が存在しないchildrenを持つブロックもレンダリングできる 2`] = `
+<div>
+  <div
+    class="reark-block"
+  >
+    <div
+      class="reark-text-block"
+      style="text-align: left;"
+    >
+      <span
+        class="reark-text"
+      >
+        親無し子ブロック
+      </span>
+    </div>
+  </div>
+</div>
+`;

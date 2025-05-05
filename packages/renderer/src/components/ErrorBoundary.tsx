@@ -30,9 +30,6 @@ export class ErrorBoundary extends Component<Props, State> {
       error,
       errorInfo,
     });
-
-    // Log the error to an error reporting service
-    console.error("Uncaught error:", error, errorInfo);
   }
 
   public render() {
@@ -41,6 +38,11 @@ export class ErrorBoundary extends Component<Props, State> {
         <div>
           <h1>Something went wrong.</h1>
           <p>We are working to fix this issue. Please try again later.</p>
+          <details style={{ whiteSpace: "pre-wrap" }}>
+            {this.state.error && this.state.error.toString()}
+            <br />
+            {this.state.errorInfo?.componentStack}
+          </details>
         </div>
       );
     }

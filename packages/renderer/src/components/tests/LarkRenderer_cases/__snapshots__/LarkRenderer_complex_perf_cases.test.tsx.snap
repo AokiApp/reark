@@ -1,0 +1,284 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LarkRenderer パフォーマンス: 1000個のtextブロック 大量のblocksでもレンダリングできる 2`] = `
+<div>
+  <div
+    class="reark-block"
+  >
+    <div
+      class="reark-text-block"
+      style="text-align: left;"
+    >
+      <span
+        class="reark-text"
+      >
+        テキスト0
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`LarkRenderer 入れ子構造: 10段ネストのbulletリスト 10段ネストのbulletリストをレンダリングできる 2`] = `
+<div>
+  <div
+    class="reark-block"
+  >
+    <div
+      class="reark-unordered-list"
+    >
+      <div
+        class="reark-text-block"
+        style="text-align: left;"
+      >
+        <span
+          class="reark-text"
+        >
+          ネスト0
+        </span>
+      </div>
+      <div
+        class="reark-block"
+      >
+        <div
+          class="reark-unordered-list"
+        >
+          <div
+            class="reark-text-block"
+            style="text-align: left;"
+          >
+            <span
+              class="reark-text"
+            >
+              ネスト1
+            </span>
+          </div>
+          <div
+            class="reark-block"
+          >
+            <div
+              class="reark-unordered-list"
+            >
+              <div
+                class="reark-text-block"
+                style="text-align: left;"
+              >
+                <span
+                  class="reark-text"
+                >
+                  ネスト2
+                </span>
+              </div>
+              <div
+                class="reark-block"
+              >
+                <div
+                  class="reark-unordered-list"
+                >
+                  <div
+                    class="reark-text-block"
+                    style="text-align: left;"
+                  >
+                    <span
+                      class="reark-text"
+                    >
+                      ネスト3
+                    </span>
+                  </div>
+                  <div
+                    class="reark-block"
+                  >
+                    <div
+                      class="reark-unordered-list"
+                    >
+                      <div
+                        class="reark-text-block"
+                        style="text-align: left;"
+                      >
+                        <span
+                          class="reark-text"
+                        >
+                          ネスト4
+                        </span>
+                      </div>
+                      <div
+                        class="reark-block"
+                      >
+                        <div
+                          class="reark-unordered-list"
+                        >
+                          <div
+                            class="reark-text-block"
+                            style="text-align: left;"
+                          >
+                            <span
+                              class="reark-text"
+                            >
+                              ネスト5
+                            </span>
+                          </div>
+                          <div
+                            class="reark-block"
+                          >
+                            <div
+                              class="reark-unordered-list"
+                            >
+                              <div
+                                class="reark-text-block"
+                                style="text-align: left;"
+                              >
+                                <span
+                                  class="reark-text"
+                                >
+                                  ネスト6
+                                </span>
+                              </div>
+                              <div
+                                class="reark-block"
+                              >
+                                <div
+                                  class="reark-unordered-list"
+                                >
+                                  <div
+                                    class="reark-text-block"
+                                    style="text-align: left;"
+                                  >
+                                    <span
+                                      class="reark-text"
+                                    >
+                                      ネスト7
+                                    </span>
+                                  </div>
+                                  <div
+                                    class="reark-block"
+                                  >
+                                    <div
+                                      class="reark-unordered-list"
+                                    >
+                                      <div
+                                        class="reark-text-block"
+                                        style="text-align: left;"
+                                      >
+                                        <span
+                                          class="reark-text"
+                                        >
+                                          ネスト8
+                                        </span>
+                                      </div>
+                                      <div
+                                        class="reark-block"
+                                      >
+                                        <div
+                                          class="reark-unordered-list"
+                                        >
+                                          <div
+                                            class="reark-text-block"
+                                            style="text-align: left;"
+                                          >
+                                            <span
+                                              class="reark-text"
+                                            >
+                                              ネスト9
+                                            </span>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`LarkRenderer 複合ケース: 複数ブロック混在 text, heading, bullet, table など複数ブロックを同時にレンダリングできる 2`] = `
+<div>
+  <div
+    class="reark-block"
+  >
+    <div
+      class="reark-page"
+    >
+      <div
+        class="reark-page-title"
+      >
+        <div
+          class="reark-text-block"
+          style="text-align: left;"
+        />
+      </div>
+      <div
+        class="reark-block"
+      >
+        <div
+          class="reark-text-block"
+          style="text-align: left;"
+        >
+          <span
+            class="reark-text"
+          >
+            複合テスト用テキスト
+          </span>
+        </div>
+      </div>
+      <div
+        class="reark-block"
+      >
+        <div
+          class="reark-heading reark-heading--1"
+        >
+          <div
+            class="reark-text-block"
+            style="text-align: left;"
+          >
+            <span
+              class="reark-text--bold reark-text"
+            >
+              見出し複合
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        class="reark-block"
+      >
+        <div
+          class="reark-unordered-list"
+        >
+          <div
+            class="reark-text-block"
+            style="text-align: left;"
+          >
+            <span
+              class="reark-text"
+            >
+              リスト複合
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        class="reark-unsupported-block"
+      >
+        <strong>
+          Unsupported block type: 
+          18
+        </strong>
+      </div>
+    </div>
+  </div>
+</div>
+`;

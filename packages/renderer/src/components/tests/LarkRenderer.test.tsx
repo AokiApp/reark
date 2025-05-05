@@ -33,7 +33,14 @@ it("複合ケース: page配下に複数ブロックを含む統合レンダリ�
     block_id: "text-1",
     block_type: 2,
     parent_id: "page-1",
-    text: "統合テスト用テキスト",
+    text: [
+      {
+        text_run: {
+          content: "統合テスト用テキスト",
+          text_element_style: { bold: false },
+        },
+      },
+    ],
     children: [],
   };
   const headingBlock = {
@@ -258,7 +265,17 @@ it("異常系: root blockが存在しない", () => {
       block_id: "not-root",
       block_type: 2,
       parent_id: "none",
-      text: "ルート無し",
+      text: {
+        elements: [
+          {
+            text_run: {
+              content: "ルートブロックなし",
+              text_element_style: { bold: false },
+            },
+          },
+        ],
+        style: { align: "left", folded: false },
+      },
       children: [],
     },
   ];

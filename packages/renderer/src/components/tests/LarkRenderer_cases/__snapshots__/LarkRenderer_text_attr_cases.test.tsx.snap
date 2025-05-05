@@ -1,0 +1,284 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LarkRenderer 属性バリエーション: インラインコードのみ textブロック: インラインコードのみ 2`] = `
+<div>
+  <div
+    class="reark-block"
+  >
+    <div
+      class="reark-text-block"
+      style="text-align: left;"
+    >
+      <span
+        class="reark-text--inline-code reark-text"
+      >
+        インラインコードのみ
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`LarkRenderer 属性バリエーション: インラインコード＋太字 textブロック: インラインコード＋太字 2`] = `
+<div>
+  <div
+    class="reark-block"
+  >
+    <div
+      class="reark-text-block"
+      style="text-align: left;"
+    >
+      <span
+        class="reark-text--bold reark-text--inline-code reark-text"
+      >
+        インラインコード＋太字
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`LarkRenderer 属性バリエーション: コメント付きのみ textブロック: コメント付きのみ 2`] = `
+<div>
+  <div
+    class="reark-block"
+  >
+    <div
+      class="reark-text-block"
+      style="text-align: left;"
+    >
+      <div
+        class="reark-comment"
+        data-comment-ids="c3"
+      >
+        <span
+          class="reark-text"
+        >
+          コメント付きのみ
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`LarkRenderer 属性バリエーション: コメント＋斜体 textブロック: コメント＋斜体 2`] = `
+<div>
+  <div
+    class="reark-block"
+  >
+    <div
+      class="reark-text-block"
+      style="text-align: left;"
+    >
+      <div
+        class="reark-comment"
+        data-comment-ids="c4"
+      >
+        <span
+          class="reark-text--italic reark-text"
+        >
+          コメント＋斜体
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`LarkRenderer 属性バリエーション: 下線のみ textブロック: 下線のみ 2`] = `
+<div>
+  <div
+    class="reark-block"
+  >
+    <div
+      class="reark-text-block"
+      style="text-align: left;"
+    >
+      <span
+        class="reark-text--underline reark-text"
+      >
+        下線のみ
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`LarkRenderer 属性バリエーション: 下線＋打消し textブロック: 下線＋打消し 2`] = `
+<div>
+  <div
+    class="reark-block"
+  >
+    <div
+      class="reark-text-block"
+      style="text-align: left;"
+    >
+      <span
+        class="reark-text--strikethrough reark-text--underline reark-text"
+      >
+        下線＋打消し
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`LarkRenderer 属性バリエーション: 太字のみ textブロック: 太字のみ 2`] = `
+<div>
+  <div
+    class="reark-block"
+  >
+    <div
+      class="reark-text-block"
+      style="text-align: left;"
+    >
+      <span
+        class="reark-text--bold reark-text"
+      >
+        太字のみ
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`LarkRenderer 属性バリエーション: 太字＋斜体 textブロック: 太字＋斜体 2`] = `
+<div>
+  <div
+    class="reark-block"
+  >
+    <div
+      class="reark-text-block"
+      style="text-align: left;"
+    >
+      <span
+        class="reark-text--bold reark-text--italic reark-text"
+      >
+        太字＋斜体
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`LarkRenderer 属性バリエーション: 打消しのみ textブロック: 打消しのみ 2`] = `
+<div>
+  <div
+    class="reark-block"
+  >
+    <div
+      class="reark-text-block"
+      style="text-align: left;"
+    >
+      <span
+        class="reark-text--strikethrough reark-text"
+      >
+        打消しのみ
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`LarkRenderer 属性バリエーション: 斜体のみ textブロック: 斜体のみ 2`] = `
+<div>
+  <div
+    class="reark-block"
+  >
+    <div
+      class="reark-text-block"
+      style="text-align: left;"
+    >
+      <span
+        class="reark-text--italic reark-text"
+      >
+        斜体のみ
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`LarkRenderer 属性バリエーション: 組み合わせ違い textブロック: 太字＋下線、斜体＋打消し、インラインコード＋コメント付き 2`] = `
+<div>
+  <div
+    class="reark-block"
+  >
+    <div
+      class="reark-text-block"
+      style="text-align: left;"
+    >
+      <span
+        class="reark-text--bold reark-text--underline reark-text"
+      >
+        太字＋下線
+      </span>
+      <span
+        class="reark-text--italic reark-text--strikethrough reark-text"
+      >
+        斜体＋打消し
+      </span>
+      <div
+        class="reark-comment"
+        data-comment-ids="c2"
+      >
+        <span
+          class="reark-text--inline-code reark-text"
+        >
+          インラインコード＋コメント付き
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`LarkRenderer 属性バリエーション複合 textブロック: 太字・斜体・下線・打消し・インラインコード・コメント付き 2`] = `
+<div>
+  <div
+    class="reark-block"
+  >
+    <div
+      class="reark-text-block"
+      style="text-align: left;"
+    >
+      <span
+        class="reark-text--bold reark-text"
+      >
+        太字
+      </span>
+      <span
+        class="reark-text--italic reark-text"
+      >
+        斜体
+      </span>
+      <span
+        class="reark-text--underline reark-text"
+      >
+        下線
+      </span>
+      <span
+        class="reark-text--strikethrough reark-text"
+      >
+        打消し
+      </span>
+      <span
+        class="reark-text--inline-code reark-text"
+      >
+        インラインコード
+      </span>
+      <div
+        class="reark-comment"
+        data-comment-ids="c1"
+      >
+        <span
+          class="reark-text"
+        >
+          コメント付き
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;
