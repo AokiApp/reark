@@ -42,6 +42,8 @@ export async function getLarkInitialDataForSSR(
           token = block.file.token;
         } else if (block.block_type === 27 && block.image) {
           token = block.image.token;
+        } else if (block.block_type === 2) {
+          // W.I.P. for text blocks
         }
         if (token) {
           acc.add(token);
