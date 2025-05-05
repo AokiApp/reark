@@ -29,7 +29,7 @@ exports[`CodeBlock block renders code block with code and language 1`] = `
         style="text-align: left;"
       >
         <div
-          class="reark-comment reark-comment--leaf"
+          class="reark-comment"
           data-comment-ids="7500745501210312738"
         >
           <span
@@ -45,7 +45,7 @@ exports[`CodeBlock block renders code block with code and language 1`] = `
 
         </span>
         <div
-          class="reark-comment reark-comment--leaf"
+          class="reark-comment"
           data-comment-ids="7500745501210312738"
         >
           <span
