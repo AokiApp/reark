@@ -20,11 +20,14 @@ jobs:
         uses: rharkor/caching-for-turbo@v1.8
       - run: npm install
 
+      - name: Build
+        run: npm run build
+
       - name: Lint
         run: npm run lint
 
       - name: Type Check
         run: npm run typecheck
 
-      - name: Build
-        run: npm run build
+      - name: format check
+        run: npm run format
