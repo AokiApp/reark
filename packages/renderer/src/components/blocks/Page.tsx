@@ -1,6 +1,5 @@
 import { BlockInnerComponent } from "../../types";
 import { BlockComponent } from "../BlockComponent";
-import type { TextElement } from "@aokiapp/reark-lark-api";
 import { Text } from "./Text";
 import "../../styles/blocks.css";
 
@@ -9,7 +8,7 @@ export const Page: BlockInnerComponent = ({ block }) => {
     <div className="reark-page">
       <div className="reark-page-title">
         <Text
-          elements={block.page?.elements as unknown as TextElement[]} // todo: safer way
+          elements={block.page?.elements || []} // todo: safer way
           style={block.text?.style}
         />
       </div>

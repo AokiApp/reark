@@ -43,7 +43,7 @@
 }
 
 .reark-block {
-  display: contents;
+  /* display: contents; */
 }
 
 /* Callout */
@@ -150,7 +150,6 @@
   font-weight: 600;
   color: var(--reark-color-text);
   line-height: 1.6;
-  padding: 0.4rem 0;
 }
 
 .reark-heading--1 {
@@ -337,7 +336,6 @@
   display: flex;
   align-items: flex-start;
   gap: 10px;
-  margin: 8px 0;
 }
 
 .reark-todo__checkbox {
@@ -398,14 +396,11 @@
 /* Comment */
 .reark-comment {
   display: contents;
-}
 
-.reark-comment--leaf > * {
-  border-bottom: 2px solid #fc0;
-  border-radius: 4px 4px 0 0;
-  transition: background-color 0.3s ease;
-  &:hover {
-    background-color: rgba(252, 192, 0, 0.1);
+  &:not(:has(.reark-comment)) > *:not(.reark-block),
+  &:not(:has(.reark-comment)) > .reark-block > * {
+    border-bottom: 2px solid rgba(255, 204, 0, 0.3);
+    border-radius: 4px 4px 0 0;
   }
 }
 

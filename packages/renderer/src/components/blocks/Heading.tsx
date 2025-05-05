@@ -1,4 +1,5 @@
 import { BlockInnerComponent } from "../../types";
+import { Text } from "./Text";
 
 type HeadingLevel = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
 
@@ -12,45 +13,9 @@ const HeadingBase: BlockInnerComponent<{
     return null;
   }
 
-  const align = headingData.style?.align || 1;
-  const textAlign =
-    align === 1
-      ? "left"
-      : align === 2
-        ? "center"
-        : align === 3
-          ? "right"
-          : "left";
-
   return (
-    <div
-      className={`reark-heading reark-heading--${level}`}
-      style={{ textAlign }}
-    >
-      {headingData.elements.map((element, index) => {
-        if (!element.text_run) {
-          return null;
-        }
-
-        const textElementStyle = element.text_run.text_element_style;
-
-        // Build className for text decorations
-        const classNames = [
-          textElementStyle?.bold ? "reark-text--bold" : "",
-          textElementStyle?.italic ? "reark-text--italic" : "",
-          textElementStyle?.strikethrough ? "reark-text--strikethrough" : "",
-          textElementStyle?.underline ? "reark-text--underline" : "",
-          textElementStyle?.inline_code ? "reark-text--inline-code" : "",
-        ]
-          .filter(Boolean)
-          .join(" ");
-
-        return (
-          <span key={index} className={classNames}>
-            {element.text_run.content}
-          </span>
-        );
-      })}
+    <div className={`reark-heading reark-heading--${level}`}>
+      <Text elements={headingData.elements} style={headingData.style} />
     </div>
   );
 };
