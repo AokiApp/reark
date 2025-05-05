@@ -1,6 +1,7 @@
 import { renderWithVRT } from "../test-utils/renderWithVRT";
 import { LarkRenderer } from "../../LarkRenderer";
 
+// LarkRenderer 複合ケース: 複数ブロック混在
 describe("LarkRenderer 複合ケース: 複数ブロック混在", () => {
   it("text, heading, bullet, table など複数ブロックを同時にレンダリングできる", async () => {
     const pageBlock = {
@@ -82,6 +83,68 @@ describe("LarkRenderer 複合ケース: 複数ブロック混在", () => {
       tableBlock,
     ];
 
+    const { container, vrt } = renderWithVRT(
+      <LarkRenderer initialData={{ blocks }} />,
+    );
+    await vrt();
+    expect(container).toMatchSnapshot();
+  });
+});
+
+// LarkRenderer パフォーマンス: 1000個のtextブロック
+describe("LarkRenderer パフォーマンス: 1000個のtextブロック", () => {
+  it("大量のblocksでもレンダリングできる", async () => {
+    const blocks = Array.from({ length: 1000 }).map((_, i) => ({
+      block_id: `text-${i}`,
+      block_type: 2,
+      parent_id: "",
+      text: {
+        elements: [
+          {
+            text_run: {
+              content: `テキスト${i}`,
+              text_element_style: { bold: false },
+            },
+          },
+        ],
+        style: { align: "left", folded: false },
+      },
+      children: [],
+    }));
+    const { container, vrt } = renderWithVRT(
+      <LarkRenderer initialData={{ blocks }} />,
+    );
+    await vrt();
+    expect(container).toMatchSnapshot();
+  });
+});
+
+// LarkRenderer 入れ子構造: 10段ネストのbulletリスト
+describe("LarkRenderer 入れ子構造: 10段ネストのbulletリスト", () => {
+  it("10段ネストのbulletリストをレンダリングできる", async () => {
+    const blocks = [];
+    let parentId = "";
+    for (let i = 0; i < 10; i++) {
+      const block = {
+        block_id: `bullet-nest-${i}`,
+        block_type: 12,
+        parent_id: parentId,
+        bullet: {
+          elements: [
+            {
+              text_run: {
+                content: `ネスト${i}`,
+                text_element_style: { bold: false },
+              },
+            },
+          ],
+          style: { align: "left", folded: false },
+        },
+        children: i < 9 ? [`bullet-nest-${i + 1}`] : [],
+      };
+      blocks.push(block);
+      parentId = `bullet-nest-${i}`;
+    }
     const { container, vrt } = renderWithVRT(
       <LarkRenderer initialData={{ blocks }} />,
     );
