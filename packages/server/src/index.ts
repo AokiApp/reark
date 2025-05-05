@@ -4,7 +4,7 @@ import mime from "mime-types";
 import {
   fetchAllDocumentBlocks,
   getComments,
-  batchGetTmpDownloadUrls,
+  batchGetTmpDownloadUrlsChunked,
   type Block,
   type CommentData,
 } from "@aokiapp/reark-lark-api";
@@ -42,15 +42,40 @@ export async function getLarkInitialDataForSSR(
     ),
   );
 
-  // 3. Fetch S3 URLs in bulk
-  const s3Urls = await batchGetTmpDownloadUrls(fileTokens);
-
-  // 4. Download files and write to publicDir, build files map
+  // 2.5. Detect already downloaded fileTokens in publicDir
   if (!fs.existsSync(publicDir)) {
     fs.mkdirSync(publicDir, { recursive: true });
   }
+  const existingFiles = new Set(fs.readdirSync(publicDir));
+  // Map: token -> filename (with extension)
+  const existingTokenToFilename: Record<string, string> = {};
+  for (const file of existingFiles) {
+    const match = file.match(/^([^.]+)\.[^.]+$/);
+    if (match) {
+      existingTokenToFilename[match[1]] = file;
+    }
+  }
+
+  // 3. Fetch S3 URLs in bulk (only for tokens not already downloaded)
+  const tokensToDownload = fileTokens.filter(
+    (token) => !(token in existingTokenToFilename),
+  );
+  const s3Urls =
+    tokensToDownload.length > 0
+      ? await batchGetTmpDownloadUrlsChunked(tokensToDownload)
+      : {};
+
+  // 4. Download files and write to publicDir, build files map
   const files: Record<string, string> = {};
   for (const token of fileTokens) {
+    // If already downloaded, just use the existing file
+    if (token in existingTokenToFilename) {
+      files[token] = path.posix.join(
+        publicUrlBase,
+        existingTokenToFilename[token],
+      );
+      continue;
+    }
     const url = s3Urls[token];
     if (!url) {
       console.warn(`[Lark SSR] No S3 URL for token: ${token}`);

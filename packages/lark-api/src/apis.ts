@@ -270,6 +270,11 @@ export async function batchGetTmpDownloadUrls(
     method: "GET",
     // Content-Type is automatically handled by larkApiRequest when body is present
   });
+  if (json.code !== 0) {
+    throw new Error(
+      `Error while getting temporary download URLs: ${JSON.stringify(json)}`,
+    );
+  }
   const urls: Record<string, string> = {};
   // Safely access nested properties
   for (const entry of json?.data?.tmp_download_urls || []) {
@@ -278,6 +283,43 @@ export async function batchGetTmpDownloadUrls(
     }
   }
   return urls;
+}
+
+async function waitFor(ms: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+/**
+ * Fetch temporary download URLs for multiple file tokens using Lark's batch API,
+ * splitting requests into chunks to avoid 429 errors.
+ * @param fileTokens Array of file tokens to fetch.
+ * @param batchSize Maximum number of tokens per batch request (default: 20).
+ * @returns Mapping of fileToken to temporary download URL.
+ */
+export async function batchGetTmpDownloadUrlsChunked(
+  fileTokens: string[],
+  batchSize: number = 5,
+): Promise<Record<string, string>> {
+  if (!fileTokens.length) return {};
+  const allUrls: Record<string, string> = {};
+
+  for (let i = 0; i < fileTokens.length; i += batchSize) {
+    const chunk = fileTokens.slice(i, i + batchSize);
+    try {
+      const urls = await batchGetTmpDownloadUrls(chunk);
+      Object.assign(allUrls, urls);
+      await waitFor(2000); // Wait 1 second between batches
+    } catch (e: unknown) {
+      // If 429, wait and retry (simple exponential backoff)
+      if ((e as Error).message.includes("429")) {
+        await waitFor(1000 * (i / batchSize + 1)); // Wait longer for each retry
+        i -= batchSize; // retry this chunk
+      } else {
+        throw e;
+      }
+    }
+  }
+  return allUrls;
 }
 
 import { ListBaseRecordsParams, ListBaseRecordsResponse } from "./types/base";
