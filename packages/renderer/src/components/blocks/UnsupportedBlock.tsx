@@ -1,11 +1,9 @@
-import React from "react";
+import { BlockInnerComponent } from "../../types";
 
-export interface UnsupportedBlockProps {
-  type: number;
-}
-
-export const UnsupportedBlock: React.FC<UnsupportedBlockProps> = ({ type }) => (
+export const UnsupportedBlock: BlockInnerComponent = ({
+  block: { block_type },
+}) => (
   <div className="reark-unsupported-block">
-    <strong>Unsupported block type: {type}</strong>
+    <strong>Unsupported block type: {block_type}</strong>
   </div>
 );

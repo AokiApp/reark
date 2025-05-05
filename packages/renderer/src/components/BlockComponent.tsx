@@ -18,11 +18,7 @@ export function BlockComponent({ blockId }: Props) {
     throw new Error(`Fatal: Block with ID ${blockId} not found`);
   }
 
-  const Component = BLOCK_COMPONENTS[block.block_type];
-
-  if (!Component) {
-    return <UnsupportedBlock type={block.block_type} />;
-  }
+  const Component = BLOCK_COMPONENTS[block.block_type] || UnsupportedBlock;
 
   // Development-only debug tool
   const showDebugInfo = (e: React.MouseEvent<HTMLDivElement>) => {
