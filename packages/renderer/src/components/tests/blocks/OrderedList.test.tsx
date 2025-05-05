@@ -42,3 +42,31 @@ describe("OrderedList block", () => {
     expect(container).toMatchSnapshot();
   });
 });
+
+it("renders nothing when ordered list elements is empty", () => {
+  const orderedListBlock = {
+    block_id: "empty-ordered-list",
+    block_type: 13,
+    ordered: {
+      elements: [],
+      style: {
+        align: 1 as const,
+        folded: false,
+        sequence: "1",
+      },
+    },
+    parent_id: "XB9wdv7ZNoantyxyHG6jEv37p1c",
+  };
+  const { container } = render(
+    <BlockStoreProvider items={[orderedListBlock]}>
+      <OrderedList block={orderedListBlock} />
+    </BlockStoreProvider>,
+  );
+  // 空のol要素が描画されることを期待
+  // reark-ordered-listが存在し、その中のreark-text-blockが空であることを期待
+  const olDiv = container.querySelector(".reark-ordered-list");
+  expect(olDiv).not.toBeNull();
+  const textBlock = olDiv?.querySelector(".reark-text-block");
+  expect(textBlock).not.toBeNull();
+  expect(textBlock?.textContent).toBe("");
+});

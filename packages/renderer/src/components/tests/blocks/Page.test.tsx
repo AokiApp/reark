@@ -117,3 +117,23 @@ describe("Page block", () => {
     expect(container).toMatchSnapshot();
   });
 });
+
+it("renders nothing when page elements is empty", () => {
+  const pageBlock = {
+    block_id: "empty-page",
+    block_type: 1,
+    page: {
+      elements: [],
+      style: {
+        align: 1 as const,
+      },
+    },
+  };
+  const { container } = render(<Page block={pageBlock} />);
+  // 空のdiv（reark-page）が描画されることを期待
+  const div = container.querySelector(".reark-page");
+  expect(div).not.toBeNull();
+  expect(div?.textContent).toBe("");
+  // スナップショットテスト
+  expect(container).toMatchSnapshot();
+});

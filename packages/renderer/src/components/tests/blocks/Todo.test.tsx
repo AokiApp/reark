@@ -37,3 +37,25 @@ describe("Todo block", () => {
     expect(container).toMatchSnapshot();
   });
 });
+
+it("renders todo with no elements", () => {
+  const todoBlock = {
+    block_id: "empty-todo",
+    block_type: 20,
+    todo: {
+      elements: [],
+      style: {
+        align: 1 as const,
+        done: false,
+      },
+    },
+  };
+  const { container } = render(<Todo block={todoBlock} />);
+  // チェックボックスのみが描画されること
+  const checkbox = container.querySelector('input[type="checkbox"]');
+  expect(checkbox).not.toBeNull();
+  // テキストが空であること
+  expect(container.textContent?.replace(/\s/g, "")).toBe("");
+  // スナップショットテスト
+  expect(container).toMatchSnapshot();
+});

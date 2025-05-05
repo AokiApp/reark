@@ -35,3 +35,24 @@ describe("UnorderedList block", () => {
     expect(container).toMatchSnapshot();
   });
 });
+
+it("renders nothing when unordered list elements is empty", () => {
+  const unorderedListBlock = {
+    block_id: "empty-unordered-list",
+    block_type: 12,
+    bullet: {
+      elements: [],
+      style: {
+        align: 1 as const,
+        folded: false,
+      },
+    },
+  };
+  const { container } = render(<UnorderedList block={unorderedListBlock} />);
+  // reark-unordered-listが存在し、その中のreark-text-blockが空であることを期待
+  const ulDiv = container.querySelector(".reark-unordered-list");
+  expect(ulDiv).not.toBeNull();
+  const textBlock = ulDiv?.querySelector(".reark-text-block");
+  expect(textBlock).not.toBeNull();
+  expect(textBlock?.textContent).toBe("");
+});

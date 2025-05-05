@@ -126,3 +126,30 @@ describe("Callout block", () => {
     expect(container).toMatchSnapshot();
   });
 });
+
+it("renders callout with no children", () => {
+  const calloutBlock = {
+    block_id: "empty-callout",
+    block_type: 19,
+    callout: {
+      background_color: 4,
+      border_color: 4,
+      emoji_id: "innocent",
+      text_color: 0,
+    },
+    children: [],
+    comment_ids: [],
+    parent_id: "ZIjadstYfoQVMjxXAwRjM0rVpVg",
+  };
+  const { container } = render(
+    <BlockStoreProvider items={[calloutBlock]}>
+      <Callout block={calloutBlock} />
+    </BlockStoreProvider>,
+  );
+  // Callout emojiのみが描画されること
+  expect(screen.getByText("😇")).toBeInTheDocument();
+  // 子要素が描画されないこと
+  expect(container.textContent).toBe("😇");
+  // スナップショットテスト
+  expect(container).toMatchSnapshot();
+});

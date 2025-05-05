@@ -9,3 +9,8 @@ describe("UnsupportedBlock", () => {
     expect(container).toMatchSnapshot();
   });
 });
+it("renders unsupported block message with undefined type", () => {
+  // @ts-expect-error 故意にtypeを渡さない
+  const { container } = render(<UnsupportedBlock />);
+  expect(container.textContent).toMatch(/Unsupported block type/);
+});

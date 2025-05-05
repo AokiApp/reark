@@ -77,3 +77,20 @@ exports[`Page block renders page text 1`] = `
   </div>
 </div>
 `;
+
+exports[`renders nothing when page elements is empty 1`] = `
+<div>
+  <div
+    class="reark-page"
+  >
+    <div
+      class="reark-page-title"
+    >
+      <div
+        class="reark-text-block"
+        style="text-align: left;"
+      />
+    </div>
+  </div>
+</div>
+`;

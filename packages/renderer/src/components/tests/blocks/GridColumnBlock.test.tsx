@@ -34,3 +34,25 @@ describe("GridColumnBlock block", () => {
     expect(container).toMatchSnapshot();
   });
 });
+
+it("renders grid column block with no children", () => {
+  const gridColumnBlock = {
+    block_id: "empty-col",
+    block_type: 16,
+    grid_column: {
+      width_ratio: 1,
+    },
+    children: [],
+  };
+  const { container } = render(
+    <BlockStoreProvider items={[gridColumnBlock]}>
+      <GridColumnBlock block={gridColumnBlock} />
+    </BlockStoreProvider>,
+  );
+  // .reark-grid-column要素が存在し、子要素がないこと
+  const col = container.querySelector(".reark-grid-column");
+  expect(col).not.toBeNull();
+  expect(col?.children.length).toBe(0);
+  // スナップショットテスト
+  expect(container).toMatchSnapshot();
+});

@@ -25,3 +25,12 @@ exports[`GridBlock block renders grid block and unsupported columns 1`] = `
   </div>
 </div>
 `;
+
+exports[`renders grid block with no columns 1`] = `
+<div>
+  <div
+    class="reark-grid"
+    style="display: flex; gap: 16px;"
+  />
+</div>
+`;

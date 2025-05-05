@@ -48,3 +48,25 @@ describe("GridBlock block", () => {
     expect(container).toMatchSnapshot();
   });
 });
+
+it("renders grid block with no columns", () => {
+  const gridBlock = {
+    block_id: "empty-grid",
+    block_type: 15,
+    grid: {
+      column_size: 0,
+    },
+    children: [],
+  };
+  const { container } = render(
+    <BlockStoreProvider items={[gridBlock]}>
+      <GridBlock block={gridBlock} />
+    </BlockStoreProvider>,
+  );
+  // .reark-grid要素が存在し、子要素がないこと
+  const grid = container.querySelector(".reark-grid");
+  expect(grid).not.toBeNull();
+  expect(grid?.children.length).toBe(0);
+  // スナップショットテスト
+  expect(container).toMatchSnapshot();
+});

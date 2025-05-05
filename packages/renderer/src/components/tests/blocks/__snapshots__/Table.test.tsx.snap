@@ -66,3 +66,20 @@ exports[`Table block renders table and unsupported cells 1`] = `
   </div>
 </div>
 `;
+
+exports[`renders table with no cells 1`] = `
+<div>
+  <div
+    class="reark-table-wrapper"
+  >
+    <table
+      class="reark-table"
+    >
+      <tbody>
+        <tr />
+        <tr />
+      </tbody>
+    </table>
+  </div>
+</div>
+`;

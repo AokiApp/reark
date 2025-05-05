@@ -39,3 +39,41 @@ exports[`Text block renders text from context 1`] = `
   </div>
 </div>
 `;
+
+exports[`renders empty span when elements contain empty string 1`] = `
+<div>
+  <div
+    class="reark-text-block"
+    style="text-align: left;"
+  >
+    <span
+      class="reark-text"
+    />
+  </div>
+</div>
+`;
+
+exports[`renders text with bold style 1`] = `
+<div>
+  <div
+    class="reark-text-block"
+    style="text-align: left;"
+  >
+    <span
+      class="reark-text--bold reark-text"
+    >
+      太字
+    </span>
+    <span
+      class="reark-text"
+    >
+      は英語で
+    </span>
+    <span
+      class="reark-text--bold reark-text"
+    >
+      Bold
+    </span>
+  </div>
+</div>
+`;

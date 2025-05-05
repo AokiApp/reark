@@ -49,3 +49,34 @@ describe("Table block", () => {
     expect(container).toMatchSnapshot();
   });
 });
+
+it("renders table with no cells", () => {
+  const tableBlock = {
+    block_id: "empty-table",
+    block_type: 21,
+    table: {
+      cells: [],
+      property: {
+        column_size: 2,
+        row_size: 2,
+        header_row: true,
+        header_column: false,
+        column_width: [100, 100],
+        merge_info: [],
+      },
+    },
+  };
+  const { container } = render(
+    <BlockStoreProvider items={[tableBlock]}>
+      <Table block={tableBlock} />
+    </BlockStoreProvider>,
+  );
+  // .reark-table-wrapper要素が存在し、テーブル本体が空であること
+  const wrapper = container.querySelector(".reark-table-wrapper");
+  expect(wrapper).not.toBeNull();
+  const table = wrapper?.querySelector("table");
+  expect(table).not.toBeNull();
+  expect(table?.textContent).toBe("");
+  // スナップショットテスト
+  expect(container).toMatchSnapshot();
+});

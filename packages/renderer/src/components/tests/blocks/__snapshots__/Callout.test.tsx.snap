@@ -70,3 +70,21 @@ exports[`Callout block renders callout with emoji and children 1`] = `
   </div>
 </div>
 `;
+
+exports[`renders callout with no children 1`] = `
+<div>
+  <div
+    class="reark-callout reark-callout--custom"
+    style="background-color: rgb(217, 245, 214); border: 1px solid #8ee085; border-radius: 8px;"
+  >
+    <div
+      class="reark-callout__emoji"
+    >
+      😇
+    </div>
+    <div
+      class="reark-callout__content"
+    />
+  </div>
+</div>
+`;

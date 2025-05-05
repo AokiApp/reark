@@ -72,3 +72,31 @@ describe("CodeBlock block", () => {
     expect(container).toMatchSnapshot();
   });
 });
+
+it("renders nothing when code elements is empty", () => {
+  const codeBlock = {
+    block_id: "empty-code",
+    block_type: 14,
+    code: {
+      elements: [],
+      style: {
+        language: 49,
+        wrap: true,
+      },
+    },
+  };
+  const { container } = render(
+    <BlockStoreProvider items={[codeBlock]}>
+      <CodeBlock block={codeBlock} />
+    </BlockStoreProvider>,
+  );
+  // 空のdiv（reark-code-block）が描画されることを期待
+  // reark-codeblockが存在し、コード部分が空であることを期待
+  const codeblock = container.querySelector(".reark-codeblock");
+  expect(codeblock).not.toBeNull();
+  const codeText = codeblock?.querySelector(".reark-text-block");
+  expect(codeText).not.toBeNull();
+  expect(codeText?.textContent).toBe("");
+  // スナップショットテスト
+  expect(container).toMatchSnapshot();
+});
