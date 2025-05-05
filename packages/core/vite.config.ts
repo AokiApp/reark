@@ -5,6 +5,7 @@ import dts from "vite-plugin-dts";
 export default defineConfig({
   plugins: [react(), dts()],
   build: {
+    emptyOutDir: false,
     lib: {
       entry: "./src/index.ts",
       name: "Reark",

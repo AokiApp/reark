@@ -23,22 +23,22 @@ export function BlockComponent({ blockId }: Props) {
   }
 
   // Development-only debug tool
-  // const showDebugInfo = (e: React.MouseEvent<HTMLDivElement>) => {
-  //   // クリックされた要素が <a> タグの場合は処理をスキップ
-  //   if ((e.target as HTMLElement).tagName === "A") {
-  //     return;
-  //   }
+  const showDebugInfo = (e: React.MouseEvent<HTMLDivElement>) => {
+    // クリックされた要素が <a> タグの場合は処理をスキップ
+    if ((e.target as HTMLElement).tagName === "A") {
+      return;
+    }
 
-  //   e.stopPropagation();
-  //   e.preventDefault();
-  //   console.group(`Block Debug Info: ${blockId}`);
-  //   console.log("Block Data:", block);
-  //   console.log("Parent Block Data:", blocks[block.parent_id]);
-  //   console.groupEnd();
-  // };
+    e.stopPropagation();
+    e.preventDefault();
+    console.group(`Block Debug Info: ${blockId}`);
+    console.log("Block Data:", block);
+    console.log("Parent Block Data:", blocks[block.parent_id || ""]);
+    console.groupEnd();
+  };
 
   const inner = (
-    <div className="reark-block" /*onClick={showDebugInfo}*/>
+    <div className="reark-block" onClick={showDebugInfo}>
       <ErrorBoundary>
         <Component block={block} />
       </ErrorBoundary>

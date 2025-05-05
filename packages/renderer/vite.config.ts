@@ -11,6 +11,7 @@ export default defineConfig({
     // This block is ready for future PostCSS plugin configuration.
   },
   build: {
+    emptyOutDir: false,
     lib: {
       entry: path.resolve(__dirname, "src/index.ts"),
       name: "reark-components",
