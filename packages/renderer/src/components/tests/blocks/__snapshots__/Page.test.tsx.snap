@@ -1,5 +1,83 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Page block renders page text 1`] = `
+<div>
+  <div
+    class="reark-page"
+  >
+    <div
+      class="reark-page-title"
+    >
+      <div
+        class="reark-text-block"
+        style="text-align: left;"
+      >
+        <span
+          class="reark-text"
+        >
+          Lark
+        </span>
+        <div
+          class="reark-comment"
+          data-comment-ids="7500745344221708322"
+        >
+          <span
+            class="reark-text"
+          >
+            レン
+          </span>
+        </div>
+        <div
+          class="reark-comment"
+          data-comment-ids="7500745247643664418,7500745344221708322"
+        >
+          <span
+            class="reark-text"
+          >
+            ダ
+          </span>
+        </div>
+        <div
+          class="reark-comment"
+          data-comment-ids="7500745247643664418"
+        >
+          <span
+            class="reark-text"
+          >
+            ラ
+          </span>
+        </div>
+        <div
+          class="reark-comment"
+          data-comment-ids="7500745247643664418,7500745292006817825"
+        >
+          <span
+            class="reark-text"
+          >
+            ー
+          </span>
+        </div>
+        <div
+          class="reark-comment"
+          data-comment-ids="7500745247643664418"
+        >
+          <span
+            class="reark-text"
+          >
+            テ
+          </span>
+        </div>
+        <span
+          class="reark-text"
+        >
+          ストケース
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Page block renders page text 2`] = `
 <div>
   <div
@@ -73,6 +151,23 @@ exports[`Page block renders page text 2`] = `
           ストケース
         </span>
       </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`renders nothing when page elements is empty 1`] = `
+<div>
+  <div
+    class="reark-page"
+  >
+    <div
+      class="reark-page-title"
+    >
+      <div
+        class="reark-text-block"
+        style="text-align: left;"
+      />
     </div>
   </div>
 </div>

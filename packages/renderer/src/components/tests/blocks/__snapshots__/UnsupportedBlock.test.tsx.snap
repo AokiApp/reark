@@ -1,5 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`UnsupportedBlock renders unsupported block message 1`] = `
+<div>
+  <div
+    class="reark-unsupported-block"
+  >
+    <strong>
+      Unsupported block type: 
+      42
+    </strong>
+  </div>
+</div>
+`;
+
 exports[`UnsupportedBlock renders unsupported block message 2`] = `
 <div>
   <div
@@ -8,6 +21,18 @@ exports[`UnsupportedBlock renders unsupported block message 2`] = `
     <strong>
       Unsupported block type: 
       42
+    </strong>
+  </div>
+</div>
+`;
+
+exports[`renders unsupported block message with undefined type 1`] = `
+<div>
+  <div
+    class="reark-unsupported-block"
+  >
+    <strong>
+      Unsupported block type: 
     </strong>
   </div>
 </div>

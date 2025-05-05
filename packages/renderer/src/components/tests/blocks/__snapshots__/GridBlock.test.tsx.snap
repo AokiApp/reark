@@ -1,5 +1,31 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`GridBlock block renders grid block and unsupported columns 1`] = `
+<div>
+  <div
+    class="reark-grid"
+    style="display: flex; gap: 16px;"
+  >
+    <div
+      class="reark-unsupported-block"
+    >
+      <strong>
+        Unsupported block type: 
+        16
+      </strong>
+    </div>
+    <div
+      class="reark-unsupported-block"
+    >
+      <strong>
+        Unsupported block type: 
+        16
+      </strong>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`GridBlock block renders grid block and unsupported columns 2`] = `
 <div>
   <div
@@ -23,6 +49,15 @@ exports[`GridBlock block renders grid block and unsupported columns 2`] = `
       </strong>
     </div>
   </div>
+</div>
+`;
+
+exports[`renders grid block with no columns 1`] = `
+<div>
+  <div
+    class="reark-grid"
+    style="display: flex; gap: 16px;"
+  />
 </div>
 `;
 

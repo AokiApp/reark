@@ -3,6 +3,8 @@ import puppeteer from "puppeteer";
 import path from "path";
 import fs from "fs/promises";
 
+const doVRT = process.env.DO_VRT === "true";
+
 export function renderWithVRT(
   ui: React.ReactElement,
   options?: RenderOptions,
@@ -11,6 +13,14 @@ export function renderWithVRT(
   return {
     ...result,
     async vrt() {
+      if (!doVRT) {
+        // User prefers not to run VRT
+        // if you want to run VRT, set DO_VRT=true as an environment variable
+        // or set it in your test command
+        // e.g. "DO_VRT=true jest"
+        // or "DO_VRT=true npm test"
+        return;
+      }
       const html = result.container.innerHTML;
       const browser = await puppeteer.launch({
         headless: true,
