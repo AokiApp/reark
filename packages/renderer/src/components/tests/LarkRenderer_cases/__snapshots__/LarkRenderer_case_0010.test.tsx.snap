@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`LarkRenderer 異常系: 親無し子ブロック 親が存在しないchildrenを持つブロックもレンダリングできる 1`] = `
+exports[`LarkRenderer 異常系: 親無し子ブロック 親が存在しないchildrenを持つブロックもレンダリングできる 2`] = `
 <div>
   <div
     class="reark-block"

@@ -1,8 +1,8 @@
-import { render } from "@testing-library/react";
+import { renderWithVRT } from "../test-utils/renderWithVRT";
 import { LarkRenderer } from "../../LarkRenderer";
 
 describe("LarkRenderer 属性バリエーション複合", () => {
-  it("textブロック: 太字・斜体・下線・打消し・インラインコード・コメント付き", () => {
+  it("textブロック: 太字・斜体・下線・打消し・インラインコード・コメント付き", async () => {
     const textBlock = {
       block_id: "text-attr-1",
       block_type: 2,
@@ -53,7 +53,10 @@ describe("LarkRenderer 属性バリエーション複合", () => {
 
     const blocks = [textBlock];
 
-    const { container } = render(<LarkRenderer initialData={{ blocks }} />);
+    const { container, vrt } = renderWithVRT(
+      <LarkRenderer initialData={{ blocks }} />,
+    );
+    await vrt();
     expect(container).toMatchSnapshot();
   });
 });

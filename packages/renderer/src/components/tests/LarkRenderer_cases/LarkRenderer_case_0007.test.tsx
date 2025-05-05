@@ -1,8 +1,8 @@
-import { render } from "@testing-library/react";
+import { renderWithVRT } from "../test-utils/renderWithVRT";
 import { LarkRenderer } from "../../LarkRenderer";
 
 describe("LarkRenderer 異常系: childrenが空配列", () => {
-  it("childrenが空配列でも正常にレンダリングできる", () => {
+  it("childrenが空配列でも正常にレンダリングできる", async () => {
     const block = {
       block_id: "empty-children",
       block_type: 2,
@@ -21,7 +21,10 @@ describe("LarkRenderer 異常系: childrenが空配列", () => {
       children: [],
     };
     const blocks = [block];
-    const { container } = render(<LarkRenderer initialData={{ blocks }} />);
+    const { container, vrt } = renderWithVRT(
+      <LarkRenderer initialData={{ blocks }} />,
+    );
+    await vrt();
     expect(container).toMatchSnapshot();
   });
 });

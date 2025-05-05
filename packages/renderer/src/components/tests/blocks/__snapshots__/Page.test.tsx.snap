@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Page block renders page text 1`] = `
+exports[`Page block renders page text 2`] = `
 <div>
   <div
     class="reark-page"
@@ -78,7 +78,7 @@ exports[`Page block renders page text 1`] = `
 </div>
 `;
 
-exports[`renders nothing when page elements is empty 1`] = `
+exports[`renders nothing when page elements is empty 2`] = `
 <div>
   <div
     class="reark-page"

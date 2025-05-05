@@ -1,10 +1,11 @@
-import { render, screen } from "@testing-library/react";
+import { renderWithVRT } from "../test-utils/renderWithVRT";
+import { screen } from "@testing-library/react";
 import { UnorderedList } from "../../blocks/UnorderedList";
 
 // .private.local/example-blocks.json よりUnorderedListブロックの例
 
 describe("UnorderedList block", () => {
-  it("renders unordered list text", () => {
+  it("renders unordered list text", async () => {
     const unorderedListBlock = {
       block_id: "dummy-unordered-list",
       block_type: 12,
@@ -29,14 +30,17 @@ describe("UnorderedList block", () => {
         },
       },
     };
-    const { container } = render(<UnorderedList block={unorderedListBlock} />);
+    const { container, vrt } = renderWithVRT(
+      <UnorderedList block={unorderedListBlock} />,
+    );
     expect(screen.getByText(/Unordered/)).toBeInTheDocument();
+    await vrt();
     // スナップショットテスト
     expect(container).toMatchSnapshot();
   });
 });
 
-it("renders nothing when unordered list elements is empty", () => {
+it("renders nothing when unordered list elements is empty", async () => {
   const unorderedListBlock = {
     block_id: "empty-unordered-list",
     block_type: 12,
@@ -48,7 +52,10 @@ it("renders nothing when unordered list elements is empty", () => {
       },
     },
   };
-  const { container } = render(<UnorderedList block={unorderedListBlock} />);
+  const { container, vrt } = renderWithVRT(
+    <UnorderedList block={unorderedListBlock} />,
+  );
+  await vrt();
   // reark-unordered-listが存在し、その中のreark-text-blockが空であることを期待
   const ulDiv = container.querySelector(".reark-unordered-list");
   expect(ulDiv).not.toBeNull();

@@ -1,8 +1,8 @@
-import { render } from "@testing-library/react";
+import { renderWithVRT } from "../test-utils/renderWithVRT";
 import { LarkRenderer } from "../../LarkRenderer";
 
 describe("LarkRenderer 属性バリエーション: 太字のみ", () => {
-  it("textブロック: 太字のみ", () => {
+  it("textブロック: 太字のみ", async () => {
     const block = {
       block_id: "bold-only",
       block_type: 2,
@@ -21,7 +21,10 @@ describe("LarkRenderer 属性バリエーション: 太字のみ", () => {
       children: [],
     };
     const blocks = [block];
-    const { container } = render(<LarkRenderer initialData={{ blocks }} />);
+    const { container, vrt } = renderWithVRT(
+      <LarkRenderer initialData={{ blocks }} />,
+    );
+    await vrt();
     expect(container).toMatchSnapshot();
   });
 });

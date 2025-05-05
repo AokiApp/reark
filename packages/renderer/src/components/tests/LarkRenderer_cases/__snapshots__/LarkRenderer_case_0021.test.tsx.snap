@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`LarkRenderer パフォーマンス: 1000個のtextブロック 大量のblocksでもレンダリングできる 1`] = `
+exports[`LarkRenderer パフォーマンス: 1000個のtextブロック 大量のblocksでもレンダリングできる 2`] = `
 <div>
   <div
     class="reark-block"

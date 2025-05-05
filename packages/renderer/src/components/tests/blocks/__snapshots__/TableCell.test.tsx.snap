@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`TableCell block renders table cell and unsupported child 1`] = `
+exports[`TableCell block renders table cell and unsupported child 2`] = `
 <div>
   <div>
     <div

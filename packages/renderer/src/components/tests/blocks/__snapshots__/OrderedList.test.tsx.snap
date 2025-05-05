@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`OrderedList block renders ordered list text 1`] = `
+exports[`OrderedList block renders ordered list text 2`] = `
 <div>
   <div
     class="reark-ordered-list"

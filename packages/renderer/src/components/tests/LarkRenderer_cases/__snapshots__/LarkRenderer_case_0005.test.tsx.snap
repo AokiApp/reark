@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`LarkRenderer 異常系: childrenプロパティ欠損 childrenプロパティが存在しないブロックもレンダリングできる 1`] = `
+exports[`LarkRenderer 異常系: childrenプロパティ欠損 childrenプロパティが存在しないブロックもレンダリングできる 2`] = `
 <div>
   <div
     class="reark-block"

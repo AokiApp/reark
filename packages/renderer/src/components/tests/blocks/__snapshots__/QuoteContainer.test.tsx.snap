@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`QuoteContainer block renders quote container and unsupported child 1`] = `
+exports[`QuoteContainer block renders quote container and unsupported child 2`] = `
 <div>
   <div
     class="reark-quote-container"
@@ -17,7 +17,7 @@ exports[`QuoteContainer block renders quote container and unsupported child 1`] 
 </div>
 `;
 
-exports[`renders quote container with no children 1`] = `
+exports[`renders quote container with no children 2`] = `
 <div>
   <div
     class="reark-quote-container"

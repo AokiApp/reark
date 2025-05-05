@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`GridBlock block renders grid block and unsupported columns 1`] = `
+exports[`GridBlock block renders grid block and unsupported columns 2`] = `
 <div>
   <div
     class="reark-grid"
@@ -26,7 +26,7 @@ exports[`GridBlock block renders grid block and unsupported columns 1`] = `
 </div>
 `;
 
-exports[`renders grid block with no columns 1`] = `
+exports[`renders grid block with no columns 2`] = `
 <div>
   <div
     class="reark-grid"

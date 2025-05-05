@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`LarkRenderer 属性バリエーション複合 textブロック: 太字・斜体・下線・打消し・インラインコード・コメント付き 1`] = `
+exports[`LarkRenderer 属性バリエーション複合 textブロック: 太字・斜体・下線・打消し・インラインコード・コメント付き 2`] = `
 <div>
   <div
     class="reark-block"

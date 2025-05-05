@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`LarkRenderer 属性バリエーション: 斜体のみ textブロック: 斜体のみ 1`] = `
+exports[`LarkRenderer 属性バリエーション: 斜体のみ textブロック: 斜体のみ 2`] = `
 <div>
   <div
     class="reark-block"

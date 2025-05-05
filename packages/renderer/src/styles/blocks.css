@@ -1,5 +1,5 @@
 /* Global BEM-style CSS for block components, all classes prefixed with reark- */
-
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap");
 /* Base typography */
 :root {
   --reark-color-primary: #1a73e8;
@@ -34,7 +34,8 @@
     Apple Color Emoji,
     Segoe UI Emoji,
     Segoe UI Symbol,
-    Noto Color Emoji;
+    Noto Color Emoji,
+    "Noto Sans JP";
   & a {
     color: var(--reark-color-primary);
     text-decoration: none;

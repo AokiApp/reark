@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CodeBlock block renders code block with code and language 1`] = `
+exports[`CodeBlock block renders code block with code and language 2`] = `
 <div>
   <div
     class="reark-codeblock"
@@ -60,7 +60,7 @@ exports[`CodeBlock block renders code block with code and language 1`] = `
 </div>
 `;
 
-exports[`renders nothing when code elements is empty 1`] = `
+exports[`renders nothing when code elements is empty 2`] = `
 <div>
   <div
     class="reark-codeblock"

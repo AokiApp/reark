@@ -1,10 +1,11 @@
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
+import { renderWithVRT } from "../test-utils/renderWithVRT";
 import { Callout } from "../../blocks/Callout";
 import { BlockStoreProvider } from "../../../contexts/BlockStoreContext";
 
 // .private.local/example-blocks.json よりCalloutブロックの例
 describe("Callout block", () => {
-  it("renders callout with emoji and children", () => {
+  it("renders callout with emoji and children", async () => {
     const calloutBlock = {
       block_id: "PrkUdrRERoRwQfxoLZhjS6qfpFf",
       block_type: 19,
@@ -108,7 +109,7 @@ describe("Callout block", () => {
       },
     };
 
-    const { container } = render(
+    const { container, vrt } = renderWithVRT(
       <BlockStoreProvider items={[calloutBlock, heading3Block, bulletBlock]}>
         <Callout block={calloutBlock} />
       </BlockStoreProvider>,
@@ -123,11 +124,12 @@ describe("Callout block", () => {
     // bullet: "ネスト"
     expect(screen.getByText(/ネスト/)).toBeInTheDocument();
     // スナップショットテスト
+    await vrt();
     expect(container).toMatchSnapshot();
   });
 });
 
-it("renders callout with no children", () => {
+it("renders callout with no children", async () => {
   const calloutBlock = {
     block_id: "empty-callout",
     block_type: 19,
@@ -141,7 +143,7 @@ it("renders callout with no children", () => {
     comment_ids: [],
     parent_id: "ZIjadstYfoQVMjxXAwRjM0rVpVg",
   };
-  const { container } = render(
+  const { container, vrt } = renderWithVRT(
     <BlockStoreProvider items={[calloutBlock]}>
       <Callout block={calloutBlock} />
     </BlockStoreProvider>,
@@ -151,5 +153,6 @@ it("renders callout with no children", () => {
   // 子要素が描画されないこと
   expect(container.textContent).toBe("😇");
   // スナップショットテスト
+  await vrt();
   expect(container).toMatchSnapshot();
 });

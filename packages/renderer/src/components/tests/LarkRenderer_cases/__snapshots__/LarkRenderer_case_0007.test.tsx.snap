@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`LarkRenderer 異常系: childrenが空配列 childrenが空配列でも正常にレンダリングできる 1`] = `
+exports[`LarkRenderer 異常系: childrenが空配列 childrenが空配列でも正常にレンダリングできる 2`] = `
 <div>
   <div
     class="reark-block"

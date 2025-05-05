@@ -1,8 +1,8 @@
-import { render } from "@testing-library/react";
+import { renderWithVRT } from "../test-utils/renderWithVRT";
 import { LarkRenderer } from "../../LarkRenderer";
 
 describe("LarkRenderer 複合ケース: 複数ブロック混在", () => {
-  it("text, heading, bullet, table など複数ブロックを同時にレンダリングできる", () => {
+  it("text, heading, bullet, table など複数ブロックを同時にレンダリングできる", async () => {
     const pageBlock = {
       block_id: "page-mix",
       block_type: 1,
@@ -82,7 +82,10 @@ describe("LarkRenderer 複合ケース: 複数ブロック混在", () => {
       tableBlock,
     ];
 
-    const { container } = render(<LarkRenderer initialData={{ blocks }} />);
+    const { container, vrt } = renderWithVRT(
+      <LarkRenderer initialData={{ blocks }} />,
+    );
+    await vrt();
     expect(container).toMatchSnapshot();
   });
 });

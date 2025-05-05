@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Heading1 block renders heading1 text 1`] = `
+exports[`Heading1 block renders heading1 text 2`] = `
 <div>
   <div
     class="reark-heading reark-heading--1"
@@ -24,7 +24,7 @@ exports[`Heading1 block renders heading1 text 1`] = `
 </div>
 `;
 
-exports[`Heading1 block renders heading1 with bold element 1`] = `
+exports[`Heading1 block renders heading1 with bold element 2`] = `
 <div>
   <div
     class="reark-heading reark-heading--1"

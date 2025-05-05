@@ -1,11 +1,12 @@
-import { render, screen } from "@testing-library/react";
+import { renderWithVRT } from "../test-utils/renderWithVRT";
+import { screen } from "@testing-library/react";
 import { Text } from "../../blocks/Text";
 import { BlockStoreProvider } from "../../../contexts/BlockStoreContext";
 
 // .private.local/example-blocks.json よりTextブロックの例
 
 describe("Text block", () => {
-  it("renders text from context", () => {
+  it("renders text from context", async () => {
     const textBlock = {
       block_id: "T8F8dOwtNom7yHxww2ZjPnw3pSf",
       block_type: 2,
@@ -59,7 +60,7 @@ describe("Text block", () => {
         },
       },
     };
-    const { container } = render(
+    const { container, vrt } = renderWithVRT(
       <BlockStoreProvider items={[textBlock]}>
         <Text elements={textBlock.text.elements} style={textBlock.text.style} />
       </BlockStoreProvider>,
@@ -70,10 +71,12 @@ describe("Text block", () => {
     expect(
       screen.getByText(/の描画を確かめるためのものである/),
     ).toBeInTheDocument();
+    // VRT
+    await vrt();
     // スナップショットテスト
     expect(container).toMatchSnapshot();
   });
-  it("renders nothing when elements is empty", () => {
+  it("renders nothing when elements is empty", async () => {
     const emptyTextBlock = {
       block_id: "empty-text",
       block_type: 2,
@@ -85,7 +88,7 @@ describe("Text block", () => {
         },
       },
     };
-    const { container } = render(
+    const { container, vrt } = renderWithVRT(
       <BlockStoreProvider items={[emptyTextBlock]}>
         <Text
           elements={emptyTextBlock.text.elements}
@@ -97,10 +100,11 @@ describe("Text block", () => {
     const div = container.querySelector(".reark-text-block");
     expect(div).not.toBeNull();
     expect(div?.textContent).toBe("");
+    await vrt();
   });
 });
 
-it("renders text with bold style", () => {
+it("renders text with bold style", async () => {
   const textBlock = {
     block_id: "BErpdwUbpocGvpxKiDQjVrYApJf",
     block_type: 2,
@@ -150,7 +154,7 @@ it("renders text with bold style", () => {
       },
     },
   };
-  const { container } = render(
+  const { container, vrt } = renderWithVRT(
     <BlockStoreProvider items={[textBlock]}>
       <Text elements={textBlock.text.elements} style={textBlock.text.style} />
     </BlockStoreProvider>,
@@ -162,11 +166,12 @@ it("renders text with bold style", () => {
   expect(boldSpans[1].textContent).toBe("Bold");
   // "は英語で"が通常テキストで描画されていること
   expect(screen.getByText(/は英語で/)).toBeInTheDocument();
+  await vrt();
   // スナップショットテスト
   expect(container).toMatchSnapshot();
 });
 
-it("renders empty span when elements contain empty string", () => {
+it("renders empty span when elements contain empty string", async () => {
   const textBlock = {
     block_id: "OJwbdtjjPoo0fqxLqhLjYz73pBd",
     block_type: 2,
@@ -192,7 +197,7 @@ it("renders empty span when elements contain empty string", () => {
       },
     },
   };
-  const { container } = render(
+  const { container, vrt } = renderWithVRT(
     <BlockStoreProvider items={[textBlock]}>
       <Text elements={textBlock.text.elements} style={textBlock.text.style} />
     </BlockStoreProvider>,
@@ -201,6 +206,7 @@ it("renders empty span when elements contain empty string", () => {
   const spans = container.querySelectorAll("span.reark-text");
   expect(spans.length).toBe(1);
   expect(spans[0].textContent).toBe("");
+  await vrt();
   // スナップショットテスト
   expect(container).toMatchSnapshot();
 });

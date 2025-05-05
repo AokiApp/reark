@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`LarkRenderer 複合ケース: 複数ブロック混在 text, heading, bullet, table など複数ブロックを同時にレンダリングできる 1`] = `
+exports[`LarkRenderer 複合ケース: 複数ブロック混在 text, heading, bullet, table など複数ブロックを同時にレンダリングできる 2`] = `
 <div>
   <div
     class="reark-block"

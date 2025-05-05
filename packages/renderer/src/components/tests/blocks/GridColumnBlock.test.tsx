@@ -1,11 +1,12 @@
-import { render, screen } from "@testing-library/react";
+import { renderWithVRT } from "../test-utils/renderWithVRT";
+import { screen } from "@testing-library/react";
 import { GridColumnBlock } from "../../blocks/GridColumnBlock";
 import { BlockStoreProvider } from "../../../contexts/BlockStoreContext";
 
 // ダミーのGridColumnBlock
 
 describe("GridColumnBlock block", () => {
-  it("renders grid column block and unsupported child", () => {
+  it("renders grid column block and unsupported child", async () => {
     const gridColumnBlock = {
       block_id: "dummy-col",
       block_type: 16,
@@ -20,7 +21,7 @@ describe("GridColumnBlock block", () => {
       block_type: 99,
     };
 
-    const { container } = render(
+    const { container, vrt } = renderWithVRT(
       <BlockStoreProvider items={[gridColumnBlock, dummyChildBlock]}>
         <GridColumnBlock block={gridColumnBlock} />
       </BlockStoreProvider>,
@@ -30,12 +31,14 @@ describe("GridColumnBlock block", () => {
     expect(col).not.toBeNull();
     // Unsupported block type: 99 の表示があること
     expect(screen.getByText(/Unsupported block type: 99/)).toBeInTheDocument();
+    // VRT
+    await vrt();
     // スナップショットテスト
     expect(container).toMatchSnapshot();
   });
 });
 
-it("renders grid column block with no children", () => {
+it("renders grid column block with no children", async () => {
   const gridColumnBlock = {
     block_id: "empty-col",
     block_type: 16,
@@ -44,7 +47,7 @@ it("renders grid column block with no children", () => {
     },
     children: [],
   };
-  const { container } = render(
+  const { container, vrt } = renderWithVRT(
     <BlockStoreProvider items={[gridColumnBlock]}>
       <GridColumnBlock block={gridColumnBlock} />
     </BlockStoreProvider>,
@@ -53,6 +56,8 @@ it("renders grid column block with no children", () => {
   const col = container.querySelector(".reark-grid-column");
   expect(col).not.toBeNull();
   expect(col?.children.length).toBe(0);
+  // VRT
+  await vrt();
   // スナップショットテスト
   expect(container).toMatchSnapshot();
 });

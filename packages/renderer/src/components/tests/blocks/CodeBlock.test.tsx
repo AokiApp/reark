@@ -1,11 +1,12 @@
-import { render, screen } from "@testing-library/react";
+import { renderWithVRT } from "../test-utils/renderWithVRT";
+import { screen } from "@testing-library/react";
 import { CodeBlock } from "../../blocks/CodeBlock";
 import { BlockStoreProvider } from "../../../contexts/BlockStoreContext";
 
 // .private.local/example-blocks.json よりCodeBlockブロックの例
 
 describe("CodeBlock block", () => {
-  it("renders code block with code and language", () => {
+  it("renders code block with code and language", async () => {
     const codeBlock = {
       block_id: "HZTvdsqcoo1UpZxfKNEjA562pgg",
       block_type: 14,
@@ -56,7 +57,7 @@ describe("CodeBlock block", () => {
         },
       },
     };
-    const { container } = render(
+    const { container, vrt } = renderWithVRT(
       <BlockStoreProvider items={[codeBlock]}>
         <CodeBlock block={codeBlock} />
       </BlockStoreProvider>,
@@ -68,12 +69,14 @@ describe("CodeBlock block", () => {
     expect(screen.getByText(/Python/)).toBeInTheDocument();
     // Copyボタン
     expect(screen.getByRole("button", { name: /Copy/ })).toBeInTheDocument();
+    // VRT
+    await vrt();
     // スナップショットテスト
     expect(container).toMatchSnapshot();
   });
 });
 
-it("renders nothing when code elements is empty", () => {
+it("renders nothing when code elements is empty", async () => {
   const codeBlock = {
     block_id: "empty-code",
     block_type: 14,
@@ -85,7 +88,7 @@ it("renders nothing when code elements is empty", () => {
       },
     },
   };
-  const { container } = render(
+  const { container, vrt } = renderWithVRT(
     <BlockStoreProvider items={[codeBlock]}>
       <CodeBlock block={codeBlock} />
     </BlockStoreProvider>,
@@ -97,6 +100,8 @@ it("renders nothing when code elements is empty", () => {
   const codeText = codeblock?.querySelector(".reark-text-block");
   expect(codeText).not.toBeNull();
   expect(codeText?.textContent).toBe("");
+  // VRT
+  await vrt();
   // スナップショットテスト
   expect(container).toMatchSnapshot();
 });

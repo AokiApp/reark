@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`UnorderedList block renders unordered list text 1`] = `
+exports[`UnorderedList block renders unordered list text 2`] = `
 <div>
   <div
     class="reark-unordered-list"

@@ -1,8 +1,8 @@
-import { render } from "@testing-library/react";
+import { renderWithVRT } from "../test-utils/renderWithVRT";
 import { LarkRenderer } from "../../LarkRenderer";
 
 describe("LarkRenderer 入れ子構造: 10段ネストのbulletリスト", () => {
-  it("10段ネストのbulletリストをレンダリングできる", () => {
+  it("10段ネストのbulletリストをレンダリングできる", async () => {
     const blocks = [];
     let parentId = "";
     for (let i = 0; i < 10; i++) {
@@ -26,7 +26,10 @@ describe("LarkRenderer 入れ子構造: 10段ネストのbulletリスト", () =>
       blocks.push(block);
       parentId = `bullet-nest-${i}`;
     }
-    const { container } = render(<LarkRenderer initialData={{ blocks }} />);
+    const { container, vrt } = renderWithVRT(
+      <LarkRenderer initialData={{ blocks }} />,
+    );
+    await vrt();
     expect(container).toMatchSnapshot();
   });
 });

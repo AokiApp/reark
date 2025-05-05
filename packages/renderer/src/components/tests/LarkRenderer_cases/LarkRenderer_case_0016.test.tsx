@@ -1,8 +1,8 @@
-import { render } from "@testing-library/react";
+import { renderWithVRT } from "../test-utils/renderWithVRT";
 import { LarkRenderer } from "../../LarkRenderer";
 
 describe("LarkRenderer 属性バリエーション: コメント付きのみ", () => {
-  it("textブロック: コメント付きのみ", () => {
+  it("textブロック: コメント付きのみ", async () => {
     const block = {
       block_id: "comment-only",
       block_type: 2,
@@ -21,7 +21,10 @@ describe("LarkRenderer 属性バリエーション: コメント付きのみ", (
       children: [],
     };
     const blocks = [block];
-    const { container } = render(<LarkRenderer initialData={{ blocks }} />);
+    const { container, vrt } = renderWithVRT(
+      <LarkRenderer initialData={{ blocks }} />,
+    );
+    await vrt();
     expect(container).toMatchSnapshot();
   });
 });

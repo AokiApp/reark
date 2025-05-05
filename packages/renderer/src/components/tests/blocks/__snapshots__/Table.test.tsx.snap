@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Table block renders table and unsupported cells 1`] = `
+exports[`Table block renders table and unsupported cells 2`] = `
 <div>
   <div
     class="reark-table-wrapper"
@@ -67,7 +67,7 @@ exports[`Table block renders table and unsupported cells 1`] = `
 </div>
 `;
 
-exports[`renders table with no cells 1`] = `
+exports[`renders table with no cells 2`] = `
 <div>
   <div
     class="reark-table-wrapper"

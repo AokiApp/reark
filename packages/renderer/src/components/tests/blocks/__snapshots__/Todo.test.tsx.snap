@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Todo block renders todo text and checkbox 1`] = `
+exports[`Todo block renders todo text and checkbox 2`] = `
 <div>
   <div
     class="reark-todo"
@@ -24,7 +24,7 @@ exports[`Todo block renders todo text and checkbox 1`] = `
 </div>
 `;
 
-exports[`renders todo with no elements 1`] = `
+exports[`renders todo with no elements 2`] = `
 <div>
   <div
     class="reark-todo"

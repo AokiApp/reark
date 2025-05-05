@@ -1,11 +1,12 @@
-import { render, screen } from "@testing-library/react";
+import { renderWithVRT } from "../test-utils/renderWithVRT";
+import { screen } from "@testing-library/react";
 import { OrderedList } from "../../blocks/OrderedList";
 import { BlockStoreProvider } from "../../../contexts/BlockStoreContext";
 
 // .private.local/example-blocks.json よりOrderedListブロックの例
 
 describe("OrderedList block", () => {
-  it("renders ordered list text", () => {
+  it("renders ordered list text", async () => {
     const orderedListBlock = {
       block_id: "XMqHd3327oPoBkxds8pjeRLPpyf",
       block_type: 13,
@@ -32,18 +33,20 @@ describe("OrderedList block", () => {
       },
       parent_id: "XB9wdv7ZNoantyxyHG6jEv37p1c",
     };
-    const { container } = render(
+    const { container, vrt } = renderWithVRT(
       <BlockStoreProvider items={[orderedListBlock]}>
         <OrderedList block={orderedListBlock} />
       </BlockStoreProvider>,
     );
+    await vrt();
+    // screenの利用はそのまま
     expect(screen.getByText(/Ordered/)).toBeInTheDocument();
     // スナップショットテスト
     expect(container).toMatchSnapshot();
   });
 });
 
-it("renders nothing when ordered list elements is empty", () => {
+it("renders nothing when ordered list elements is empty", async () => {
   const orderedListBlock = {
     block_id: "empty-ordered-list",
     block_type: 13,
@@ -57,11 +60,12 @@ it("renders nothing when ordered list elements is empty", () => {
     },
     parent_id: "XB9wdv7ZNoantyxyHG6jEv37p1c",
   };
-  const { container } = render(
+  const { container, vrt } = renderWithVRT(
     <BlockStoreProvider items={[orderedListBlock]}>
       <OrderedList block={orderedListBlock} />
     </BlockStoreProvider>,
   );
+  await vrt();
   // 空のol要素が描画されることを期待
   // reark-ordered-listが存在し、その中のreark-text-blockが空であることを期待
   const olDiv = container.querySelector(".reark-ordered-list");

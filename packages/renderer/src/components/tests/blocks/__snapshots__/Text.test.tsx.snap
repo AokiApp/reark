@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Text block renders text from context 1`] = `
+exports[`Text block renders text from context 2`] = `
 <div>
   <div
     class="reark-text-block"
@@ -40,7 +40,7 @@ exports[`Text block renders text from context 1`] = `
 </div>
 `;
 
-exports[`renders empty span when elements contain empty string 1`] = `
+exports[`renders empty span when elements contain empty string 2`] = `
 <div>
   <div
     class="reark-text-block"
@@ -53,7 +53,7 @@ exports[`renders empty span when elements contain empty string 1`] = `
 </div>
 `;
 
-exports[`renders text with bold style 1`] = `
+exports[`renders text with bold style 2`] = `
 <div>
   <div
     class="reark-text-block"

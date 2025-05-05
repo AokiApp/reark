@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Callout block renders callout with emoji and children 1`] = `
+exports[`Callout block renders callout with emoji and children 2`] = `
 <div>
   <div
     class="reark-callout reark-callout--custom"
@@ -85,7 +85,7 @@ exports[`Callout block renders callout with emoji and children 1`] = `
 </div>
 `;
 
-exports[`renders callout with no children 1`] = `
+exports[`renders callout with no children 2`] = `
 <div>
   <div
     class="reark-callout reark-callout--custom"

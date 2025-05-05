@@ -1,11 +1,12 @@
-import { render, screen } from "@testing-library/react";
+import { renderWithVRT } from "../test-utils/renderWithVRT";
+import { screen } from "@testing-library/react";
 import { Table } from "../../blocks/Table";
 import { BlockStoreProvider } from "../../../contexts/BlockStoreContext";
 
 // ダミーのTableブロック（最小限）
 
 describe("Table block", () => {
-  it("renders table and unsupported cells", () => {
+  it("renders table and unsupported cells", async () => {
     const tableBlock = {
       block_id: "dummy-table",
       block_type: 21,
@@ -32,7 +33,7 @@ describe("Table block", () => {
     const cellBlock3 = { block_id: "cell-3", block_type: 97 };
     const cellBlock4 = { block_id: "cell-4", block_type: 97 };
 
-    const { container } = render(
+    const { container, vrt } = renderWithVRT(
       <BlockStoreProvider
         items={[tableBlock, cellBlock1, cellBlock2, cellBlock3, cellBlock4]}
       >
@@ -45,12 +46,14 @@ describe("Table block", () => {
     // Unsupported block type: 97 の表示が4つあること
     const unsupported = screen.getAllByText(/Unsupported block type: 97/);
     expect(unsupported.length).toBe(4);
+    // VRT
+    await vrt();
     // スナップショットテスト
     expect(container).toMatchSnapshot();
   });
 });
 
-it("renders table with no cells", () => {
+it("renders table with no cells", async () => {
   const tableBlock = {
     block_id: "empty-table",
     block_type: 21,
@@ -66,7 +69,7 @@ it("renders table with no cells", () => {
       },
     },
   };
-  const { container } = render(
+  const { container, vrt } = renderWithVRT(
     <BlockStoreProvider items={[tableBlock]}>
       <Table block={tableBlock} />
     </BlockStoreProvider>,
@@ -77,6 +80,8 @@ it("renders table with no cells", () => {
   const table = wrapper?.querySelector("table");
   expect(table).not.toBeNull();
   expect(table?.textContent).toBe("");
+  // VRT
+  await vrt();
   // スナップショットテスト
   expect(container).toMatchSnapshot();
 });

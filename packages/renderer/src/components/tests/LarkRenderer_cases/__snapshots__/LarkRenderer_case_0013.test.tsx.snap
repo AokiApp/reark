@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`LarkRenderer 属性バリエーション: 下線のみ textブロック: 下線のみ 1`] = `
+exports[`LarkRenderer 属性バリエーション: 下線のみ textブロック: 下線のみ 2`] = `
 <div>
   <div
     class="reark-block"

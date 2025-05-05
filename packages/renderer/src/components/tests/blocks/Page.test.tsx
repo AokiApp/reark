@@ -1,10 +1,11 @@
-import { render, screen } from "@testing-library/react";
+import { renderWithVRT } from "../test-utils/renderWithVRT";
+import { screen } from "@testing-library/react";
 import { Page } from "../../blocks/Page";
 
 // .private.local/example-blocks.json よりPageブロックの例
 
 describe("Page block", () => {
-  it("renders page text", () => {
+  it("renders page text", async () => {
     const pageBlock = {
       block_id: "ZIjadstYfoQVMjxXAwRjM0rVpVg",
       block_type: 1,
@@ -105,7 +106,7 @@ describe("Page block", () => {
         },
       },
     };
-    const { container } = render(<Page block={pageBlock} />);
+    const { container, vrt } = renderWithVRT(<Page block={pageBlock} />);
     expect(screen.getByText(/Lark/)).toBeInTheDocument();
     expect(screen.getByText(/レン/)).toBeInTheDocument();
     expect(screen.getByText(/ダ/)).toBeInTheDocument();
@@ -113,12 +114,14 @@ describe("Page block", () => {
     expect(screen.getAllByText(/ー/).length).toBeGreaterThan(0);
     expect(screen.getByText(/テ/)).toBeInTheDocument();
     expect(screen.getByText(/ストケース/)).toBeInTheDocument();
+    // VRT
+    await vrt();
     // スナップショットテスト
     expect(container).toMatchSnapshot();
   });
 });
 
-it("renders nothing when page elements is empty", () => {
+it("renders nothing when page elements is empty", async () => {
   const pageBlock = {
     block_id: "empty-page",
     block_type: 1,
@@ -129,11 +132,13 @@ it("renders nothing when page elements is empty", () => {
       },
     },
   };
-  const { container } = render(<Page block={pageBlock} />);
+  const { container, vrt } = renderWithVRT(<Page block={pageBlock} />);
   // 空のdiv（reark-page）が描画されることを期待
   const div = container.querySelector(".reark-page");
   expect(div).not.toBeNull();
   expect(div?.textContent).toBe("");
+  // VRT
+  await vrt();
   // スナップショットテスト
   expect(container).toMatchSnapshot();
 });
