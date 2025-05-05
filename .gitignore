@@ -29,3 +29,6 @@ turbo/
 
 # Next.js build output
 .next/
+
+# VRT image snapshots (not tracked)
+packages/renderer/src/components/tests/__image_snapshots__/
