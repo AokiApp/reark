@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LarkRenderer 正常系スナップショットテスト 1`] = `
+<div>
+  <div
+    class="reark-block"
+  >
+    <div
+      class="reark-page"
+    >
+      <div
+        class="reark-page-title"
+      >
+        <div
+          class="reark-text-block"
+          style="text-align: left;"
+        />
+      </div>
+      <div
+        class="reark-block"
+      >
+        <div
+          class="reark-text-block"
+          style="text-align: left;"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
