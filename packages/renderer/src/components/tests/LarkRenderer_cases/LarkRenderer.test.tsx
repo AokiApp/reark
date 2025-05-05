@@ -1,5 +1,5 @@
 import { render } from "@testing-library/react";
-import { LarkRenderer } from "../LarkRenderer";
+import { LarkRenderer } from "../../LarkRenderer";
 
 describe("LarkRenderer", () => {
   it("正常系スナップショットテスト", () => {
