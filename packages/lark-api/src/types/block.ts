@@ -138,8 +138,8 @@ export type DiagramBlock = {
 export type DividerBlock = Record<string, never>;
 
 export type FileBlock = {
-  token?: string;
-  name?: string;
+  token: string;
+  name: string;
   view_type?: number;
 };
 

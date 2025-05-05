@@ -19,10 +19,12 @@ import { Callout } from "../components/blocks/Callout";
 import { Divider } from "../components/blocks/Divider";
 import { Image } from "../components/blocks/Image";
 import { QuoteContainer } from "../components/blocks/QuoteContainer";
+import { FileBlock } from "../components/blocks/FileBlock";
 import { Table } from "../components/blocks/Table";
 import { TableCell } from "../components/blocks/TableCell";
 import { GridBlock } from "../components/blocks/GridBlock";
 import { GridColumnBlock } from "../components/blocks/GridColumnBlock";
+import { ViewBlock } from "../components/blocks/ViewBlock";
 import { BlockInnerComponent } from "../types";
 
 export const BLOCK_COMPONENTS: Record<number, BlockInnerComponent> = {
@@ -43,10 +45,15 @@ export const BLOCK_COMPONENTS: Record<number, BlockInnerComponent> = {
   17: Todo, // Todo
   19: Callout, // Callout
   22: Divider, // Divider
+  23: FileBlock, // FileBlock: ファイル本体（block_type: 23）。通常はViewBlock（33）とセットで使われる。
   27: Image, // Image
   31: Table, // Table
   32: TableCell, // TableCell
   34: QuoteContainer, // QuoteContainer
   24: GridBlock, // GridBlock
   25: GridColumnBlock, // GridColumnBlock
+  // 33: ViewBlock
+  // ファイルブロック（block_type: 23）のビュー表現（カード/プレビュー/インライン）。
+  // 通常、親がblock_type: 23（File Block）であり、ViewBlock.tsxでファイル情報を参照してレンダリングする。
+  33: ViewBlock,
 };

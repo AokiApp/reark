@@ -35,11 +35,20 @@ export async function getLarkInitialDataForSSR(
 
   // 2. Collect all unique file tokens from image blocks
   const fileTokens = Array.from(
-    new Set(
-      blocks
-        .map((block) => block.image?.token)
-        .filter((token): token is string => !!token),
-    ),
+    blocks.reduce((acc, block) => {
+      if ([23, 27].includes(block.block_type)) {
+        let token: string | undefined;
+        if (block.block_type === 23 && block.file) {
+          token = block.file.token;
+        } else if (block.block_type === 27 && block.image) {
+          token = block.image.token;
+        }
+        if (token) {
+          acc.add(token);
+        }
+      }
+      return acc;
+    }, new Set<string>()),
   );
 
   // 2.5. Detect already downloaded fileTokens in publicDir
@@ -96,23 +105,6 @@ export async function getLarkInitialDataForSSR(
         `[Lark SSR] Failed to download/write file for token: ${token}`,
         err,
       );
-    }
-  }
-
-  // 5. Cleanup orphaned files
-  const manifestSet = new Set(
-    Object.values(files).map((url) => path.basename(url)),
-  );
-  for (const file of fs.readdirSync(publicDir)) {
-    if (!manifestSet.has(file)) {
-      try {
-        fs.unlinkSync(path.join(publicDir, file));
-      } catch (err) {
-        console.error(
-          `[Lark SSR] Failed to remove orphaned file: ${file}`,
-          err,
-        );
-      }
     }
   }
 
