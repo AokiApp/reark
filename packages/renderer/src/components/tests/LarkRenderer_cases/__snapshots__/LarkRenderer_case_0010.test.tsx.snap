@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LarkRenderer 異常系: 親無し子ブロック 親が存在しないchildrenを持つブロックもレンダリングできる 1`] = `
+<div>
+  <div
+    class="reark-block"
+  >
+    <div
+      class="reark-text-block"
+      style="text-align: left;"
+    >
+      <span
+        class="reark-text"
+      >
+        親無し子ブロック
+      </span>
+    </div>
+  </div>
+</div>
+`;

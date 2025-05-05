@@ -19,10 +19,280 @@ exports[`LarkRenderer 正常系スナップショットテスト 1`] = `
       <div
         class="reark-block"
       >
+        <div>
+          <h1>
+            Something went wrong.
+          </h1>
+          <p>
+            We are working to fix this issue. Please try again later.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`入れ子構造: bulletリストの多段ネストを含む統合レンダリング 1`] = `
+<div>
+  <div
+    class="reark-block"
+  >
+    <div
+      class="reark-page"
+    >
+      <div
+        class="reark-page-title"
+      >
         <div
           class="reark-text-block"
           style="text-align: left;"
         />
+      </div>
+      <div
+        class="reark-block"
+      >
+        <div
+          class="reark-unordered-list"
+        >
+          <div
+            class="reark-text-block"
+            style="text-align: left;"
+          >
+            <span
+              class="reark-text"
+            >
+              親リスト
+            </span>
+          </div>
+          <div
+            class="reark-block"
+          >
+            <div
+              class="reark-unordered-list"
+            >
+              <div
+                class="reark-text-block"
+                style="text-align: left;"
+              >
+                <span
+                  class="reark-text"
+                >
+                  子リスト
+                </span>
+              </div>
+              <div
+                class="reark-block"
+              >
+                <div
+                  class="reark-unordered-list"
+                >
+                  <div
+                    class="reark-text-block"
+                    style="text-align: left;"
+                  >
+                    <span
+                      class="reark-text"
+                    >
+                      孫リスト
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`属性バリエーション: 太字・斜体・下線・打消し・インラインコード・コメント複合 1`] = `
+<div>
+  <div
+    class="reark-block"
+  >
+    <div
+      class="reark-page"
+    >
+      <div
+        class="reark-page-title"
+      >
+        <div
+          class="reark-text-block"
+          style="text-align: left;"
+        />
+      </div>
+      <div
+        class="reark-block"
+      >
+        <div>
+          <h1>
+            Something went wrong.
+          </h1>
+          <p>
+            We are working to fix this issue. Please try again later.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`異常系: blocksが空配列 1`] = `<div />`;
+
+exports[`異常系: root blockが存在しない 1`] = `
+<div>
+  <div
+    class="reark-block"
+  >
+    <div>
+      <h1>
+        Something went wrong.
+      </h1>
+      <p>
+        We are working to fix this issue. Please try again later.
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`異常系: 不正なblock_typeを含む場合のレンダリング 1`] = `
+<div>
+  <div
+    class="reark-block"
+  >
+    <div
+      class="reark-page"
+    >
+      <div
+        class="reark-page-title"
+      >
+        <div
+          class="reark-text-block"
+          style="text-align: left;"
+        />
+      </div>
+      <div
+        class="reark-unsupported-block"
+      >
+        <strong>
+          Unsupported block type: 
+          9999
+        </strong>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`異常系: 必須プロパティ欠損（textなしtext block） 1`] = `
+<div>
+  <div
+    class="reark-block"
+  >
+    <div
+      class="reark-page"
+    >
+      <div
+        class="reark-page-title"
+      >
+        <div
+          class="reark-text-block"
+          style="text-align: left;"
+        />
+      </div>
+      <div
+        class="reark-block"
+      >
+        <div>
+          <h1>
+            Something went wrong.
+          </h1>
+          <p>
+            We are working to fix this issue. Please try again later.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`複合ケース: page配下に複数ブロックを含む統合レンダリング 1`] = `
+<div>
+  <div
+    class="reark-block"
+  >
+    <div
+      class="reark-page"
+    >
+      <div
+        class="reark-page-title"
+      >
+        <div
+          class="reark-text-block"
+          style="text-align: left;"
+        />
+      </div>
+      <div
+        class="reark-block"
+      >
+        <div>
+          <h1>
+            Something went wrong.
+          </h1>
+          <p>
+            We are working to fix this issue. Please try again later.
+          </p>
+        </div>
+      </div>
+      <div
+        class="reark-block"
+      >
+        <div
+          class="reark-heading reark-heading--1"
+        >
+          <div
+            class="reark-text-block"
+            style="text-align: left;"
+          >
+            <span
+              class="reark-text--bold reark-text"
+            >
+              見出し
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        class="reark-block"
+      >
+        <div
+          class="reark-unordered-list"
+        >
+          <div
+            class="reark-text-block"
+            style="text-align: left;"
+          >
+            <span
+              class="reark-text"
+            >
+              リスト項目
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        class="reark-unsupported-block"
+      >
+        <strong>
+          Unsupported block type: 
+          18
+        </strong>
       </div>
     </div>
   </div>

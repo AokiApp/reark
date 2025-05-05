@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LarkRenderer 属性バリエーション: 下線＋打消し textブロック: 下線＋打消し 1`] = `
+<div>
+  <div
+    class="reark-block"
+  >
+    <div
+      class="reark-text-block"
+      style="text-align: left;"
+    >
+      <span
+        class="reark-text--strikethrough reark-text--underline reark-text"
+      >
+        下線＋打消し
+      </span>
+    </div>
+  </div>
+</div>
+`;

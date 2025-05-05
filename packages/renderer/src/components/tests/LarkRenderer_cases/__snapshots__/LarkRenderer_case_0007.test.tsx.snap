@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LarkRenderer 異常系: childrenが空配列 childrenが空配列でも正常にレンダリングできる 1`] = `
+<div>
+  <div
+    class="reark-block"
+  >
+    <div
+      class="reark-text-block"
+      style="text-align: left;"
+    >
+      <span
+        class="reark-text"
+      >
+        children空配列
+      </span>
+    </div>
+  </div>
+</div>
+`;

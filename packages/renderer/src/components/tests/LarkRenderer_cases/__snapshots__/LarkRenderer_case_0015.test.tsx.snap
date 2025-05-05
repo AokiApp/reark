@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LarkRenderer 属性バリエーション: インラインコードのみ textブロック: インラインコードのみ 1`] = `
+<div>
+  <div
+    class="reark-block"
+  >
+    <div
+      class="reark-text-block"
+      style="text-align: left;"
+    >
+      <span
+        class="reark-text--inline-code reark-text"
+      >
+        インラインコードのみ
+      </span>
+    </div>
+  </div>
+</div>
+`;

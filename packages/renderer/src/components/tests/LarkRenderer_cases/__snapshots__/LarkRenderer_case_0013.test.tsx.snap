@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LarkRenderer 属性バリエーション: 下線のみ textブロック: 下線のみ 1`] = `
+<div>
+  <div
+    class="reark-block"
+  >
+    <div
+      class="reark-text-block"
+      style="text-align: left;"
+    >
+      <span
+        class="reark-text--underline reark-text"
+      >
+        下線のみ
+      </span>
+    </div>
+  </div>
+</div>
+`;
