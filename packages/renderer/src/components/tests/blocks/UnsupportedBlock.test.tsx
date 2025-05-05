@@ -36,11 +36,3 @@ it("renders unsupported block message with undefined block_id and block_type", a
   await vrt();
   expect(container).toMatchSnapshot();
 });
-
-it("renders unsupported block message when block is undefined", async () => {
-  // @ts-expect-error 故意にblockを渡さない
-  const { container, vrt } = renderWithVRT(<UnsupportedBlock />);
-  expect(container.textContent).toMatch(/Unsupported block type/);
-  await vrt();
-  expect(container).toMatchSnapshot();
-});

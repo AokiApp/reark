@@ -13,7 +13,7 @@ exports[`UnsupportedBlock renders unsupported block message 1`] = `
 </div>
 `;
 
-exports[`renders unsupported block message with undefined type 1`] = `
+exports[`renders unsupported block message with undefined block_id and block_type 1`] = `
 <div>
   <div
     class="reark-unsupported-block"
@@ -26,20 +26,7 @@ exports[`renders unsupported block message with undefined type 1`] = `
 </div>
 `;
 
-exports[`renders unsupported block message with undefined type 2`] = `
-<div>
-  <div
-    class="reark-unsupported-block"
-  >
-    <strong>
-      Unsupported block type: 
-      unknown
-    </strong>
-  </div>
-</div>
-`;
-
-exports[`renders unsupported block message with undefined type 3`] = `
+exports[`renders unsupported block message with undefined block_type 1`] = `
 <div>
   <div
     class="reark-unsupported-block"
