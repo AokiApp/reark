@@ -8,6 +8,8 @@ type Props = {
   blockId: string;
 };
 
+const DEV = true;
+
 export function BlockComponent({ blockId }: Props) {
   const { blocks } = useBlockStore();
   const block = blocks[blockId];
@@ -38,7 +40,7 @@ export function BlockComponent({ blockId }: Props) {
   };
 
   const inner = (
-    <div className="reark-block" onClick={showDebugInfo}>
+    <div className="reark-block" onClick={DEV ? showDebugInfo : undefined}>
       <ErrorBoundary>
         <Component block={block} />
       </ErrorBoundary>
