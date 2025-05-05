@@ -1,6 +1,6 @@
 import { BlockInnerComponent } from "../../types";
 import { useBlockStore } from "../../contexts/BlockStoreContext";
-import "./ViewBlock.css";
+import "../../styles/ViewBlock.css";
 import { CardView, InlineView, PreviewView } from "../FileUtils";
 
 export const ViewBlock: BlockInnerComponent = ({ block }) => {
