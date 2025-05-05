@@ -18,7 +18,7 @@ exports[`Page block renders page text 1`] = `
           Lark
         </span>
         <div
-          class="reark-comment reark-comment--leaf"
+          class="reark-comment"
           data-comment-ids="7500745344221708322"
         >
           <span
@@ -28,7 +28,7 @@ exports[`Page block renders page text 1`] = `
           </span>
         </div>
         <div
-          class="reark-comment reark-comment--leaf"
+          class="reark-comment"
           data-comment-ids="7500745247643664418,7500745344221708322"
         >
           <span
@@ -38,7 +38,7 @@ exports[`Page block renders page text 1`] = `
           </span>
         </div>
         <div
-          class="reark-comment reark-comment--leaf"
+          class="reark-comment"
           data-comment-ids="7500745247643664418"
         >
           <span
@@ -48,7 +48,7 @@ exports[`Page block renders page text 1`] = `
           </span>
         </div>
         <div
-          class="reark-comment reark-comment--leaf"
+          class="reark-comment"
           data-comment-ids="7500745247643664418,7500745292006817825"
         >
           <span
@@ -58,7 +58,7 @@ exports[`Page block renders page text 1`] = `
           </span>
         </div>
         <div
-          class="reark-comment reark-comment--leaf"
+          class="reark-comment"
           data-comment-ids="7500745247643664418"
         >
           <span

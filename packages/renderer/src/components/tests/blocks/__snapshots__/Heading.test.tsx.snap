@@ -4,18 +4,22 @@ exports[`Heading1 block renders heading1 text 1`] = `
 <div>
   <div
     class="reark-heading reark-heading--1"
-    style="text-align: left;"
   >
-    <span
-      class=""
+    <div
+      class="reark-text-block"
+      style="text-align: left;"
     >
-      本文書
-    </span>
-    <span
-      class="reark-text--bold"
-    >
-      について
-    </span>
+      <span
+        class="reark-text"
+      >
+        本文書
+      </span>
+      <span
+        class="reark-text--bold reark-text"
+      >
+        について
+      </span>
+    </div>
   </div>
 </div>
 `;
@@ -24,18 +28,22 @@ exports[`Heading1 block renders heading1 with bold element 1`] = `
 <div>
   <div
     class="reark-heading reark-heading--1"
-    style="text-align: left;"
   >
-    <span
-      class=""
+    <div
+      class="reark-text-block"
+      style="text-align: left;"
     >
-      本文書
-    </span>
-    <span
-      class="reark-text--bold"
-    >
-      について
-    </span>
+      <span
+        class="reark-text"
+      >
+        本文書
+      </span>
+      <span
+        class="reark-text--bold reark-text"
+      >
+        について
+      </span>
+    </div>
   </div>
 </div>
 `;

@@ -7,7 +7,7 @@ exports[`Text block renders text from context 1`] = `
     style="text-align: left;"
   >
     <div
-      class="reark-comment reark-comment--leaf"
+      class="reark-comment"
       data-comment-ids="7500745405299163169"
     >
       <span
@@ -17,7 +17,7 @@ exports[`Text block renders text from context 1`] = `
       </span>
     </div>
     <div
-      class="reark-comment reark-comment--leaf"
+      class="reark-comment"
       data-comment-ids="7500745405299163169"
     >
       <span
@@ -27,7 +27,7 @@ exports[`Text block renders text from context 1`] = `
       </span>
     </div>
     <div
-      class="reark-comment reark-comment--leaf"
+      class="reark-comment"
       data-comment-ids="7500745405299163169"
     >
       <span

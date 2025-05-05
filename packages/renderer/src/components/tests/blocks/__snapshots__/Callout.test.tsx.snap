@@ -15,7 +15,7 @@ exports[`Callout block renders callout with emoji and children 1`] = `
       class="reark-callout__content"
     >
       <div
-        class="reark-comment reark-comment--leaf"
+        class="reark-comment"
         data-comment-ids="7500751511807328290,7500745624808063009"
       >
         <div
@@ -23,28 +23,42 @@ exports[`Callout block renders callout with emoji and children 1`] = `
         >
           <div
             class="reark-heading reark-heading--3"
-            style="text-align: left;"
           >
-            <span
-              class=""
+            <div
+              class="reark-text-block"
+              style="text-align: left;"
             >
-              コー
-            </span>
-            <span
-              class=""
-            >
-              ル
-            </span>
-            <span
-              class=""
-            >
-              ア
-            </span>
-            <span
-              class=""
-            >
-              ウト
-            </span>
+              <span
+                class="reark-text"
+              >
+                コー
+              </span>
+              <div
+                class="reark-comment"
+                data-comment-ids="7500745624808063009"
+              >
+                <span
+                  class="reark-text"
+                >
+                  ル
+                </span>
+              </div>
+              <div
+                class="reark-comment"
+                data-comment-ids="7500751511807328290"
+              >
+                <span
+                  class="reark-text"
+                >
+                  ア
+                </span>
+              </div>
+              <span
+                class="reark-text"
+              >
+                ウト
+              </span>
+            </div>
           </div>
         </div>
       </div>
