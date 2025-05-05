@@ -3,26 +3,27 @@ import { GridColumnBlock } from "../../blocks/GridColumnBlock";
 import { BlockStoreProvider } from "../../../contexts/BlockStoreContext";
 
 // ダミーのGridColumnBlock
-const gridColumnBlock = {
-  block_id: "dummy-col",
-  block_type: 16,
-  grid_column: {
-    width_ratio: 1
-  },
-  children: ["dummy-child"]
-};
-
-const dummyChildBlock = {
-  block_id: "dummy-child",
-  block_type: 99
-};
 
 describe("GridColumnBlock block", () => {
   it("renders grid column block and unsupported child", () => {
+    const gridColumnBlock = {
+      block_id: "dummy-col",
+      block_type: 16,
+      grid_column: {
+        width_ratio: 1,
+      },
+      children: ["dummy-child"],
+    };
+
+    const dummyChildBlock = {
+      block_id: "dummy-child",
+      block_type: 99,
+    };
+
     const { container } = render(
       <BlockStoreProvider items={[gridColumnBlock, dummyChildBlock]}>
         <GridColumnBlock block={gridColumnBlock} />
-      </BlockStoreProvider>
+      </BlockStoreProvider>,
     );
     // .reark-grid-column要素が存在すること
     const col = container.querySelector(".reark-grid-column");

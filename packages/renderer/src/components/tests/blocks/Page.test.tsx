@@ -2,109 +2,109 @@ import { render, screen } from "@testing-library/react";
 import { Page } from "../../blocks/Page";
 
 // .private.local/example-blocks.json よりPageブロックの例
-const pageBlock = {
-  block_id: "ZIjadstYfoQVMjxXAwRjM0rVpVg",
-  block_type: 1,
-  page: {
-    elements: [
-      {
-        text_run: {
-          content: "Lark",
-          text_element_style: {
-            bold: false,
-            inline_code: false,
-            italic: false,
-            strikethrough: false,
-            underline: false
-          }
-        }
-      },
-      {
-        text_run: {
-          content: "レン",
-          text_element_style: {
-            bold: false,
-            comment_ids: ["7500745344221708322"],
-            inline_code: false,
-            italic: false,
-            strikethrough: false,
-            underline: false
-          }
-        }
-      },
-      {
-        text_run: {
-          content: "ダ",
-          text_element_style: {
-            bold: false,
-            comment_ids: ["7500745247643664418", "7500745344221708322"],
-            inline_code: false,
-            italic: false,
-            strikethrough: false,
-            underline: false
-          }
-        }
-      },
-      {
-        text_run: {
-          content: "ラ",
-          text_element_style: {
-            bold: false,
-            comment_ids: ["7500745247643664418"],
-            inline_code: false,
-            italic: false,
-            strikethrough: false,
-            underline: false
-          }
-        }
-      },
-      {
-        text_run: {
-          content: "ー",
-          text_element_style: {
-            bold: false,
-            comment_ids: ["7500745247643664418", "7500745292006817825"],
-            inline_code: false,
-            italic: false,
-            strikethrough: false,
-            underline: false
-          }
-        }
-      },
-      {
-        text_run: {
-          content: "テ",
-          text_element_style: {
-            bold: false,
-            comment_ids: ["7500745247643664418"],
-            inline_code: false,
-            italic: false,
-            strikethrough: false,
-            underline: false
-          }
-        }
-      },
-      {
-        text_run: {
-          content: "ストケース",
-          text_element_style: {
-            bold: false,
-            inline_code: false,
-            italic: false,
-            strikethrough: false,
-            underline: false
-          }
-        }
-      }
-    ],
-    style: {
-      align: 1 as 1
-    }
-  }
-};
 
 describe("Page block", () => {
   it("renders page text", () => {
+    const pageBlock = {
+      block_id: "ZIjadstYfoQVMjxXAwRjM0rVpVg",
+      block_type: 1,
+      page: {
+        elements: [
+          {
+            text_run: {
+              content: "Lark",
+              text_element_style: {
+                bold: false,
+                inline_code: false,
+                italic: false,
+                strikethrough: false,
+                underline: false,
+              },
+            },
+          },
+          {
+            text_run: {
+              content: "レン",
+              text_element_style: {
+                bold: false,
+                comment_ids: ["7500745344221708322"],
+                inline_code: false,
+                italic: false,
+                strikethrough: false,
+                underline: false,
+              },
+            },
+          },
+          {
+            text_run: {
+              content: "ダ",
+              text_element_style: {
+                bold: false,
+                comment_ids: ["7500745247643664418", "7500745344221708322"],
+                inline_code: false,
+                italic: false,
+                strikethrough: false,
+                underline: false,
+              },
+            },
+          },
+          {
+            text_run: {
+              content: "ラ",
+              text_element_style: {
+                bold: false,
+                comment_ids: ["7500745247643664418"],
+                inline_code: false,
+                italic: false,
+                strikethrough: false,
+                underline: false,
+              },
+            },
+          },
+          {
+            text_run: {
+              content: "ー",
+              text_element_style: {
+                bold: false,
+                comment_ids: ["7500745247643664418", "7500745292006817825"],
+                inline_code: false,
+                italic: false,
+                strikethrough: false,
+                underline: false,
+              },
+            },
+          },
+          {
+            text_run: {
+              content: "テ",
+              text_element_style: {
+                bold: false,
+                comment_ids: ["7500745247643664418"],
+                inline_code: false,
+                italic: false,
+                strikethrough: false,
+                underline: false,
+              },
+            },
+          },
+          {
+            text_run: {
+              content: "ストケース",
+              text_element_style: {
+                bold: false,
+                inline_code: false,
+                italic: false,
+                strikethrough: false,
+                underline: false,
+              },
+            },
+          },
+        ],
+        style: {
+          align: 1 as const,
+        },
+      },
+    };
     const { container } = render(<Page block={pageBlock} />);
     expect(screen.getByText(/Lark/)).toBeInTheDocument();
     expect(screen.getByText(/レン/)).toBeInTheDocument();
