@@ -2,6 +2,8 @@ import { renderWithVRT } from "../test-utils/renderWithVRT";
 import { screen } from "@testing-library/react";
 import { UnorderedList } from "../../blocks/UnorderedList";
 
+import { BlockStoreProvider } from "../../../contexts/BlockStoreContext";
+
 // .private.local/example-blocks.json よりUnorderedListブロックの例
 
 describe("UnorderedList block", () => {
@@ -31,7 +33,9 @@ describe("UnorderedList block", () => {
       },
     };
     const { container, vrt } = renderWithVRT(
-      <UnorderedList block={unorderedListBlock} />,
+      <BlockStoreProvider items={[unorderedListBlock]}>
+        <UnorderedList block={unorderedListBlock} />
+      </BlockStoreProvider>,
     );
     expect(screen.getByText(/Unordered/)).toBeInTheDocument();
     await vrt();
@@ -53,7 +57,9 @@ it("renders nothing when unordered list elements is empty", async () => {
     },
   };
   const { container, vrt } = renderWithVRT(
-    <UnorderedList block={unorderedListBlock} />,
+    <BlockStoreProvider items={[unorderedListBlock]}>
+      <UnorderedList block={unorderedListBlock} />
+    </BlockStoreProvider>,
   );
   await vrt();
   // reark-unordered-listが存在し、その中のreark-text-blockが空であることを期待

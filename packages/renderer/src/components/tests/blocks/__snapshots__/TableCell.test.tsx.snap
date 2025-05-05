@@ -4,27 +4,16 @@ exports[`TableCell block renders table cell and unsupported child 1`] = `
 <div>
   <div>
     <div
-      class="reark-unsupported-block"
+      class="reark-block"
     >
-      <strong>
-        Unsupported block type: 
-        96
-      </strong>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`TableCell block renders table cell and unsupported child 2`] = `
-<div>
-  <div>
-    <div
-      class="reark-unsupported-block"
-    >
-      <strong>
-        Unsupported block type: 
-        96
-      </strong>
+      <div
+        class="reark-unsupported-block"
+      >
+        <strong>
+          Unsupported block type: 
+          96
+        </strong>
+      </div>
     </div>
   </div>
 </div>

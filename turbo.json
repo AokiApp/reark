@@ -11,11 +11,17 @@
       "outputs": []
     },
     "build": {
-      "outputs": ["dist/**"],
-      "dependsOn": ["^build"]
+      "outputs": [
+        "dist/**"
+      ],
+      "dependsOn": [
+        "^build"
+      ]
     },
     "build:watch": {
-      "outputs": ["dist/**"],
+      "outputs": [
+        "dist/**"
+      ],
       "cache": false,
       "dependsOn": [
         "@aokiapp/reark-renderer#build",
@@ -26,11 +32,15 @@
       "persistent": true
     },
     "dev": {
-      "outputs": ["dist/**"],
+      "outputs": [
+        "dist/**"
+      ],
       "cache": false,
-      "dependsOn": ["^build"],
+      "dependsOn": [
+        "^build"
+      ],
       "persistent": true
     }
   },
-  "ui": "tui"
+  "ui": "stream"
 }

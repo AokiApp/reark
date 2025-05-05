@@ -24,55 +24,7 @@ exports[`Heading1 block renders heading1 text 1`] = `
 </div>
 `;
 
-exports[`Heading1 block renders heading1 text 2`] = `
-<div>
-  <div
-    class="reark-heading reark-heading--1"
-  >
-    <div
-      class="reark-text-block"
-      style="text-align: left;"
-    >
-      <span
-        class="reark-text"
-      >
-        本文書
-      </span>
-      <span
-        class="reark-text--bold reark-text"
-      >
-        について
-      </span>
-    </div>
-  </div>
-</div>
-`;
-
 exports[`Heading1 block renders heading1 with bold element 1`] = `
-<div>
-  <div
-    class="reark-heading reark-heading--1"
-  >
-    <div
-      class="reark-text-block"
-      style="text-align: left;"
-    >
-      <span
-        class="reark-text"
-      >
-        本文書
-      </span>
-      <span
-        class="reark-text--bold reark-text"
-      >
-        について
-      </span>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`Heading1 block renders heading1 with bold element 2`] = `
 <div>
   <div
     class="reark-heading reark-heading--1"

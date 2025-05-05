@@ -1,6 +1,7 @@
 import { renderWithVRT } from "../test-utils/renderWithVRT";
 import { screen } from "@testing-library/react";
 import { Page } from "../../blocks/Page";
+import { BlockStoreProvider } from "../../../contexts/BlockStoreContext";
 
 // .private.local/example-blocks.json よりPageブロックの例
 
@@ -106,7 +107,11 @@ describe("Page block", () => {
         },
       },
     };
-    const { container, vrt } = renderWithVRT(<Page block={pageBlock} />);
+    const { container, vrt } = renderWithVRT(
+      <BlockStoreProvider items={[pageBlock]}>
+        <Page block={pageBlock} />
+      </BlockStoreProvider>,
+    );
     expect(screen.getByText(/Lark/)).toBeInTheDocument();
     expect(screen.getByText(/レン/)).toBeInTheDocument();
     expect(screen.getByText(/ダ/)).toBeInTheDocument();
@@ -132,7 +137,11 @@ it("renders nothing when page elements is empty", async () => {
       },
     },
   };
-  const { container, vrt } = renderWithVRT(<Page block={pageBlock} />);
+  const { container, vrt } = renderWithVRT(
+    <BlockStoreProvider items={[pageBlock]}>
+      <Page block={pageBlock} />
+    </BlockStoreProvider>,
+  );
   // 空のdiv（reark-page）が描画されることを期待
   const div = container.querySelector(".reark-page");
   expect(div).not.toBeNull();

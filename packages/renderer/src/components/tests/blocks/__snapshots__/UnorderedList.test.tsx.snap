@@ -18,22 +18,3 @@ exports[`UnorderedList block renders unordered list text 1`] = `
   </div>
 </div>
 `;
-
-exports[`UnorderedList block renders unordered list text 2`] = `
-<div>
-  <div
-    class="reark-unordered-list"
-  >
-    <div
-      class="reark-text-block"
-      style="text-align: left;"
-    >
-      <span
-        class="reark-text"
-      >
-        Unordered
-      </span>
-    </div>
-  </div>
-</div>
-`;

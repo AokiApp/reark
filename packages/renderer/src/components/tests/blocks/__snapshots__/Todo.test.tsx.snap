@@ -24,49 +24,7 @@ exports[`Todo block renders todo text and checkbox 1`] = `
 </div>
 `;
 
-exports[`Todo block renders todo text and checkbox 2`] = `
-<div>
-  <div
-    class="reark-todo"
-    style="text-align: left;"
-  >
-    <input
-      class="reark-todo__checkbox"
-      readonly=""
-      type="checkbox"
-    />
-    <div
-      class="reark-todo__content"
-    >
-      <span
-        class=""
-      >
-        タスク 1
-      </span>
-    </div>
-  </div>
-</div>
-`;
-
 exports[`renders todo with no elements 1`] = `
-<div>
-  <div
-    class="reark-todo"
-    style="text-align: left;"
-  >
-    <input
-      class="reark-todo__checkbox"
-      readonly=""
-      type="checkbox"
-    />
-    <div
-      class="reark-todo__content"
-    />
-  </div>
-</div>
-`;
-
-exports[`renders todo with no elements 2`] = `
 <div>
   <div
     class="reark-todo"

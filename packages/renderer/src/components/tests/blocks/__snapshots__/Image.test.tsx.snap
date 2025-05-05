@@ -14,18 +14,3 @@ exports[`Image block renders image placeholder when file is unavailable 1`] = `
   </div>
 </div>
 `;
-
-exports[`Image block renders image placeholder when file is unavailable 2`] = `
-<div>
-  <div
-    class="reark-image-container"
-    style="justify-content: flex-start;"
-  >
-    <div
-      class="reark-image-placeholder"
-    >
-      Image not available
-    </div>
-  </div>
-</div>
-`;

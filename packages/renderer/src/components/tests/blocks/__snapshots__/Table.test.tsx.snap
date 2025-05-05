@@ -14,24 +14,32 @@ exports[`Table block renders table and unsupported cells 1`] = `
             class="reark-table__th "
           >
             <div
-              class="reark-unsupported-block"
+              class="reark-block"
             >
-              <strong>
-                Unsupported block type: 
-                97
-              </strong>
+              <div
+                class="reark-unsupported-block"
+              >
+                <strong>
+                  Unsupported block type: 
+                  97
+                </strong>
+              </div>
             </div>
           </th>
           <th
             class="reark-table__th "
           >
             <div
-              class="reark-unsupported-block"
+              class="reark-block"
             >
-              <strong>
-                Unsupported block type: 
-                97
-              </strong>
+              <div
+                class="reark-unsupported-block"
+              >
+                <strong>
+                  Unsupported block type: 
+                  97
+                </strong>
+              </div>
             </div>
           </th>
         </tr>
@@ -40,91 +48,32 @@ exports[`Table block renders table and unsupported cells 1`] = `
             class="reark-table__td "
           >
             <div
-              class="reark-unsupported-block"
+              class="reark-block"
             >
-              <strong>
-                Unsupported block type: 
-                97
-              </strong>
+              <div
+                class="reark-unsupported-block"
+              >
+                <strong>
+                  Unsupported block type: 
+                  97
+                </strong>
+              </div>
             </div>
           </td>
           <td
             class="reark-table__td "
           >
             <div
-              class="reark-unsupported-block"
+              class="reark-block"
             >
-              <strong>
-                Unsupported block type: 
-                97
-              </strong>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-`;
-
-exports[`Table block renders table and unsupported cells 2`] = `
-<div>
-  <div
-    class="reark-table-wrapper"
-  >
-    <table
-      class="reark-table"
-    >
-      <tbody>
-        <tr>
-          <th
-            class="reark-table__th "
-          >
-            <div
-              class="reark-unsupported-block"
-            >
-              <strong>
-                Unsupported block type: 
-                97
-              </strong>
-            </div>
-          </th>
-          <th
-            class="reark-table__th "
-          >
-            <div
-              class="reark-unsupported-block"
-            >
-              <strong>
-                Unsupported block type: 
-                97
-              </strong>
-            </div>
-          </th>
-        </tr>
-        <tr>
-          <td
-            class="reark-table__td "
-          >
-            <div
-              class="reark-unsupported-block"
-            >
-              <strong>
-                Unsupported block type: 
-                97
-              </strong>
-            </div>
-          </td>
-          <td
-            class="reark-table__td "
-          >
-            <div
-              class="reark-unsupported-block"
-            >
-              <strong>
-                Unsupported block type: 
-                97
-              </strong>
+              <div
+                class="reark-unsupported-block"
+              >
+                <strong>
+                  Unsupported block type: 
+                  97
+                </strong>
+              </div>
             </div>
           </td>
         </tr>
@@ -135,23 +84,6 @@ exports[`Table block renders table and unsupported cells 2`] = `
 `;
 
 exports[`renders table with no cells 1`] = `
-<div>
-  <div
-    class="reark-table-wrapper"
-  >
-    <table
-      class="reark-table"
-    >
-      <tbody>
-        <tr />
-        <tr />
-      </tbody>
-    </table>
-  </div>
-</div>
-`;
-
-exports[`renders table with no cells 2`] = `
 <div>
   <div
     class="reark-table-wrapper"

@@ -19,23 +19,3 @@ exports[`OrderedList block renders ordered list text 1`] = `
   </div>
 </div>
 `;
-
-exports[`OrderedList block renders ordered list text 2`] = `
-<div>
-  <div
-    class="reark-ordered-list"
-    style="--reark-ordered-list-seq: "1";"
-  >
-    <div
-      class="reark-text-block"
-      style="text-align: left;"
-    >
-      <span
-        class="reark-text"
-      >
-        Ordered
-      </span>
-    </div>
-  </div>
-</div>
-`;

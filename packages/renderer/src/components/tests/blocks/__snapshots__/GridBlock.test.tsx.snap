@@ -7,61 +7,34 @@ exports[`GridBlock block renders grid block and unsupported columns 1`] = `
     style="display: flex; gap: 16px;"
   >
     <div
-      class="reark-unsupported-block"
+      class="reark-block"
     >
-      <strong>
-        Unsupported block type: 
-        16
-      </strong>
+      <div
+        class="reark-unsupported-block"
+      >
+        <strong>
+          Unsupported block type: 
+          16
+        </strong>
+      </div>
     </div>
     <div
-      class="reark-unsupported-block"
+      class="reark-block"
     >
-      <strong>
-        Unsupported block type: 
-        16
-      </strong>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`GridBlock block renders grid block and unsupported columns 2`] = `
-<div>
-  <div
-    class="reark-grid"
-    style="display: flex; gap: 16px;"
-  >
-    <div
-      class="reark-unsupported-block"
-    >
-      <strong>
-        Unsupported block type: 
-        16
-      </strong>
-    </div>
-    <div
-      class="reark-unsupported-block"
-    >
-      <strong>
-        Unsupported block type: 
-        16
-      </strong>
+      <div
+        class="reark-unsupported-block"
+      >
+        <strong>
+          Unsupported block type: 
+          16
+        </strong>
+      </div>
     </div>
   </div>
 </div>
 `;
 
 exports[`renders grid block with no columns 1`] = `
-<div>
-  <div
-    class="reark-grid"
-    style="display: flex; gap: 16px;"
-  />
-</div>
-`;
-
-exports[`renders grid block with no columns 2`] = `
 <div>
   <div
     class="reark-grid"

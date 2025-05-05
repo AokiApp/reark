@@ -2,6 +2,8 @@ import { renderWithVRT } from "../test-utils/renderWithVRT";
 import { screen } from "@testing-library/react";
 import { Heading1 } from "../../blocks/Heading";
 
+import { BlockStoreProvider } from "../../../contexts/BlockStoreContext";
+
 // .private.local/example-blocks.json よりHeading1ブロックの例
 
 describe("Heading1 block", () => {
@@ -44,7 +46,9 @@ describe("Heading1 block", () => {
       parent_id: "ZIjadstYfoQVMjxXAwRjM0rVpVg",
     };
     const { container, vrt } = renderWithVRT(
-      <Heading1 block={heading1Block} />,
+      <BlockStoreProvider items={[heading1Block]}>
+        <Heading1 block={heading1Block} />
+      </BlockStoreProvider>,
     );
     expect(screen.getByText(/本文書/)).toBeInTheDocument();
     expect(screen.getByText(/について/)).toBeInTheDocument();
@@ -66,7 +70,11 @@ describe("Heading1 block", () => {
       },
       parent_id: "ZIjadstYfoQVMjxXAwRjM0rVpVg",
     };
-    const { container } = renderWithVRT(<Heading1 block={heading1Block} />);
+    const { container } = renderWithVRT(
+      <BlockStoreProvider items={[heading1Block]}>
+        <Heading1 block={heading1Block} />
+      </BlockStoreProvider>,
+    );
     // 空のdiv（reark-heading reark-heading--1）が描画されることを期待
     const div = container.querySelector(".reark-heading.reark-heading--1");
     expect(div).not.toBeNull();
@@ -111,7 +119,9 @@ describe("Heading1 block", () => {
       parent_id: "ZIjadstYfoQVMjxXAwRjM0rVpVg",
     };
     const { container, vrt } = renderWithVRT(
-      <Heading1 block={heading1Block} />,
+      <BlockStoreProvider items={[heading1Block]}>
+        <Heading1 block={heading1Block} />
+      </BlockStoreProvider>,
     );
     // "本文書"が通常テキスト、"について"が太字で描画されていること
     expect(screen.getByText(/本文書/)).toBeInTheDocument();
