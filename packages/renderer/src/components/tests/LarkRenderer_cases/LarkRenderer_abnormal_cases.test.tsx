@@ -29,7 +29,8 @@ describe("LarkRenderer 異常系: 不正なblock_type", () => {
       block_type: 9999,
       parent_id: "",
       children: [],
-      text: "不正なブロック",
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      text: "不正なブロック" as any,
     };
     const blocks = [block];
     const { container, vrt } = renderWithVRT(
@@ -56,7 +57,7 @@ describe("LarkRenderer 異常系: childrenプロパティ欠損", () => {
             },
           },
         ],
-        style: { align: "left", folded: false },
+        style: { align: 1 as const, folded: false },
       },
       // childrenプロパティ無し
     };
@@ -85,7 +86,7 @@ describe("LarkRenderer 異常系: childrenが空配列", () => {
             },
           },
         ],
-        style: { align: "left", folded: false },
+        style: { align: 1 as const, folded: false },
       },
       children: [],
     };
@@ -114,7 +115,7 @@ describe("LarkRenderer 異常系: 親無し子ブロック", () => {
             },
           },
         ],
-        style: { align: "left", folded: false },
+        style: { align: 1 as const, folded: false },
       },
       children: [],
     };

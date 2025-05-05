@@ -274,7 +274,7 @@ it("異常系: root blockが存在しない", () => {
             },
           },
         ],
-        style: { align: "left", folded: false },
+        style: { align: 1 as const, folded: false },
       },
       children: [],
     },

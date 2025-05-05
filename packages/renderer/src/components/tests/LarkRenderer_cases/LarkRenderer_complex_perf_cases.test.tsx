@@ -23,7 +23,7 @@ describe("LarkRenderer 複合ケース: 複数ブロック混在", () => {
             },
           },
         ],
-        style: { align: "left", folded: false },
+        style: { align: 1 as const, folded: false },
       },
       children: [],
     };
@@ -107,7 +107,7 @@ describe("LarkRenderer パフォーマンス: 1000個のtextブロック", () =>
             },
           },
         ],
-        style: { align: "left", folded: false },
+        style: { align: 1 as const, folded: false },
       },
       children: [],
     }));
@@ -138,7 +138,7 @@ describe("LarkRenderer 入れ子構造: 10段ネストのbulletリスト", () =>
               },
             },
           ],
-          style: { align: "left", folded: false },
+          style: { align: 1 as const, folded: false },
         },
         children: i < 9 ? [`bullet-nest-${i + 1}`] : [],
       };

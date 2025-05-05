@@ -39,7 +39,7 @@ describe("LarkRenderer 属性バリエーション複合", () => {
             },
           },
         ],
-        style: { align: 1, folded: false },
+        style: { align: 1 as const, folded: false },
       },
       children: [],
     };
@@ -82,7 +82,7 @@ describe("LarkRenderer 属性バリエーション: 組み合わせ違い", () =
             },
           },
         ],
-        style: { align: "left", folded: false },
+        style: { align: 1 as const, folded: false },
       },
       children: [],
     };
@@ -111,7 +111,7 @@ describe("LarkRenderer 属性バリエーション: 太字のみ", () => {
             },
           },
         ],
-        style: { align: "left", folded: false },
+        style: { align: 1 as const, folded: false },
       },
       children: [],
     };
@@ -140,7 +140,7 @@ describe("LarkRenderer 属性バリエーション: 斜体のみ", () => {
             },
           },
         ],
-        style: { align: "left", folded: false },
+        style: { align: 1 as const, folded: false },
       },
       children: [],
     };
@@ -169,7 +169,7 @@ describe("LarkRenderer 属性バリエーション: 下線のみ", () => {
             },
           },
         ],
-        style: { align: "left", folded: false },
+        style: { align: 1 as const, folded: false },
       },
       children: [],
     };
@@ -198,7 +198,7 @@ describe("LarkRenderer 属性バリエーション: 打消しのみ", () => {
             },
           },
         ],
-        style: { align: "left", folded: false },
+        style: { align: 1 as const, folded: false },
       },
       children: [],
     };
@@ -227,7 +227,7 @@ describe("LarkRenderer 属性バリエーション: インラインコードの�
             },
           },
         ],
-        style: { align: "left", folded: false },
+        style: { align: 1 as const, folded: false },
       },
       children: [],
     };
@@ -256,7 +256,7 @@ describe("LarkRenderer 属性バリエーション: コメント付きのみ", (
             },
           },
         ],
-        style: { align: "left", folded: false },
+        style: { align: 1 as const, folded: false },
       },
       children: [],
     };
@@ -285,7 +285,7 @@ describe("LarkRenderer 属性バリエーション: 太字＋斜体", () => {
             },
           },
         ],
-        style: { align: "left", folded: false },
+        style: { align: 1 as const, folded: false },
       },
       children: [],
     };
@@ -314,7 +314,7 @@ describe("LarkRenderer 属性バリエーション: 下線＋打消し", () => {
             },
           },
         ],
-        style: { align: "left", folded: false },
+        style: { align: 1 as const, folded: false },
       },
       children: [],
     };
@@ -343,7 +343,7 @@ describe("LarkRenderer 属性バリエーション: インラインコード＋�
             },
           },
         ],
-        style: { align: "left", folded: false },
+        style: { align: 1 as const, folded: false },
       },
       children: [],
     };
@@ -372,7 +372,7 @@ describe("LarkRenderer 属性バリエーション: コメント＋斜体", () =
             },
           },
         ],
-        style: { align: "left", folded: false },
+        style: { align: 1 as const, folded: false },
       },
       children: [],
     };
