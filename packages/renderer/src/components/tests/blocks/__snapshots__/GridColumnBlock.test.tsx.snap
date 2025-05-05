@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GridColumnBlock block renders grid column block and unsupported child 1`] = `
+<div>
+  <div
+    class="reark-grid-column"
+    style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 8px;"
+  >
+    <div
+      class="reark-unsupported-block"
+    >
+      <strong>
+        Unsupported block type: 
+        99
+      </strong>
+    </div>
+  </div>
+</div>
+`;

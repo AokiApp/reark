@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Todo block renders todo text and checkbox 1`] = `
+<div>
+  <div
+    class="reark-todo"
+    style="text-align: left;"
+  >
+    <input
+      class="reark-todo__checkbox"
+      readonly=""
+      type="checkbox"
+    />
+    <div
+      class="reark-todo__content"
+    >
+      <span
+        class=""
+      >
+        タスク 1
+      </span>
+    </div>
+  </div>
+</div>
+`;

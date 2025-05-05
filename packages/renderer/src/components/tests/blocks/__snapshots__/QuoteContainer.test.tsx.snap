@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`QuoteContainer block renders quote container and unsupported child 1`] = `
+<div>
+  <div
+    class="reark-quote-container"
+  >
+    <div
+      class="reark-unsupported-block"
+    >
+      <strong>
+        Unsupported block type: 
+        98
+      </strong>
+    </div>
+  </div>
+</div>
+`;

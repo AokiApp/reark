@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Text block renders text from context 1`] = `
+<div>
+  <div
+    class="reark-text-block"
+    style="text-align: left;"
+  >
+    <div
+      class="reark-comment reark-comment--leaf"
+      data-comment-ids="7500745405299163169"
+    >
+      <span
+        class="reark-text"
+      >
+        本文書は、 
+      </span>
+    </div>
+    <div
+      class="reark-comment reark-comment--leaf"
+      data-comment-ids="7500745405299163169"
+    >
+      <span
+        class="reark-text--inline-code reark-text"
+      >
+        lark2react
+      </span>
+    </div>
+    <div
+      class="reark-comment reark-comment--leaf"
+      data-comment-ids="7500745405299163169"
+    >
+      <span
+        class="reark-text"
+      >
+        の描画を確かめるためのものである。
+      </span>
+    </div>
+  </div>
+</div>
+`;
