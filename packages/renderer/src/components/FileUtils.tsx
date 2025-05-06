@@ -48,6 +48,13 @@ export function useFileToken({ token, name }: { name: string; token: string }) {
       break;
   }
 
+  // count the number of files in the context
+  const fileCount = Object.keys(files).length;
+  // prefer eager load if there are less than 10 files
+  // this is a heuristic to avoid loading too many files at once
+  // and potentially causing performance issues
+  const preferEagerLoad = fileCount < 10;
+
   return {
     uri: pubUrlWithExt,
     extension,
@@ -64,6 +71,7 @@ export function useFileToken({ token, name }: { name: string; token: string }) {
       isOfficeLike,
       kindForIcon,
     },
+    preferEagerLoad,
   };
 }
 
@@ -206,7 +214,8 @@ const DownloadIcon = () => (
  * PreviewView: Renders a preview of the file content.
  */
 export function PreviewView({ fileBlock }: ViewProps) {
-  const { uri, extension, filename, verdicts } = useFileToken(fileBlock);
+  const { uri, extension, filename, verdicts, preferEagerLoad } =
+    useFileToken(fileBlock);
 
   return (
     <div className="view-block view-block__preview">
@@ -217,14 +226,24 @@ export function PreviewView({ fileBlock }: ViewProps) {
       )}
       {verdicts.isVideo && (
         <div className="view-block__preview-content view-block__preview-video">
-          <video src={uri} controls autoPlay={false} preload="none">
+          <video
+            src={uri}
+            controls
+            autoPlay={false}
+            preload={preferEagerLoad ? "auto" : "none"}
+          >
             Your browser does not support the video tag.
           </video>
         </div>
       )}
       {verdicts.isAudio && (
         <div className="view-block__preview-content view-block__preview-audio">
-          <audio src={uri} controls autoPlay={false} preload="none">
+          <audio
+            src={uri}
+            controls
+            autoPlay={false}
+            preload={preferEagerLoad ? "auto" : "none"}
+          >
             Your browser does not support the audio element.
           </audio>
         </div>
