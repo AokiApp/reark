@@ -1,5 +1,29 @@
 # @aokiapp/reark-server
 
+## 0.3.4
+
+### Patch Changes
+
+- repub with fix
+- Updated dependencies
+  - @aokiapp/reark-lark-api@0.3.4
+
+## 0.3.3
+
+### Patch Changes
+
+- repub2
+- Updated dependencies
+  - @aokiapp/reark-lark-api@0.3.3
+
+## 0.3.2
+
+### Patch Changes
+
+- repub
+- Updated dependencies
+  - @aokiapp/reark-lark-api@0.3.2
+
 ## 0.3.1
 
 ### Patch Changes

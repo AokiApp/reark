@@ -1,6 +1,6 @@
 {
   "name": "@aokiapp/reark-server",
-  "version": "0.3.1",
+  "version": "0.3.4",
   "private": false,
   "publishConfig": {
     "access": "public"
@@ -14,12 +14,10 @@
     "build": "tsc --outDir dist",
     "build:watch": "tsc --outDir dist --watch",
     "dev": "npm run build:watch",
-    "prepublishOnly": "npm run build",
-    "publish": "npm publish --access public",
-    "postpublish": "echo Published!"
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "@aokiapp/reark-lark-api": "0.3.1",
+    "@aokiapp/reark-lark-api": "0.3.4",
     "mime-types": "^2.1.35"
   },
   "devDependencies": {

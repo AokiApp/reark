@@ -1,6 +1,6 @@
 {
   "name": "@aokiapp/reark",
-  "version": "0.3.1",
+  "version": "0.3.4",
   "private": false,
   "publishConfig": {
     "access": "public"
@@ -23,16 +23,14 @@
     "build": "vite build",
     "build:watch": "vite build --watch",
     "dev": "npm run build:watch",
-    "prepublishOnly": "npm run build",
-    "publish": "npm publish --access public",
-    "postpublish": "echo Published!"
+    "prepublishOnly": "npm run build"
   },
   "peerDependencies": {
     "react": ">=18.0.0, >=19.0.0",
     "react-dom": ">=18.0.0, >=19.0.0"
   },
   "dependencies": {
-    "@aokiapp/reark-lark-api": "0.3.1",
-    "@aokiapp/reark-renderer": "0.3.1"
+    "@aokiapp/reark-lark-api": "0.3.4",
+    "@aokiapp/reark-renderer": "0.3.4"
   }
 }
