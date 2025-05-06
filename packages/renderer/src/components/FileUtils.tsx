@@ -138,7 +138,6 @@ const ImageIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
-    fill="currentColor"
     width="24"
     height="24"
   >
@@ -153,7 +152,6 @@ const VideoIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
-    fill="currentColor"
     width="24"
     height="24"
   >
@@ -168,7 +166,6 @@ const AudioIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
-    fill="currentColor"
     width="24"
     height="24"
   >
@@ -183,7 +180,6 @@ const DocumentIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
-    fill="currentColor"
     width="24"
     height="24"
   >
@@ -270,10 +266,10 @@ export function InlineView({ fileBlock }: ViewProps) {
       target="_blank"
       rel="noopener noreferrer"
     >
-      <span className="view-block__inline-icon">
+      <div className="view-block__inline-icon">
         <FileIcon kindForIcon={verdicts.kindForIcon} extension={extension} />
-      </span>
-      <span className="view-block__inline-filename">{filename}</span>
+      </div>
+      <div className="view-block__inline-filename">{filename}</div>
     </a>
   );
 }
