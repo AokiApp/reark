@@ -9,8 +9,13 @@ type TOCEntry = {
 };
 
 function extractHeadings(blocks: Block[]): TOCEntry[] {
+  const rootBlockId = blocks[0]?.block_id;
   const headings: TOCEntry[] = [];
   for (const block of blocks) {
+    if (block.parent_id !== rootBlockId) {
+      // ルートブロックの子供でない場合はスキップ
+      continue;
+    }
     for (let level = 1; level <= 9; level++) {
       const key = `heading${level}` as keyof Block;
       const heading = block[key] as
