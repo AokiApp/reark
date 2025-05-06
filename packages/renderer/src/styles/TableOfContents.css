@@ -5,14 +5,9 @@
 
 .reark-toc {
   border-radius: 12px;
-  padding: 20px 24px;
-  margin: 24px 0;
-  font-family: "Noto Sans JP", system-ui, sans-serif;
   font-size: 15px;
   color: var(--toc-text-color, gray);
   font-weight: var(--toc-font-weight, bold);
-  max-width: 340px;
-  min-width: 220px;
 
   ul {
     list-style: none;
@@ -34,11 +29,6 @@
   padding: 0;
   position: relative;
 
-  > details,
-  > a {
-    display: block;
-  }
-
   > details {
     margin-bottom: 2px;
 
@@ -46,10 +36,10 @@
       cursor: pointer;
       font-weight: var(--toc-font-weight, bold);
       border-radius: 6px;
-      padding: 4px 0px;
       user-select: none;
       list-style: none;
       position: relative;
+      display: inline-block;
       outline-offset: 2px;
       color: var(--toc-text-color, gray);
 
@@ -92,7 +82,7 @@
 
   > a,
   > details > summary > a {
-    display: block;
+    display: inline-block;
     padding: 4px 0px;
     border-radius: 6px;
     text-decoration: none;
@@ -101,76 +91,94 @@
   }
 }
 
-.reark-toc__item--level1 > details > summary,
-.reark-toc__item--level1 > a {
-  padding-left: 0;
-  font-size: 1.05em;
-  font-weight: var(--toc-font-weight, bold);
+.reark-toc__item--level1 {
+  > details > summary,
+  > a {
+    padding-left: 12px;
+    font-size: 1.05em;
+    font-weight: var(--toc-font-weight, bold);
+  }
+  > details > summary:before {
+    left: 0px;
+  }
 }
-.reark-toc__item--level1 > details > summary:before {
-  left: -12px;
+.reark-toc__item--level2 {
+  > details > summary,
+  > a {
+    padding-left: 28px;
+    font-size: 1em;
+  }
+  > details > summary:before {
+    left: 16px;
+  }
 }
-.reark-toc__item--level2 > details > summary,
-.reark-toc__item--level2 > a {
-  padding-left: 16px;
-  font-size: 1em;
+.reark-toc__item--level3 {
+  > details > summary,
+  > a {
+    padding-left: 44px;
+    font-size: 0.98em;
+  }
+  > details > summary:before {
+    left: 32px;
+  }
 }
-.reark-toc__item--level2 > details > summary:before {
-  left: 4px;
+.reark-toc__item--level4 {
+  > details > summary,
+  > a {
+    padding-left: 60px;
+    font-size: 0.96em;
+  }
+  > details > summary:before {
+    left: 48px;
+  }
 }
-.reark-toc__item--level3 > details > summary,
-.reark-toc__item--level3 > a {
-  padding-left: 32px;
-  font-size: 0.98em;
+.reark-toc__item--level5 {
+  > details > summary,
+  > a {
+    padding-left: 76px;
+    font-size: 0.95em;
+  }
+  > details > summary:before {
+    left: 64px;
+  }
 }
-.reark-toc__item--level3 > details > summary:before {
-  left: 20px;
+.reark-toc__item--level6 {
+  > details > summary,
+  > a {
+    padding-left: 92px;
+    font-size: 0.94em;
+  }
+  > details > summary:before {
+    left: 80px;
+  }
 }
-.reark-toc__item--level4 > details > summary,
-.reark-toc__item--level4 > a {
-  padding-left: 48px;
-  font-size: 0.96em;
+.reark-toc__item--level7 {
+  > details > summary,
+  > a {
+    padding-left: 108px;
+    font-size: 0.93em;
+  }
+  > details > summary:before {
+    left: 96px;
+  }
 }
-.reark-toc__item--level4 > details > summary:before {
-  left: 36px;
+.reark-toc__item--level8 {
+  > details > summary,
+  > a {
+    padding-left: 124px;
+    font-size: 0.92em;
+  }
+  > details > summary:before {
+    left: 112px;
+  }
 }
-.reark-toc__item--level5 > details > summary,
-.reark-toc__item--level5 > a {
-  padding-left: 64px;
-  font-size: 0.95em;
-}
-.reark-toc__item--level5 > details > summary:before {
-  left: 52px;
-}
-.reark-toc__item--level6 > details > summary,
-.reark-toc__item--level6 > a {
-  padding-left: 80px;
-  font-size: 0.94em;
-}
-.reark-toc__item--level6 > details > summary:before {
-  left: 68px;
-}
-.reark-toc__item--level7 > details > summary,
-.reark-toc__item--level7 > a {
-  padding-left: 96px;
-  font-size: 0.93em;
-}
-.reark-toc__item--level7 > details > summary:before {
-  left: 84px;
-}
-.reark-toc__item--level8 > details > summary,
-.reark-toc__item--level8 > a {
-  padding-left: 112px;
-  font-size: 0.92em;
-}
-.reark-toc__item--level8 > details > summary:before {
-  left: 100px;
-}
-.reark-toc__item--level9 > details > summary,
-.reark-toc__item--level9 > a {
-  padding-left: 128px;
-  font-size: 0.91em;
-}
-.reark-toc__item--level9 > details > summary:before {
-  left: 116px;
+.reark-toc__item--level9 {
+  > details > summary,
+  > a {
+    padding-left: 140px;
+    font-size: 0.91em;
+  }
+  > details > summary:before {
+    left: 128px;
+  }
 }
