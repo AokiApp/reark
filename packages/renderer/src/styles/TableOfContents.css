@@ -1,154 +1,176 @@
-/* Table of Contents - Modern Stylish Design (色指定・box-shadow等も全削除) */
+:root {
+  --toc-text-color: #383838d0;
+  --toc-font-weight: 600;
+}
+
 .reark-toc {
   border-radius: 12px;
   padding: 20px 24px;
   margin: 24px 0;
   font-family: "Noto Sans JP", system-ui, sans-serif;
   font-size: 15px;
-  color: gray;
+  color: var(--toc-text-color, gray);
+  font-weight: var(--toc-font-weight, bold);
   max-width: 340px;
   min-width: 220px;
-  scroll-behavior: smooth;
-  transition: box-shadow 0.2s;
-}
 
-.reark-toc ul {
-  list-style: none;
-  padding-left: 0;
-  margin: 0;
+  ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+  }
+
+  @media (max-width: 600px) {
+    & {
+      max-width: 100%;
+      padding: 12px 8px;
+      font-size: 14px;
+    }
+  }
 }
 
 .reark-toc__item {
   margin: 0;
   padding: 0;
   position: relative;
+
+  > details,
+  > a {
+    display: block;
+  }
+
+  > details {
+    margin-bottom: 2px;
+
+    > summary {
+      cursor: pointer;
+      font-weight: var(--toc-font-weight, bold);
+      border-radius: 6px;
+      padding: 4px 0px;
+      user-select: none;
+      list-style: none;
+      position: relative;
+      outline-offset: 2px;
+      color: var(--toc-text-color, gray);
+
+      &::-webkit-details-marker {
+        display: none;
+      }
+
+      &:before {
+        content: "";
+        position: absolute;
+        left: -16px;
+        top: 50%;
+        transform: translateY(-50%) rotate(0deg);
+        width: 0;
+        height: 0;
+        border-top: 6px solid transparent;
+        border-bottom: 6px solid transparent;
+        border-left: 7px solid rgba(0, 86, 179, 0.5);
+        opacity: 0;
+        transition:
+          transform 0.2s,
+          opacity 0.15s,
+          border-left-color 0.2s;
+        pointer-events: none;
+      }
+    }
+
+    &[open] > summary {
+      &::before {
+        border-left: 7px solid rgba(0, 86, 179, 0.5);
+        transform: translateY(-50%) rotate(90deg);
+      }
+    }
+
+    > summary:hover:before,
+    > summary:focus-visible:before {
+      opacity: 1;
+    }
+  }
+
+  > a,
+  > details > summary > a {
+    display: block;
+    padding: 4px 0px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: var(--toc-font-weight, bold);
+    color: var(--toc-text-color, gray);
+  }
 }
 
-.reark-toc__item > details,
-.reark-toc__item > a {
-  display: block;
-}
-
-/* details/summary（開閉ボタン） */
-.reark-toc__item > details {
-  margin-bottom: 2px;
-}
-.reark-toc__item > details > summary {
-  cursor: pointer;
-  font-weight: 500;
-  border-radius: 6px;
-  padding: 4px 0px;
-  transition: background 0.15s;
-  user-select: none;
-  list-style: none;
-  position: relative;
-}
-.reark-toc__item > details[open] > summary {
-}
-.reark-toc__item > details > summary:hover,
-.reark-toc__item > a:hover {
-}
-.reark-toc__item > details > summary:focus-visible {
-  outline-offset: 2px;
-}
-.reark-toc__item > details > summary::-webkit-details-marker {
-  display: none;
-}
-
-/* アロー（三角形） - CSS borderで描画、ホバー時のみ表示 */
-.reark-toc__item > details > summary:before {
-  content: "";
-  position: absolute;
-  left: 4px; /* Changed from 6px */
-  top: 50%;
-  transform: translateY(-50%) rotate(0deg);
-  width: 0;
-  height: 0;
-  border-top: 6px solid transparent;
-  border-bottom: 6px solid transparent;
-  border-left: 7px solid rgba(0, 86, 179, 0.5); /* Changed color */
-  opacity: 0;
-  transition:
-    transform 0.2s,
-    opacity 0.15s,
-    border-left-color 0.2s;
-  pointer-events: none;
-}
-.reark-toc__item > details[open] > summary:before {
-  border-left: 7px solid rgba(0, 86, 179, 0.5); /* Changed color */
-  transform: translateY(-50%) rotate(90deg);
-}
-.reark-toc__item > details > summary:hover:before,
-.reark-toc__item > details > summary:focus-visible:before {
-  opacity: 1;
-}
-
-/* aタグ（リンク） */
-.reark-toc__item > a,
-.reark-toc__item > details > summary > a {
-  display: block;
-  padding: 4px 0px;
-  border-radius: 6px;
-  text-decoration: none; /* Add this line */
-  transition: background 0.15s;
-  /* color 0.15s; Remove this line to inherit gray */
-  font-weight: 400;
-  /* color: inherit; Ensure text color is inherited */
-}
-
-/* レベルごとのインデント・色・サイズ */
 .reark-toc__item--level1 > details > summary,
 .reark-toc__item--level1 > a {
   padding-left: 0;
   font-size: 1.05em;
-  font-weight: 600;
+  font-weight: var(--toc-font-weight, bold);
+}
+.reark-toc__item--level1 > details > summary:before {
+  left: -12px;
 }
 .reark-toc__item--level2 > details > summary,
 .reark-toc__item--level2 > a {
   padding-left: 16px;
   font-size: 1em;
 }
+.reark-toc__item--level2 > details > summary:before {
+  left: 4px;
+}
 .reark-toc__item--level3 > details > summary,
 .reark-toc__item--level3 > a {
   padding-left: 32px;
   font-size: 0.98em;
+}
+.reark-toc__item--level3 > details > summary:before {
+  left: 20px;
 }
 .reark-toc__item--level4 > details > summary,
 .reark-toc__item--level4 > a {
   padding-left: 48px;
   font-size: 0.96em;
 }
+.reark-toc__item--level4 > details > summary:before {
+  left: 36px;
+}
 .reark-toc__item--level5 > details > summary,
 .reark-toc__item--level5 > a {
   padding-left: 64px;
   font-size: 0.95em;
+}
+.reark-toc__item--level5 > details > summary:before {
+  left: 52px;
 }
 .reark-toc__item--level6 > details > summary,
 .reark-toc__item--level6 > a {
   padding-left: 80px;
   font-size: 0.94em;
 }
+.reark-toc__item--level6 > details > summary:before {
+  left: 68px;
+}
 .reark-toc__item--level7 > details > summary,
 .reark-toc__item--level7 > a {
   padding-left: 96px;
   font-size: 0.93em;
+}
+.reark-toc__item--level7 > details > summary:before {
+  left: 84px;
 }
 .reark-toc__item--level8 > details > summary,
 .reark-toc__item--level8 > a {
   padding-left: 112px;
   font-size: 0.92em;
 }
+.reark-toc__item--level8 > details > summary:before {
+  left: 100px;
+}
 .reark-toc__item--level9 > details > summary,
 .reark-toc__item--level9 > a {
   padding-left: 128px;
   font-size: 0.91em;
 }
-
-/* レスポンシブ */
-@media (max-width: 600px) {
-  .reark-toc {
-    max-width: 100%;
-    padding: 12px 8px;
-    font-size: 14px;
-  }
+.reark-toc__item--level9 > details > summary:before {
+  left: 116px;
 }
