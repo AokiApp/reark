@@ -1,5 +1,6 @@
 import { Block, TextElement } from "@aokiapp/reark-lark-api";
 import React from "react";
+import "../styles/TableOfContents.css";
 
 type TOCEntry = {
   blockId: string;
@@ -38,6 +39,60 @@ export type TableOfContentsProps = {
   blocks: Block[];
 };
 
+/**
+ * TOCEntryTree: ネスト構造用
+ */
+type TOCEntryTree = TOCEntry & { children: TOCEntryTree[] };
+
+/**
+ * フラットなheadings配列をツリー構造に変換
+ */
+function buildTOCTree(headings: TOCEntry[]): TOCEntryTree[] {
+  const root: TOCEntryTree[] = [];
+  const stack: TOCEntryTree[] = [];
+
+  for (const h of headings) {
+    const node: TOCEntryTree = { ...h, children: [] };
+    while (stack.length > 0 && stack[stack.length - 1].level >= node.level) {
+      stack.pop();
+    }
+    if (stack.length === 0) {
+      root.push(node);
+    } else {
+      stack[stack.length - 1].children.push(node);
+    }
+    stack.push(node);
+  }
+  return root;
+}
+
+/**
+ * 再帰的にTOCを描画
+ */
+const TOCList: React.FC<{ nodes: TOCEntryTree[] }> = ({ nodes }) => {
+  return (
+    <ul>
+      {nodes.map((node) => (
+        <li
+          key={node.blockId}
+          className={`reark-toc__item reark-toc__item--level${node.level}`}
+        >
+          {node.children.length > 0 ? (
+            <details open>
+              <summary>
+                <a href={`#${node.blockId}`}>{node.text}</a>
+              </summary>
+              <TOCList nodes={node.children} />
+            </details>
+          ) : (
+            <a href={`#${node.blockId}`}>{node.text}</a>
+          )}
+        </li>
+      ))}
+    </ul>
+  );
+};
+
 export const TableOfContents: React.FC<TableOfContentsProps> = ({ blocks }) => {
   const headings = extractHeadings(blocks);
 
@@ -45,19 +100,11 @@ export const TableOfContents: React.FC<TableOfContentsProps> = ({ blocks }) => {
     return null;
   }
 
+  const tocTree = buildTOCTree(headings);
+
   return (
     <nav className="reark-toc">
-      <ul>
-        {headings.map((h) => (
-          <li
-            key={h.blockId}
-            style={{ marginLeft: (h.level - 1) * 16 }}
-            className={`reark-toc__item reark-toc__item--level${h.level}`}
-          >
-            {h.text}
-          </li>
-        ))}
-      </ul>
+      <TOCList nodes={tocTree} />
     </nav>
   );
 };

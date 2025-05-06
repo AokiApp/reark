@@ -1,4 +1,3 @@
-import React from "react";
 import { BlockInnerComponent } from "../../types";
 
 function decodeUrl(url: string): string {

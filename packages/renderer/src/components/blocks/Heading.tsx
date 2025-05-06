@@ -14,7 +14,10 @@ const HeadingBase: BlockInnerComponent<{
   }
 
   return (
-    <div className={`reark-heading reark-heading--${level}`}>
+    <div
+      className={`reark-heading reark-heading--${level}`}
+      id={block.block_id}
+    >
       <Text elements={headingData.elements} style={headingData.style} />
     </div>
   );
