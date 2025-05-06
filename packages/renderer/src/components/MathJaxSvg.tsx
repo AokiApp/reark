@@ -18,7 +18,9 @@ export const MathJaxSvg: React.FC<MathJaxSvgProps> = ({
   style,
 }) => {
   const [svg, setSvg] = useState<string>("");
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const adaptorRef = useRef<any>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const htmlRef = useRef<any>(null);
 
   useEffect(() => {
