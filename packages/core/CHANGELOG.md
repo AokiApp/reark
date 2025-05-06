@@ -1,5 +1,17 @@
 # @aokiapp/reark
 
+## 0.3.0
+
+### Minor Changes
+
+- update many
+
+### Patch Changes
+
+- Updated dependencies
+  - @aokiapp/reark-lark-api@0.3.0
+  - @aokiapp/reark-renderer@0.3.0
+
 ## 0.2.0
 
 ### Minor Changes

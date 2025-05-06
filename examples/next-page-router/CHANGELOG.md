@@ -1,5 +1,17 @@
 # next-page-router
 
+## 0.2.0
+
+### Minor Changes
+
+- update many
+
+### Patch Changes
+
+- Updated dependencies
+  - @aokiapp/reark@0.3.0
+  - @aokiapp/reark-server@0.3.0
+
 ## 0.1.2
 
 ### Patch Changes
