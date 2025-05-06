@@ -10,6 +10,7 @@ import {
 } from "@aokiapp/reark-server";
 
 import "@aokiapp/reark/style.css";
+import { TableOfContents } from "@aokiapp/reark";
 
 // Utility to extract documentId from Lark URL or plain ID
 function extractDocId(input: string): string {
@@ -98,7 +99,13 @@ export default function Home({
         </form>
       </header>
       {initialData ? (
-        <LarkRenderer initialData={initialData} />
+        <>
+          {Array.isArray(initialData.blocks) &&
+            initialData.blocks.length > 0 && (
+              <TableOfContents blocks={initialData.blocks} />
+            )}
+          <LarkRenderer initialData={initialData} />
+        </>
       ) : (
         <div style={{ color: "#888" }}>
           Please enter a Lark document URL or ID above.
