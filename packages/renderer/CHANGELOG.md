@@ -1,5 +1,13 @@
 # @aokiapp/reark-renderer
 
+## 0.3.1
+
+### Patch Changes
+
+- 7240221: repub
+- Updated dependencies [7240221]
+  - @aokiapp/reark-lark-api@0.3.1
+
 ## 0.3.0
 
 ### Minor Changes
