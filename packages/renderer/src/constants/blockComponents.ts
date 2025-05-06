@@ -25,6 +25,7 @@ import { TableCell } from "../components/blocks/TableCell";
 import { GridBlock } from "../components/blocks/GridBlock";
 import { GridColumnBlock } from "../components/blocks/GridColumnBlock";
 import { ViewBlock } from "../components/blocks/ViewBlock";
+import { IframeBlock } from "../components/blocks/IframeBlock";
 import { BlockInnerComponent } from "../types";
 
 export const BLOCK_COMPONENTS: Record<number, BlockInnerComponent> = {
@@ -56,4 +57,5 @@ export const BLOCK_COMPONENTS: Record<number, BlockInnerComponent> = {
   // ファイルブロック（block_type: 23）のビュー表現（カード/プレビュー/インライン）。
   // 通常、親がblock_type: 23（File Block）であり、ViewBlock.tsxでファイル情報を参照してレンダリングする。
   33: ViewBlock,
+  26: IframeBlock, // IframeBlock
 };

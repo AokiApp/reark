@@ -33,6 +33,10 @@ export function BlockComponent({ blockId }: Props) {
     console.log("Block Data:", block);
     console.log("Parent Block Data:", blocks[block.parent_id || ""]);
     console.groupEnd();
+
+    if (block.block_type === 22) {
+      console.log(blocks);
+    }
   };
 
   const inner = (
