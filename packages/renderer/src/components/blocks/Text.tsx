@@ -4,6 +4,7 @@ import { containsUrl } from "../../utils/utils";
 import { Comment } from "../Comment";
 import { useBlockStore } from "../../contexts/BlockStoreContext";
 import { InlineView } from "../FileUtils";
+import { MathJaxSvg } from "../MathJaxSvg";
 
 export const Text: React.FC<{
   elements: TextElement[];
@@ -60,6 +61,23 @@ export const Text: React.FC<{
               ) : (
                 element.text_run.content
               )}
+            </span>
+          );
+        } else if (element.equation) {
+          textElementStyle = element.equation.text_element_style;
+          const classNames = [
+            textElementStyle?.bold ? "reark-text--bold" : "",
+            textElementStyle?.italic ? "reark-text--italic" : "",
+            textElementStyle?.strikethrough ? "reark-text--strikethrough" : "",
+            textElementStyle?.underline ? "reark-text--underline" : "",
+            textElementStyle?.inline_code ? "reark-text--inline-code" : "",
+            "reark-text",
+          ]
+            .filter(Boolean)
+            .join(" ");
+          inner = (
+            <span key={index} className={classNames}>
+              <MathJaxSvg tex={element.equation.content} />
             </span>
           );
         } else if (element.inline_block) {
