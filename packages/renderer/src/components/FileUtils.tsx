@@ -20,7 +20,7 @@ export function useFileToken({ token, name }: { name: string; token: string }) {
     extension,
   );
   const isPlayable = isVideo || isAudio;
-  const isViewable = isImage || isVideo;
+  const isViewable = isImage || isVideo || isAudio;
   const isDownloadable = !isViewable && !isPlayable;
 
   let kindForIcon = "document"; // default icon
@@ -214,42 +214,44 @@ export function PreviewView({ fileBlock }: ViewProps) {
 
   return (
     <div className="view-block view-block__preview">
-      <div className="view-block__preview-content">
-        {verdicts.isImage && (
-          <img src={uri} alt={filename} className="view-block__preview-image" />
-        )}
-        {verdicts.isVideo && (
-          <video
-            src={uri}
-            controls
-            className="view-block__preview-video"
-            autoPlay={false}
-            preload="none"
-          >
+      {verdicts.isImage && (
+        <div className="view-block__preview-content view-block__preview-image">
+          <img src={uri} alt={filename} />
+        </div>
+      )}
+      {verdicts.isVideo && (
+        <div className="view-block__preview-content view-block__preview-video">
+          <video src={uri} controls autoPlay={false} preload="none">
             Your browser does not support the video tag.
           </video>
-        )}
-        {!verdicts.isViewable && (
-          <div className="view-block__preview-placeholder">
-            <FileIcon
-              kindForIcon={verdicts.kindForIcon}
-              extension={extension}
-            />
-          </div>
-        )}
-      </div>
-      <div className="view-block__preview-footer">
-        <div className="view-block__preview-filename">{filename}</div>
-        <a
-          href={uri}
-          className="view-block__preview-download"
-          download={filename}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <DownloadIcon />
-        </a>
-      </div>
+        </div>
+      )}
+      {verdicts.isAudio && (
+        <div className="view-block__preview-content view-block__preview-audio">
+          <audio src={uri} controls autoPlay={false} preload="none">
+            Your browser does not support the audio element.
+          </audio>
+        </div>
+      )}
+      {!verdicts.isViewable && (
+        <div className="view-block__preview-content view-block__preview-placeholder">
+          <FileIcon kindForIcon={verdicts.kindForIcon} extension={extension} />
+        </div>
+      )}
+      {!(verdicts.isVideo || verdicts.isAudio) && (
+        <div className="view-block__preview-footer">
+          <div className="view-block__preview-filename">{filename}</div>
+          <a
+            href={uri}
+            className="view-block__preview-download"
+            download={filename}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <DownloadIcon />
+          </a>
+        </div>
+      )}
     </div>
   );
 }
