@@ -14,7 +14,8 @@
     "test": "turbo run test",
     "build": "turbo run build",
     "build:watch": "turbo run build:watch",
-    "dev": "turbo run dev"
+    "dev": "turbo run dev",
+    "publish": "changeset publish"
   },
   "devDependencies": {
     "@changesets/cli": "^2.29.2",
