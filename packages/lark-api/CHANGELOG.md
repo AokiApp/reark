@@ -1,5 +1,11 @@
 # @aokiapp/reark-lark-api
 
+## 0.4.1
+
+### Patch Changes
+
+- vite build
+
 ## 0.4.0
 
 ### Minor Changes

@@ -1,5 +1,14 @@
 # @aokiapp/reark
 
+## 0.4.1
+
+### Patch Changes
+
+- vite build
+- Updated dependencies
+  - @aokiapp/reark-lark-api@0.4.1
+  - @aokiapp/reark-renderer@0.4.1
+
 ## 0.4.0
 
 ### Minor Changes
