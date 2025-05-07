@@ -4,9 +4,12 @@ import type { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
 
 import { LarkRenderer, type LarkApiContextValue } from "@aokiapp/reark";
+
 import {
-  setCredentials,
   getLarkInitialDataForSSR,
+  setFsProvider,
+  LocalDiskFsProvider,
+  setCredentials,
 } from "@aokiapp/reark-server";
 
 import "@aokiapp/reark/style.css";
@@ -31,6 +34,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   if (documentId) {
     setCredentials(process.env.LARK_APP_ID!, process.env.LARK_APP_SECRET!);
 
+    setFsProvider(
+      new LocalDiskFsProvider(process.cwd() + "/public/lark-files"),
+    );
     initialData = await getLarkInitialDataForSSR(documentId);
   }
   return { props: { initialData, documentId } };
