@@ -236,6 +236,13 @@
     color: var(--reark-color-text-secondary);
   }
 }
+/* QuoteBlock (BlockType 15) */
+.reark-quote-block {
+  border-left: 4px solid #dfe2e5;
+  padding-left: 16px;
+  margin: 0;
+  color: var(--reark-color-text-secondary);
+}
 
 /* Table */
 .reark-table {
