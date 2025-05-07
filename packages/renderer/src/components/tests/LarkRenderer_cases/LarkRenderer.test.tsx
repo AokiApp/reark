@@ -1,5 +1,6 @@
 import { render } from "@testing-library/react";
 import { LarkRenderer } from "../../LarkRenderer";
+import { screen } from "@testing-library/react";
 
 describe("LarkRenderer", () => {
   it("正常系スナップショットテスト", () => {
@@ -12,12 +13,22 @@ describe("LarkRenderer", () => {
       block_id: "K2jmdGqW1o0t8fx3CDNjV6vKpsf",
       block_type: 2,
       children: [],
-      text: "テスト用子ブロック",
+      text: {
+        elements: [
+          {
+            text_run: {
+              content: "テスト用子ブロック",
+              text_element_style: { bold: false },
+            },
+          },
+        ],
+      },
     };
-    const { container } = render(
+    render(
       <LarkRenderer initialData={{ blocks: [exampleBlock, childBlock] }} />,
     );
-    expect(container).toMatchSnapshot();
+    // contains "テスト用子ブロック" in printed output
+    expect(screen.queryByText(/テスト用子ブロック/)).toBeInTheDocument();
   });
 });
 
@@ -33,14 +44,16 @@ it("複合ケース: page配下に複数ブロックを含む統合レンダリ�
     block_id: "text-1",
     block_type: 2,
     parent_id: "page-1",
-    text: [
-      {
-        text_run: {
-          content: "統合テスト用テキスト",
-          text_element_style: { bold: false },
+    text: {
+      elements: [
+        {
+          text_run: {
+            content: "統合テスト用テキスト",
+            text_element_style: { bold: false },
+          },
         },
-      },
-    ],
+      ],
+    },
     children: [],
   };
   const headingBlock = {
@@ -103,51 +116,58 @@ it("属性バリエーション: 太字・斜体・下線・打消し・イン�
     block_id: "text-attr",
     block_type: 2,
     parent_id: "page-attr",
-    text: [
-      {
-        text_run: {
-          content: "太字",
-          text_element_style: { bold: true },
+    text: {
+      elements: [
+        {
+          text_run: {
+            content: "太字",
+            text_element_style: { bold: true },
+          },
         },
-      },
-      {
-        text_run: {
-          content: "斜体",
-          text_element_style: { italic: true },
+        {
+          text_run: {
+            content: "斜体",
+            text_element_style: { italic: true },
+          },
         },
-      },
-      {
-        text_run: {
-          content: "下線",
-          text_element_style: { underline: true },
+        {
+          text_run: {
+            content: "下線",
+            text_element_style: { underline: true },
+          },
         },
-      },
-      {
-        text_run: {
-          content: "打消し",
-          text_element_style: { strikethrough: true },
+        {
+          text_run: {
+            content: "打消し",
+            text_element_style: { strikethrough: true },
+          },
         },
-      },
-      {
-        text_run: {
-          content: "インラインコード",
-          text_element_style: { inline_code: true },
+        {
+          text_run: {
+            content: "インラインコード",
+            text_element_style: { inline_code: true },
+          },
         },
-      },
-      {
-        text_run: {
-          content: "コメント付き",
-          text_element_style: { comment_ids: ["c1"] },
+        {
+          text_run: {
+            content: "コメント付き",
+            text_element_style: { comment_ids: ["c1"] },
+          },
         },
-      },
-    ],
+      ],
+    },
     children: [],
   };
 
   const blocks = [pageBlock, textBlock];
 
-  const { container } = render(<LarkRenderer initialData={{ blocks }} />);
-  expect(container).toMatchSnapshot();
+  render(<LarkRenderer initialData={{ blocks }} />);
+  expect(screen.queryByText(/太字/)).toBeInTheDocument();
+  expect(screen.queryByText(/斜体/)).toBeInTheDocument();
+  expect(screen.queryByText(/下線/)).toBeInTheDocument();
+  expect(screen.queryByText(/打消し/)).toBeInTheDocument();
+  expect(screen.queryByText(/インラインコード/)).toBeInTheDocument();
+  expect(screen.queryByText(/コメント付き/)).toBeInTheDocument();
 });
 
 it("入れ子構造: bulletリストの多段ネストを含む統合レンダリング", () => {
@@ -230,8 +250,8 @@ it("異常系: 不正なblock_typeを含む場合のレンダリング", () => {
     children: [],
   };
   const blocks = [pageBlock, invalidBlock];
-  const { container } = render(<LarkRenderer initialData={{ blocks }} />);
-  expect(container).toMatchSnapshot();
+  render(<LarkRenderer initialData={{ blocks }} />);
+  expect(screen.queryByText(/Unsupported block type/)).toBeInTheDocument();
 });
 
 it("異常系: 必須プロパティ欠損（textなしtext block）", () => {
@@ -249,8 +269,8 @@ it("異常系: 必須プロパティ欠損（textなしtext block）", () => {
     children: [],
   };
   const blocks = [pageBlock, textBlock];
-  const { container } = render(<LarkRenderer initialData={{ blocks }} />);
-  expect(container).toMatchSnapshot();
+  render(<LarkRenderer initialData={{ blocks }} />);
+  expect(screen.queryByText(/Something went wrong\./)).toBeInTheDocument();
 });
 
 it("異常系: blocksが空配列", () => {

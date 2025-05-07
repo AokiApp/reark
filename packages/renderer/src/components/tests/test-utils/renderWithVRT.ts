@@ -1,5 +1,4 @@
 import { render, RenderOptions } from "@testing-library/react";
-import puppeteer from "puppeteer";
 import path from "path";
 import fs from "fs/promises";
 
@@ -22,6 +21,7 @@ export function renderWithVRT(
         return;
       }
       const html = result.container.innerHTML;
+      const puppeteer = await import("puppeteer");
       const browser = await puppeteer.launch({
         headless: true,
         args: ["--no-sandbox", "--disable-setuid-sandbox"],

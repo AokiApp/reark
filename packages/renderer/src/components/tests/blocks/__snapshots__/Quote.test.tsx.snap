@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Quote renders quote text in blockquote with correct class 1`] = `
+<div>
+  <blockquote
+    class="reark-quote-block"
+  >
+    <div
+      class="reark-text-block"
+      style="text-align: left;"
+    >
+      <span
+        class="reark-text"
+      >
+        これは引用です。
+      </span>
+    </div>
+  </blockquote>
+</div>
+`;

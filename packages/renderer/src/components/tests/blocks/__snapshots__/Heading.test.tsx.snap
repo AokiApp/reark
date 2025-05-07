@@ -4,6 +4,7 @@ exports[`Heading1 block renders heading1 text 1`] = `
 <div>
   <div
     class="reark-heading reark-heading--1"
+    id="K2jmdGqW1o0t8fx3CDNjV6vKpsf"
   >
     <div
       class="reark-text-block"
@@ -28,6 +29,7 @@ exports[`Heading1 block renders heading1 with bold element 1`] = `
 <div>
   <div
     class="reark-heading reark-heading--1"
+    id="K2jmdGqW1o0t8fx3CDNjV6vKpsf"
   >
     <div
       class="reark-text-block"

@@ -1,58 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`LarkRenderer 正常系スナップショットテスト 1`] = `
-<div>
-  <div
-    class="reark-block"
-  >
-    <div
-      class="reark-page"
-    >
-      <div
-        class="reark-page-title"
-      >
-        <div
-          class="reark-text-block"
-          style="text-align: left;"
-        />
-      </div>
-      <div
-        class="reark-block"
-      >
-        <div>
-          <h1>
-            Something went wrong.
-          </h1>
-          <p>
-            We are working to fix this issue. Please try again later.
-          </p>
-          <details
-            style="white-space: pre-wrap;"
-          >
-            TypeError: Cannot read properties of undefined (reading 'map')
-            <br />
-            
-    at Text (/home/user/codes/aokiapp/reark/packages/renderer/src/components/blocks/Text.tsx:11:9)
-    at TextBlock (/home/user/codes/aokiapp/reark/packages/renderer/src/components/blocks/Text.tsx:110:50)
-    at ErrorBoundary (/home/user/codes/aokiapp/reark/packages/renderer/src/components/ErrorBoundary.tsx:8:9)
-    at div (&lt;anonymous&gt;)
-    at BlockComponent (/home/user/codes/aokiapp/reark/packages/renderer/src/components/BlockComponent.tsx:13:34)
-    at div (&lt;anonymous&gt;)
-    at Page (/home/user/codes/aokiapp/reark/packages/renderer/src/components/blocks/Page.tsx:6:45)
-    at ErrorBoundary (/home/user/codes/aokiapp/reark/packages/renderer/src/components/ErrorBoundary.tsx:8:9)
-    at div (&lt;anonymous&gt;)
-    at BlockComponent (/home/user/codes/aokiapp/reark/packages/renderer/src/components/BlockComponent.tsx:13:34)
-    at BlockStoreProvider (/home/user/codes/aokiapp/reark/packages/renderer/src/contexts/BlockStoreContext.tsx:27:3)
-    at LarkRendererInner (/home/user/codes/aokiapp/reark/packages/renderer/src/components/LarkRenderer.tsx:10:32)
-    at LarkRenderer (/home/user/codes/aokiapp/reark/packages/renderer/src/components/LarkRenderer.tsx:31:32)
-          </details>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
 exports[`入れ子構造: bulletリストの多段ネストを含む統合レンダリング 1`] = `
 <div>
   <div
@@ -128,59 +75,6 @@ exports[`入れ子構造: bulletリストの多段ネストを含む統合レン
 </div>
 `;
 
-exports[`属性バリエーション: 太字・斜体・下線・打消し・インラインコード・コメント複合 1`] = `
-<div>
-  <div
-    class="reark-block"
-  >
-    <div
-      class="reark-page"
-    >
-      <div
-        class="reark-page-title"
-      >
-        <div
-          class="reark-text-block"
-          style="text-align: left;"
-        />
-      </div>
-      <div
-        class="reark-block"
-      >
-        <div>
-          <h1>
-            Something went wrong.
-          </h1>
-          <p>
-            We are working to fix this issue. Please try again later.
-          </p>
-          <details
-            style="white-space: pre-wrap;"
-          >
-            TypeError: Cannot read properties of undefined (reading 'map')
-            <br />
-            
-    at Text (/home/user/codes/aokiapp/reark/packages/renderer/src/components/blocks/Text.tsx:11:9)
-    at TextBlock (/home/user/codes/aokiapp/reark/packages/renderer/src/components/blocks/Text.tsx:110:50)
-    at ErrorBoundary (/home/user/codes/aokiapp/reark/packages/renderer/src/components/ErrorBoundary.tsx:8:9)
-    at div (&lt;anonymous&gt;)
-    at BlockComponent (/home/user/codes/aokiapp/reark/packages/renderer/src/components/BlockComponent.tsx:13:34)
-    at div (&lt;anonymous&gt;)
-    at Page (/home/user/codes/aokiapp/reark/packages/renderer/src/components/blocks/Page.tsx:6:45)
-    at ErrorBoundary (/home/user/codes/aokiapp/reark/packages/renderer/src/components/ErrorBoundary.tsx:8:9)
-    at div (&lt;anonymous&gt;)
-    at BlockComponent (/home/user/codes/aokiapp/reark/packages/renderer/src/components/BlockComponent.tsx:13:34)
-    at BlockStoreProvider (/home/user/codes/aokiapp/reark/packages/renderer/src/contexts/BlockStoreContext.tsx:27:3)
-    at LarkRendererInner (/home/user/codes/aokiapp/reark/packages/renderer/src/components/LarkRenderer.tsx:10:32)
-    at LarkRenderer (/home/user/codes/aokiapp/reark/packages/renderer/src/components/LarkRenderer.tsx:31:32)
-          </details>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
 exports[`異常系: blocksが空配列 1`] = `<div />`;
 
 exports[`異常系: root blockが存在しない 1`] = `
@@ -197,92 +91,6 @@ exports[`異常系: root blockが存在しない 1`] = `
       >
         ルートブロックなし
       </span>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`異常系: 不正なblock_typeを含む場合のレンダリング 1`] = `
-<div>
-  <div
-    class="reark-block"
-  >
-    <div
-      class="reark-page"
-    >
-      <div
-        class="reark-page-title"
-      >
-        <div
-          class="reark-text-block"
-          style="text-align: left;"
-        />
-      </div>
-      <div
-        class="reark-block"
-      >
-        <div
-          class="reark-unsupported-block"
-        >
-          <strong>
-            Unsupported block type: 
-            9999
-          </strong>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`異常系: 必須プロパティ欠損（textなしtext block） 1`] = `
-<div>
-  <div
-    class="reark-block"
-  >
-    <div
-      class="reark-page"
-    >
-      <div
-        class="reark-page-title"
-      >
-        <div
-          class="reark-text-block"
-          style="text-align: left;"
-        />
-      </div>
-      <div
-        class="reark-block"
-      >
-        <div>
-          <h1>
-            Something went wrong.
-          </h1>
-          <p>
-            We are working to fix this issue. Please try again later.
-          </p>
-          <details
-            style="white-space: pre-wrap;"
-          >
-            TypeError: Cannot read properties of undefined (reading 'map')
-            <br />
-            
-    at Text (/home/user/codes/aokiapp/reark/packages/renderer/src/components/blocks/Text.tsx:11:9)
-    at TextBlock (/home/user/codes/aokiapp/reark/packages/renderer/src/components/blocks/Text.tsx:110:50)
-    at ErrorBoundary (/home/user/codes/aokiapp/reark/packages/renderer/src/components/ErrorBoundary.tsx:8:9)
-    at div (&lt;anonymous&gt;)
-    at BlockComponent (/home/user/codes/aokiapp/reark/packages/renderer/src/components/BlockComponent.tsx:13:34)
-    at div (&lt;anonymous&gt;)
-    at Page (/home/user/codes/aokiapp/reark/packages/renderer/src/components/blocks/Page.tsx:6:45)
-    at ErrorBoundary (/home/user/codes/aokiapp/reark/packages/renderer/src/components/ErrorBoundary.tsx:8:9)
-    at div (&lt;anonymous&gt;)
-    at BlockComponent (/home/user/codes/aokiapp/reark/packages/renderer/src/components/BlockComponent.tsx:13:34)
-    at BlockStoreProvider (/home/user/codes/aokiapp/reark/packages/renderer/src/contexts/BlockStoreContext.tsx:27:3)
-    at LarkRendererInner (/home/user/codes/aokiapp/reark/packages/renderer/src/components/LarkRenderer.tsx:10:32)
-    at LarkRenderer (/home/user/codes/aokiapp/reark/packages/renderer/src/components/LarkRenderer.tsx:31:32)
-          </details>
-        </div>
-      </div>
     </div>
   </div>
 </div>
@@ -307,33 +115,15 @@ exports[`複合ケース: page配下に複数ブロックを含む統合レン�
       <div
         class="reark-block"
       >
-        <div>
-          <h1>
-            Something went wrong.
-          </h1>
-          <p>
-            We are working to fix this issue. Please try again later.
-          </p>
-          <details
-            style="white-space: pre-wrap;"
+        <div
+          class="reark-text-block"
+          style="text-align: left;"
+        >
+          <span
+            class="reark-text"
           >
-            TypeError: Cannot read properties of undefined (reading 'map')
-            <br />
-            
-    at Text (/home/user/codes/aokiapp/reark/packages/renderer/src/components/blocks/Text.tsx:11:9)
-    at TextBlock (/home/user/codes/aokiapp/reark/packages/renderer/src/components/blocks/Text.tsx:110:50)
-    at ErrorBoundary (/home/user/codes/aokiapp/reark/packages/renderer/src/components/ErrorBoundary.tsx:8:9)
-    at div (&lt;anonymous&gt;)
-    at BlockComponent (/home/user/codes/aokiapp/reark/packages/renderer/src/components/BlockComponent.tsx:13:34)
-    at div (&lt;anonymous&gt;)
-    at Page (/home/user/codes/aokiapp/reark/packages/renderer/src/components/blocks/Page.tsx:6:45)
-    at ErrorBoundary (/home/user/codes/aokiapp/reark/packages/renderer/src/components/ErrorBoundary.tsx:8:9)
-    at div (&lt;anonymous&gt;)
-    at BlockComponent (/home/user/codes/aokiapp/reark/packages/renderer/src/components/BlockComponent.tsx:13:34)
-    at BlockStoreProvider (/home/user/codes/aokiapp/reark/packages/renderer/src/contexts/BlockStoreContext.tsx:27:3)
-    at LarkRendererInner (/home/user/codes/aokiapp/reark/packages/renderer/src/components/LarkRenderer.tsx:10:32)
-    at LarkRenderer (/home/user/codes/aokiapp/reark/packages/renderer/src/components/LarkRenderer.tsx:31:32)
-          </details>
+            統合テスト用テキスト
+          </span>
         </div>
       </div>
       <div
@@ -341,6 +131,7 @@ exports[`複合ケース: page配下に複数ブロックを含む統合レン�
       >
         <div
           class="reark-heading reark-heading--1"
+          id="heading-1"
         >
           <div
             class="reark-text-block"

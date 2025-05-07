@@ -239,6 +239,7 @@ exports[`LarkRenderer 複合ケース: 複数ブロック混在 text, heading, b
       >
         <div
           class="reark-heading reark-heading--1"
+          id="heading-mix"
         >
           <div
             class="reark-text-block"
