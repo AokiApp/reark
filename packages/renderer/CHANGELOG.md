@@ -4,7 +4,7 @@
 
 ### Patch Changes
 
-- repub with fix
+- Re-published package to fix publishing issue (no code changes)
 - Updated dependencies
   - @aokiapp/reark-lark-api@0.3.4
 
@@ -12,7 +12,7 @@
 
 ### Patch Changes
 
-- repub2
+- Re-published package to address npm registry issue (no code changes)
 - Updated dependencies
   - @aokiapp/reark-lark-api@0.3.3
 
@@ -20,7 +20,7 @@
 
 ### Patch Changes
 
-- repub
+- Re-published package for distribution consistency (no code changes)
 - Updated dependencies
   - @aokiapp/reark-lark-api@0.3.2
 
@@ -28,7 +28,7 @@
 
 ### Patch Changes
 
-- 7240221: repub
+- Re-published package after minor internal adjustments (commit 7240221)
 - Updated dependencies [7240221]
   - @aokiapp/reark-lark-api@0.3.1
 
@@ -36,7 +36,13 @@
 
 ### Minor Changes
 
-- update many
+- Added support for new block types (e.g., Grid, Iframe, ViewBlock)
+- Improved SSR compatibility and asset handling
+- Enhanced TableOfContents component
+- Improved TypeScript types and public API
+- Added/updated visual regression tests (VRT)
+- Updated documentation and usage examples
+- Various bug fixes and internal refactoring
 
 ### Patch Changes
 

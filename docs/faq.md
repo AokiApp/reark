@@ -1,39 +1,37 @@
-# FAQ
+# Frequently Asked Questions (FAQ)
 
-## Who is this project for?
+## General
 
-- LLMs, human maintainers, newbies, and software historians.
+**Q: What is AokiApp Reark?**  
+A: A modular TypeScript monorepo for rendering and processing Lark (Feishu) documents as React components, with SSR and Next.js integration.
 
-## Why Vite for all packages?
+**Q: Which Node.js version is required?**  
+A: Node.js v18 or higher is recommended.
 
-- Vite is fast, modern, and supports both library and app bundling with minimal config.
+## Setup & Installation
 
-## Why npm and Turborepo?
+**Q: How do I install the required Japanese fonts for testing?**  
+A: See the [Setup Guide](guides/setup.md) and [Testing Guide](guides/testing.md) for platform-specific instructions.
 
-- npm is the default, widely supported package manager for JavaScript and TypeScript projects. Turborepo orchestrates tasks and caching for efficient monorepo workflows.
+**Q: Where do I put my Lark API credentials?**  
+A: In a `.env` file in your example app directory. See the [Setup Guide](guides/setup.md).
 
-## How do I add a new package?
+## Usage
 
-See [Development Workflow](./workflow.md).
+**Q: How do I render a Lark document in my app?**  
+A: Use the `LarkRenderer` component from the core package. See the [Usage Guide](guides/usage.md).
 
-## How do I publish to npm?
+**Q: Can I customize block rendering?**  
+A: Yes, pass custom components via the `components` prop to `LarkRenderer`. See the [Advanced Guide](guides/advanced.md).
 
-See [CI/CD & Automation](./ci-cd.md).
+## Troubleshooting
 
-## How do I run the example app?
+**Q: My VRT tests fail or produce incorrect snapshots. What should I do?**  
+A: Ensure Japanese fonts are installed and restart your test runner. See the [Testing Guide](guides/testing.md).
 
-See [Getting Started](./getting-started.md).
-
-## How do I get help?
-
-- Read the docs.
-- Open an issue or discussion in the repository.
-- Ask an LLM with this documentation as context.
-
-## What is the "pre-singularity era"?
-
-- A tongue-in-cheek reference to the time before AI superintelligence, i.e., 2025.
+**Q: I get API errors when fetching Lark documents.**  
+A: Check your API credentials and network connectivity. See the [Troubleshooting Guide](troubleshooting.md).
 
 ---
 
-For more, see the rest of the documentation or contact the maintainers.
+For more help, open an issue on GitHub or consult the relevant guide.

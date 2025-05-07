@@ -1,60 +1,35 @@
-# @aokiapp/reark-renderer
+# Renderer API Reference
 
-A powerful React renderer for Lark/Notion-style block documents.  
-**@aokiapp/reark-renderer** is the core UI engine of the Reark monorepo, providing extensible, themeable, and SSR-friendly components for rendering rich document content.
-
----
-
-## Features
-
-- **Lark/Notion-style block rendering**: Supports text, headings, tables, images, todos, callouts, code blocks, and more.
-- **SSR & Next.js ready**: Seamless integration with server-side rendering frameworks.
-- **Customizable & extensible**: Override block rendering, inject custom components, and theme via CSS.
-- **Table of Contents**: Built-in component for document navigation.
-- **TypeScript support**: Fully typed public API.
-- **Visual Regression Testing**: Ensures UI consistency across updates.
+This document provides a detailed API reference for the **@aokiapp/reark-renderer** package.
 
 ---
 
-## Installation
+## Overview
 
-```sh
-npm install @aokiapp/reark
-# or
-yarn add @aokiapp/reark
-# or
-pnpm add @aokiapp/reark
-```
-
-**Peer dependencies:**
-
-- React 18+
-- (Optional) [Noto Sans CJK JP](https://fonts.google.com/noto/specimen/Noto+Sans+JP) for Japanese text rendering in tests
+The renderer package provides React components for rendering Lark/Notion-style block documents.  
+It is designed for extensibility, theming, and seamless integration with SSR frameworks like Next.js.
 
 ---
 
-## Usage
+## Main Exports
 
-### Basic Example
+| Export                | Type            | Description                                   |
+| --------------------- | --------------- | --------------------------------------------- |
+| `LarkRenderer`        | React Component | Main renderer for Lark/Notion-style documents |
+| `TableOfContents`     | React Component | Table of contents for document navigation     |
+| `LarkApiContextValue` | Type            | Shape of the data expected by the renderer    |
 
-```tsx
-import { LarkRenderer } from "@aokiapp/reark";
-import "@aokiapp/reark/style.css";
+---
 
-const initialData = /* Lark/Notion-style document data */;
-
-export default function MyPage() {
-  return <LarkRenderer initialData={initialData} />;
-}
-```
-
-### With Table of Contents
+## Usage Example
 
 ```tsx
 import { LarkRenderer, TableOfContents } from "@aokiapp/reark";
 import "@aokiapp/reark/style.css";
 
-export default function MyPage({ initialData }) {
+const initialData = /* Lark/Notion-style document data */;
+
+export default function MyPage() {
   return (
     <div style={{ display: "flex" }}>
       <aside style={{ width: 240 }}>
@@ -68,36 +43,21 @@ export default function MyPage({ initialData }) {
 }
 ```
 
-### Next.js / SSR Integration
-
-See [examples/next-page-router](../../examples/next-page-router) for a full SSR example.
-
 ---
 
-## API Reference
+## API Details
 
 ### `LarkRenderer`
 
-The main component for rendering Lark/Notion-style documents.
+The main component for rendering block documents.
 
-| Prop        | Type                       | Required | Description                      |
+**Props:**
+
+| Name        | Type                       | Required | Description                      |
 | ----------- | -------------------------- | -------- | -------------------------------- |
 | initialData | `LarkApiContextValue`      | Yes      | Parsed document data to render   |
 | components  | `Record<string, React.FC>` | No       | Custom block/component overrides |
 | className   | `string`                   | No       | Custom CSS class for theming     |
-
-**Usage Example:**
-
-```tsx
-<LarkRenderer
-  initialData={initialData}
-  components={{
-    Callout: MyCustomCallout,
-    // ...override other blocks
-  }}
-  className="my-theme"
-/>
-```
 
 **Extension Points:**
 
@@ -110,15 +70,11 @@ The main component for rendering Lark/Notion-style documents.
 
 A component for rendering a table of contents from document blocks.
 
-| Prop   | Type      | Required | Description                            |
+**Props:**
+
+| Name   | Type      | Required | Description                            |
 | ------ | --------- | -------- | -------------------------------------- |
 | blocks | `Block[]` | Yes      | Array of block data (from initialData) |
-
-**Usage Example:**
-
-```tsx
-<TableOfContents blocks={initialData.blocks} />
-```
 
 ---
 
@@ -160,7 +116,7 @@ export type LarkApiContextValue = {
 
 ---
 
-## Advanced Usage
+## Advanced Customization
 
 - **Custom Block Rendering:**  
   Pass custom components via the `components` prop to override default rendering for any block type.
@@ -183,52 +139,14 @@ flowchart TD
   E[initialData] -->|input| A
 ```
 
-## _The above diagram illustrates the main data flow between the LarkRenderer component, its block components, context, and input data. If you have a real screenshot or more detailed diagram, please contribute it to improve this section._
+---
 
-## Related Documentation
+## See Also
 
-- [Full API Reference](../../docs/api/renderer.md)
+- [README: @aokiapp/reark-renderer](../../packages/renderer/README.md)
 - [Example Projects](../../examples/)
-- [Guides](../../docs/guides/)
+- [Guides](../guides/)
 
 ---
 
-## Visual Regression Testing & Japanese Font Requirement
-
-This package uses Visual Regression Testing (VRT) to ensure UI consistency.  
-**VRT tests require Japanese fonts (e.g., Noto Sans CJK JP) to be installed on your environment.**  
-If Japanese fonts are missing, VRT tests may fail or produce incorrect snapshots, especially for components rendering Japanese text.
-
-### How to Install Japanese Fonts
-
-- **Ubuntu / Debian**
-  ```sh
-  sudo apt update
-  sudo apt install fonts-noto-cjk
-  ```
-- **CentOS / RHEL**
-  ```sh
-  sudo yum install google-noto-sans-cjk-fonts
-  ```
-- **macOS (Homebrew)**
-  ```sh
-  brew tap homebrew/cask-fonts
-  brew install --cask font-noto-sans-cjk
-  ```
-- **Windows (Chocolatey)**
-  ```sh
-  choco install noto
-  ```
-- Or download and install from:  
-  https://fonts.google.com/noto/specimen/Noto+Sans+JP
-
-**Notes:**
-
-- Restart your test runner or development server after installing fonts.
-- For CI environments, ensure font installation steps are included in your setup.
-
----
-
-## License
-
-MIT
+For backend and SSR integration, see the [Server Reference](server.md).

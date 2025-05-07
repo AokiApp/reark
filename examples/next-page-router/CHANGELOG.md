@@ -4,7 +4,11 @@
 
 ### Minor Changes
 
-- update many
+- Improved SSR example and documentation
+- Updated environment variable usage and .env.example
+- Enhanced README with setup and usage instructions
+- Updated dependencies to latest versions
+- Various bug fixes and internal cleanup
 
 ### Patch Changes
 
@@ -24,7 +28,7 @@
 
 ### Patch Changes
 
-- aaa3632: pre
+- Initial pre-release setup and configuration (commit aaa3632)
 - Updated dependencies [aaa3632]
   - @aokiapp/reark@0.1.1
   - @aokiapp/reark-server@0.1.1
@@ -33,7 +37,7 @@
 
 ### Patch Changes
 
-- pre
+- Pre-release: initial project structure and example setup
 - Updated dependencies
   - @aokiapp/reark@0.1.1-pre.0
   - @aokiapp/reark-server@0.1.1-pre.0
