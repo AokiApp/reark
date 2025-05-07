@@ -9,7 +9,6 @@ import "@aokiapp/reark/style.css";
 import { PageProps } from "@/.next/types/app/page";
 
 const PUBLIC_DIR = "public/lark-files";
-const PUBLIC_URL_BASE = "/lark-files/";
 // Server Component
 export default async function Page({ searchParams }: PageProps) {
   const documentId = (await searchParams).documentId as string | undefined;
@@ -23,11 +22,7 @@ export default async function Page({ searchParams }: PageProps) {
       throw new Error("LARK_APP_ID and LARK_APP_SECRET must be set in .env");
     }
     setCredentials(appId, appSecret);
-    initialData = await getLarkInitialDataForSSR(
-      documentId,
-      PUBLIC_DIR,
-      PUBLIC_URL_BASE,
-    );
+    initialData = await getLarkInitialDataForSSR(documentId, PUBLIC_DIR);
   }
 
   return (

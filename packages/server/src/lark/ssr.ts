@@ -41,7 +41,6 @@ async function getBlocksWithCache(documentId: string): Promise<Block[]> {
  */
 export async function getLarkInitialDataForSSR(
   documentId: string,
-  publicPrefix: string = "files/",
 ): Promise<LarkInitialData> {
   // 1. Get blocks with cache
   const blocks = await getBlocksWithCache(documentId);
@@ -50,8 +49,7 @@ export async function getLarkInitialDataForSSR(
   const fileTokens = extractFileTokens(blocks);
 
   // 3. Get existing files in public dir
-  const existingTokenToFilename =
-    await getExistingTokenToFilename(publicPrefix);
+  const existingTokenToFilename = await getExistingTokenToFilename();
 
   // 4. Filter tokens to download
   const tokensToDownload = fileTokens.filter(
@@ -68,7 +66,6 @@ export async function getLarkInitialDataForSSR(
   const downloadedTokenToUrl = await downloadAndStoreFiles(
     tokensToDownload,
     s3Urls,
-    publicPrefix,
   );
 
   // 7. Merge all token to public URL mappings
@@ -76,7 +73,7 @@ export async function getLarkInitialDataForSSR(
   for (const token of fileTokens) {
     if (token in existingTokenToFilename) {
       const publicUrl = await fsProvider.getPublicUrl(
-        `${publicPrefix}${existingTokenToFilename[token]}`,
+        `${existingTokenToFilename[token]}`,
       );
       if (publicUrl) files[token] = publicUrl;
     } else if (token in downloadedTokenToUrl) {

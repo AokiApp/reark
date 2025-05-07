@@ -26,10 +26,10 @@ export function extractFileTokens(blocks: Block[]): string[] {
 /**
  * Get a mapping from file token to filename for already existing files in the public directory.
  */
-export async function getExistingTokenToFilename(
-  publicPrefix: string,
-): Promise<Record<string, string>> {
-  const files = await fsProvider.list(publicPrefix);
+export async function getExistingTokenToFilename(): Promise<
+  Record<string, string>
+> {
+  const files = await fsProvider.list();
   const tokenToFilename: Record<string, string> = {};
   for (const file of files) {
     const filename = file.split("/").pop() || "";
@@ -48,7 +48,6 @@ export async function getExistingTokenToFilename(
 export async function downloadAndStoreFiles(
   tokens: string[],
   s3Urls: Record<string, string>,
-  publicPrefix: string,
 ): Promise<Record<string, string>> {
   const tokenToUrl: Record<string, string> = {};
   for (const token of tokens) {
@@ -64,7 +63,7 @@ export async function downloadAndStoreFiles(
       const contentType = res.headers.get("content-type") || "";
       const ext = mime.extension(contentType) || "bin";
       const filename = `${token}.${ext}`;
-      const key = `${publicPrefix}${filename}`;
+      const key = filename;
       await fsProvider.put(key, buffer);
       const publicUrl = await fsProvider.getPublicUrl(key);
       if (publicUrl) {
