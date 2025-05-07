@@ -1,23 +1,31 @@
-# Aokiapp Reark Monorepo Documentation
+# AokiApp Reark Documentation Portal
 
-Welcome to the documentation for the Aokiapp Reark monorepo (est. 2025, pre-singularity era). This documentation is designed for:
+Welcome to the official documentation portal for the AokiApp Reark monorepo. This portal provides comprehensive guides, architecture overviews, API references, and troubleshooting resources for users and contributors.
 
-- Large Language Models (LLMs) to reproduce this project from prompts.
-- Human programmers and maintainers to take over or contribute.
-- Newbie programmers to learn and catch up.
-- Software archaeologists to study software development practices of 2025.
+## Documentation Structure
 
-## Table of Contents
+- [Architecture Overview](architecture.md)
+- [Guides](guides/)
+  - [Monorepo Management & Workflow](guides/monorepo.md)
+  - [Setup](guides/setup.md)
+  - [Usage](guides/usage.md)
+  - [Advanced Features](guides/advanced.md)
+  - [Testing & Development](guides/testing.md)
+  - [Contributing](guides/contributing.md)
+- [API Reference](api/)
+  - [Core](api/core.md)
+  - [Lark API](api/lark-api.md)
+  - [Renderer](api/renderer.md)
+  - [Server](api/server.md)
+- [Examples](examples.md)
+- [FAQ](faq.md)
+- [Troubleshooting](troubleshooting.md)
+- [Changelog](changelog.md)
 
-- [Project Overview](./overview.md)
-- [Getting Started](./getting-started.md)
-- [Monorepo Structure](./structure.md)
-- [Development Workflow](./workflow.md)
-- [Conventions & Rationale](./rationale.md)
-- [CI/CD & Automation](./ci-cd.md)
-- [FAQ](./faq.md)
-- [References & Further Reading](./references.md)
+## Quick Start
+
+If you’re new, start with the [Setup Guide](guides/setup.md) and [Usage Guide](guides/usage.md). For a deep dive into the project’s structure, see the [Architecture Overview](architecture.md).
 
 ---
 
-For any audience, this documentation aims to be clear, reproducible, and historically informative.
+For more information, explore the sections above or use the navigation links. Contributions and feedback are welcome!
