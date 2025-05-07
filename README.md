@@ -7,6 +7,66 @@
 
 ---
 
+## 🚀 Quick Start
+
+The fastest way to try AokiApp Reark:
+
+```bash
+git clone https://github.com/aokiapp/reark.git
+cd reark
+pnpm install
+# or: npm install / yarn install / bun install
+cd examples/next-app-router
+cp .env.example .env
+# Set your LARK_APP_ID and LARK_APP_SECRET in .env
+pnpm dev
+# or: npm run dev / yarn dev / bun dev
+# Open http://localhost:3000
+```
+
+See [examples/next-app-router/README.md](examples/next-app-router/README.md) for details.
+
+---
+
+## 🔒 Security Notice
+
+- **Never commit your `.env` files or API credentials to Git.**
+- Add `.env` to your `.gitignore` and ensure secrets are managed securely in CI/CD (e.g., GitHub Actions secrets).
+- For more, see [12factor.net/config](https://12factor.net/config).
+
+---
+
+## 🛠️ Support Policy
+
+- **Supported Node.js:** v18 and above (LTS recommended)
+- **Supported Next.js:** See each example's README for tested versions.
+- We aim to support the latest LTS releases. Breaking changes will be announced in the changelog.
+- For version compatibility, see [CHANGELOG.md](./CHANGELOG.md).
+
+---
+
+## 🤝 Community & Contribution
+
+- Please use [GitHub Discussions](https://github.com/aokiapp/reark/discussions) for questions and [Issues](https://github.com/aokiapp/reark/issues) for bug reports.
+- Pull requests are welcome! See [Contributing Guide](docs/guides/contributing.md).
+- Issue/PR templates are provided in [`.github/`](.github/) (if missing, contributions welcome).
+- For real-time chat, join our Discord (link in repo description if available).
+
+---
+
+## ⚠️ Link Notice
+
+- Some documentation links use relative paths. If you move files or directories, links may break. Please check and update links after restructuring.
+
+---
+
+## 🖼️ Diagrams & Screenshots
+
+- Some diagrams use Mermaid. If a screenshot or diagram is missing, please contribute real images or remove placeholders.
+- All diagrams should have a caption explaining their meaning.
+
+---
+
 ## Overview
 
 **AokiApp Reark** is a modular TypeScript monorepo for rendering and processing [Lark (Feishu)](https://www.feishu.cn/) documents as React components, with full SSR support and seamless integration into modern web frameworks like Next.js. It provides a unified API for fetching, transforming, and rendering Lark/Notion-style documents, and includes example Next.js applications for both App Router and Page Router paradigms.

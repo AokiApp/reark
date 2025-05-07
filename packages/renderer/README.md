@@ -183,7 +183,7 @@ flowchart TD
   E[initialData] -->|input| A
 ```
 
----
+## _The above diagram illustrates the main data flow between the LarkRenderer component, its block components, context, and input data. If you have a real screenshot or more detailed diagram, please contribute it to improve this section._
 
 ## Related Documentation
 

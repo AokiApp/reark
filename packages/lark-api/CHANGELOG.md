@@ -4,31 +4,35 @@
 
 ### Patch Changes
 
-- repub with fix
+- Re-published package to fix publishing issue (no code changes)
 
 ## 0.3.3
 
 ### Patch Changes
 
-- repub2
+- Re-published package to address npm registry issue (no code changes)
 
 ## 0.3.2
 
 ### Patch Changes
 
-- repub
+- Re-published package for distribution consistency (no code changes)
 
 ## 0.3.1
 
 ### Patch Changes
 
-- 7240221: repub
+- Re-published package after minor internal adjustments (commit 7240221)
 
 ## 0.3.0
 
 ### Minor Changes
 
-- update many
+- Added new API utilities for document and file handling
+- Improved TypeScript type definitions for all API objects
+- Enhanced error handling and rate limit management
+- Updated documentation and usage examples
+- Various bug fixes and internal refactoring
 
 ## 0.2.0
 
