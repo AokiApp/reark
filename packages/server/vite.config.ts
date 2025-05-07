@@ -16,6 +16,7 @@ export default defineConfig({
         "@aokiapp/reark-lark-api",
         "mime-types",
         "node:fs",
+        "node:fs/promises",
         "node:path",
         "node:os",
         "node:stream",
