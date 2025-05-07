@@ -18,7 +18,7 @@ import { Todo } from "../components/blocks/Todo";
 import { Callout } from "../components/blocks/Callout";
 import { Divider } from "../components/blocks/Divider";
 import { Image } from "../components/blocks/Image";
-import { QuoteBlock } from "../components/blocks/QuoteBlock";
+import { Quote } from "../components/blocks/Quote";
 import { QuoteContainer } from "../components/blocks/QuoteContainer";
 import { FileBlock } from "../components/blocks/FileBlock";
 import { Table } from "../components/blocks/Table";
@@ -44,7 +44,7 @@ export const BLOCK_COMPONENTS: Record<number, BlockInnerComponent> = {
   12: UnorderedList, // UnorderedList
   13: OrderedList, // OrderedList
   14: CodeBlock, // CodeBlock
-  15: QuoteBlock, // Quote
+  15: Quote, // Quote
   17: Todo, // Todo
   19: Callout, // Callout
   22: Divider, // Divider
