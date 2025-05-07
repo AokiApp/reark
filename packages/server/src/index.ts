@@ -1,4 +1,4 @@
-export { getLarkInitialDataForSSR, LarkInitialData } from "./lark/ssr";
+export { getLarkInitialDataForSSR, type LarkInitialData } from "./lark/ssr";
 export { setCredentials } from "@aokiapp/reark-lark-api";
 export { setFsProvider } from "./fs/fsProvider";
 export { LocalDiskFsProvider } from "./fs/localDiskFsProvider";

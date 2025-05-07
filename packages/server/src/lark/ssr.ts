@@ -12,12 +12,12 @@ import {
   type CommentData,
 } from "@aokiapp/reark-lark-api";
 
-export interface LarkInitialData {
+export type LarkInitialData = {
   version: number;
   blocks: Block[];
   comments: CommentData[];
   files: Record<string, string>; // fileToken → public URL
-}
+};
 
 /**
  * Get blocks with cache using fsProvider-based cache.
