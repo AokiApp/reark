@@ -1,9 +1,9 @@
 import { renderWithVRT } from "../test-utils/renderWithVRT";
 import { screen } from "@testing-library/react";
-import { QuoteBlock } from "../../blocks/QuoteBlock";
+import { Quote } from "../../blocks/Quote";
 import { BlockStoreProvider } from "../../../contexts/BlockStoreContext";
 
-describe("QuoteBlock", () => {
+describe("Quote", () => {
   it("renders quote text in blockquote with correct class", async () => {
     const quoteBlock = {
       block_id: "quote-block-1",
@@ -32,7 +32,7 @@ describe("QuoteBlock", () => {
     };
     const { container, vrt } = renderWithVRT(
       <BlockStoreProvider items={[quoteBlock]}>
-        <QuoteBlock block={quoteBlock} />
+        <Quote block={quoteBlock} />
       </BlockStoreProvider>,
     );
     // blockquote要素とクラス名
