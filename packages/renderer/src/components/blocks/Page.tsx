@@ -1,17 +1,10 @@
 import { BlockInnerComponent } from "../../types";
 import { BlockComponent } from "../BlockComponent";
-import { Text } from "./Text";
 import "../../styles/blocks.css";
 
 export const Page: BlockInnerComponent = ({ block }) => {
   return (
     <div className="reark-page">
-      <div className="reark-page-title">
-        <Text
-          elements={block.page?.elements || []} // todo: safer way
-          style={block.text?.style}
-        />
-      </div>
       {block.children?.map((childId) => (
         <BlockComponent key={childId} blockId={childId} />
       ))}

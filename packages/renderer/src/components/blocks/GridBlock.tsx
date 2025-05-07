@@ -16,18 +16,20 @@ export const GridBlock: BlockInnerComponent = ({ block }) => {
 
   // Render children by block reference (blockId), allowing for block reference resolution.
   return (
-    <div
-      className="reark-grid"
-      style={{
-        display: "flex",
-        //gridTemplateColumns: `repeat(${columnSize}, 1fr)`,
-        gap: "16px",
-      }}
-    >
-      {block.children.map((childId) => (
-        // BlockComponent resolves and renders the block by its ID (block reference)
-        <BlockComponent key={childId} blockId={childId} />
-      ))}
+    <div className="reark-grid-wrapper">
+      <div
+        className="reark-grid"
+        style={{
+          display: "flex",
+          //gridTemplateColumns: `repeat(${columnSize}, 1fr)`,
+          gap: "16px",
+        }}
+      >
+        {block.children.map((childId) => (
+          // BlockComponent resolves and renders the block by its ID (block reference)
+          <BlockComponent key={childId} blockId={childId} />
+        ))}
+      </div>
     </div>
   );
 };
