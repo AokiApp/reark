@@ -1,6 +1,6 @@
 {
   "name": "@aokiapp/reark",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "private": false,
   "publishConfig": {
     "access": "public"
@@ -30,7 +30,7 @@
     "react-dom": ">=18.0.0, >=19.0.0"
   },
   "dependencies": {
-    "@aokiapp/reark-lark-api": "0.4.2",
-    "@aokiapp/reark-renderer": "0.4.2"
+    "@aokiapp/reark-lark-api": "0.4.3",
+    "@aokiapp/reark-renderer": "0.4.3"
   }
 }

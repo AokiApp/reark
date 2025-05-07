@@ -1,5 +1,11 @@
 # @aokiapp/reark-lark-api
 
+## 0.4.3
+
+### Patch Changes
+
+- remove fonts
+
 ## 0.4.2
 
 ### Patch Changes

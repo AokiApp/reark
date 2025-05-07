@@ -1,5 +1,13 @@
 # @aokiapp/reark-server
 
+## 0.4.3
+
+### Patch Changes
+
+- remove fonts
+- Updated dependencies
+  - @aokiapp/reark-lark-api@0.4.3
+
 ## 0.4.2
 
 ### Patch Changes
