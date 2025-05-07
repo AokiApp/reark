@@ -1,6 +1,6 @@
 {
   "name": "@aokiapp/reark-renderer",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Lark to React renderer core for Aokiapp monorepo",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -18,7 +18,7 @@
     "./*": "./dist/*"
   },
   "dependencies": {
-    "@aokiapp/reark-lark-api": "0.4.1",
+    "@aokiapp/reark-lark-api": "0.4.2",
     "mathjax-full": "^3.2.2"
   },
   "peerDependencies": {
