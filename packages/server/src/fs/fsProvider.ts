@@ -1,5 +1,3 @@
-import { FailingFsProvider } from "./failingFsProvider";
-
 /**
  * FsProvider interface for abstracting file system operations.
  */
