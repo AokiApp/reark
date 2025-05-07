@@ -41,6 +41,7 @@
     text-decoration: none;
   }
   color: var(--reark-color-text);
+  width: 100%;
 }
 
 .reark-block {
