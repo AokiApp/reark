@@ -38,6 +38,21 @@ export type DocumentBlockResponse = PagedResponse<
 export type CommentListResponse = PagedResponse<CommentData>;
 
 /**
+ * Lark Doc metadata API response.
+ */
+export type DocumentMetaResponse = {
+  code: number;
+  msg: string;
+  data: {
+    document: {
+      document_id: string;
+      revision_id: number;
+      title: string;
+    };
+  };
+};
+
+/**
  * Represents a single comment on a document.
  */
 export type CommentData = {

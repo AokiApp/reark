@@ -2,12 +2,12 @@ import fs from "node:fs";
 import path from "node:path";
 import mime from "mime-types";
 import {
-  fetchAllDocumentBlocks,
   getComments,
   batchGetTmpDownloadUrlsChunked,
   type Block,
   type CommentData,
 } from "@aokiapp/reark-lark-api";
+import { getBlocksWithCache } from "./ssr_lark_cache";
 
 export { setCredentials } from "@aokiapp/reark-lark-api";
 
@@ -30,8 +30,8 @@ export async function getLarkInitialDataForSSR(
   publicDir: string,
   publicUrlBase: string = "/lark-files/",
 ): Promise<LarkInitialData> {
-  // 1. Fetch all blocks
-  const blocks = await fetchAllDocumentBlocks(documentId);
+  // 1. Fetch all blocks (with SSR cache)
+  const blocks = await getBlocksWithCache(documentId, publicDir);
 
   // 2. Collect all unique file tokens from image blocks
   const fileTokens = Array.from(

@@ -1,5 +1,9 @@
 import { Block } from "./types/block";
-import { CommentListResponse, DocumentBlockResponse } from "./types/api";
+import {
+  CommentListResponse,
+  DocumentBlockResponse,
+  DocumentMetaResponse,
+} from "./types/api";
 
 const TOKEN_EXPIRATION_TIME = 2 * 60 * 60 * 1000;
 
@@ -102,6 +106,31 @@ async function larkApiRequest<T>(
 
   // Ensure the return type matches the generic T
   return response.json() as Promise<T>;
+}
+/**
+ * Type for Lark Doc metadata API response.
+ */
+
+/**
+ * Get the current revision_id of a Lark Doc.
+ */
+export async function getDocumentRevision(documentId: string): Promise<number> {
+  const url = `/docx/v1/documents/${documentId}`;
+  const resp = await larkApiRequest<DocumentMetaResponse>(url, {
+    method: "GET",
+  });
+  if (
+    resp &&
+    resp.code === 0 &&
+    resp.data &&
+    resp.data.document &&
+    typeof resp.data.document.revision_id === "number"
+  ) {
+    return resp.data.document.revision_id;
+  }
+  throw new Error(
+    `Failed to get revision_id for document ${documentId}: ${JSON.stringify(resp)}`,
+  );
 }
 
 async function getValidAccessToken(): Promise<string> {
