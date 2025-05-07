@@ -56,8 +56,8 @@ export async function getLarkInitialDataForSSR(
     (token) => !(token in existingTokenToFilename),
   );
 
-  // 5. Get S3 URLs for new tokens
-  const s3Urls =
+  // 5. Get Object Storage URLs for new tokens
+  const objectStorageUrls =
     tokensToDownload.length > 0
       ? await batchGetTmpDownloadUrlsChunked(tokensToDownload)
       : {};
@@ -65,7 +65,7 @@ export async function getLarkInitialDataForSSR(
   // 6. Download and store new files, get public URLs
   const downloadedTokenToUrl = await downloadAndStoreFiles(
     tokensToDownload,
-    s3Urls,
+    objectStorageUrls,
   );
 
   // 7. Merge all token to public URL mappings
@@ -73,7 +73,8 @@ export async function getLarkInitialDataForSSR(
   for (const token of fileTokens) {
     if (token in existingTokenToFilename) {
       const publicUrl = await fsProvider.getPublicUrl(
-        `${existingTokenToFilename[token]}`,
+        "files",
+        existingTokenToFilename[token],
       );
       if (publicUrl) files[token] = publicUrl;
     } else if (token in downloadedTokenToUrl) {

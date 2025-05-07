@@ -7,7 +7,7 @@ import type { Block } from "@aokiapp/reark-lark-api";
 function getCacheFileKey(documentId: string, revisionId: number): string {
   // Sanitize documentId for filesystem safety
   const safeDocId = documentId.replace(/[^a-zA-Z0-9_-]/g, "_");
-  return `cache/${safeDocId}_${revisionId}.json`;
+  return `${safeDocId}_${revisionId}.json`;
 }
 
 /**
@@ -19,9 +19,9 @@ export async function loadBlockCache(
 ): Promise<Block[] | undefined> {
   const key = getCacheFileKey(documentId, revisionId);
   try {
-    const raw = await fsProvider.get(key);
-    if (typeof raw === "string" || Buffer.isBuffer(raw)) {
-      const json = typeof raw === "string" ? raw : raw.toString("utf-8");
+    const raw = await fsProvider.get("block", key);
+    if (raw && Buffer.isBuffer(raw)) {
+      const json = raw.toString("utf-8");
       return JSON.parse(json) as Block[];
     }
   } catch {
@@ -39,5 +39,6 @@ export async function saveBlockCache(
   blocks: Block[],
 ): Promise<void> {
   const key = getCacheFileKey(documentId, revisionId);
-  await fsProvider.put(key, JSON.stringify(blocks, null, 2));
+  const buf = Buffer.from(JSON.stringify(blocks, null, 2), "utf-8");
+  await fsProvider.put("block", key, buf);
 }

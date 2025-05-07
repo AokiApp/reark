@@ -22,9 +22,6 @@ function extractDocId(input: string): string {
   return "";
 }
 
-const PUBLIC_DIR = "public/lark-files";
-const PUBLIC_URL_BASE = "/lark-files/";
-
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const documentId =
     typeof context.query.documentId === "string"
@@ -34,11 +31,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   if (documentId) {
     setCredentials(process.env.LARK_APP_ID!, process.env.LARK_APP_SECRET!);
 
-    initialData = await getLarkInitialDataForSSR(
-      documentId,
-      PUBLIC_DIR,
-      PUBLIC_URL_BASE,
-    );
+    initialData = await getLarkInitialDataForSSR(documentId);
   }
   return { props: { initialData, documentId } };
 };

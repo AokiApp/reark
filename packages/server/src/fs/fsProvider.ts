@@ -1,25 +1,40 @@
-import { FailingFSProvider } from "./failingFSProvider";
+import { FailingFsProvider } from "./failingFsProvider";
 
 /**
- * FSProvider interface for abstracting file system operations.
+ * FsProvider interface for abstracting file system operations.
  */
-export abstract class FSProvider {
-  abstract get(key: string): Promise<Buffer | string | undefined>;
-  abstract put(key: string, value: Buffer | string): Promise<void>;
-  abstract list(): Promise<string[]>;
-  abstract remove(key: string): Promise<void>;
-  abstract getPublicUrl(key: string): Promise<string | undefined>;
+export abstract class FsProvider {
+  /**
+   * Get a file as Buffer from the given namespace and key.
+   */
+  abstract get(ns: string, key: string): Promise<Buffer | undefined>;
+  /**
+   * Put a file as Buffer into the given namespace and key.
+   */
+  abstract put(ns: string, key: string, value: Buffer): Promise<void>;
+  /**
+   * List all file keys in the given namespace.
+   */
+  abstract list(ns: string): Promise<string[]>;
+  /**
+   * Remove a file from the given namespace and key.
+   */
+  abstract remove(ns: string, key: string): Promise<void>;
+  /**
+   * Get a public URL for a file in the given namespace and key.
+   */
+  abstract getPublicUrl(ns: string, key: string): Promise<string | undefined>;
 }
 
 /**
  * Global fsProvider variable, can be swapped at runtime.
  */
-let fsProvider: FSProvider = new FailingFSProvider();
+let fsProvider: FsProvider = null!;
 
 /**
  * Set the global fsProvider.
  */
-export function setFSProvider(provider: FSProvider) {
+export function setFsProvider(provider: FsProvider) {
   fsProvider = provider;
 }
 

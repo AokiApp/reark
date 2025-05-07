@@ -1,12 +1,12 @@
 import fs from "node:fs/promises";
 import path from "node:path";
-import { FSProvider } from "./fsProvider";
+import { FsProvider } from "./fsProvider";
 
 /**
- * LocalDiskFSProvider implements FSProvider using the local file system.
+ * LocalDiskFsProvider implements FsProvider using the local file system.
  * All files are stored under the Next.js public/lark-files directory.
  */
-export class LocalDiskFSProvider extends FSProvider {
+export class LocalDiskFsProvider extends FsProvider {
   private rootDir: string;
 
   constructor(rootDir: string) {
@@ -14,14 +14,15 @@ export class LocalDiskFSProvider extends FSProvider {
     this.rootDir = rootDir;
   }
 
-  private resolvePath(key: string): string {
-    // Sanitize key to prevent directory traversal
+  private resolvePath(ns: string, key: string): string {
+    // Sanitize ns and key to prevent directory traversal
+    const safeNs = ns.replace(/[^a-zA-Z0-9/_\-.]/g, "_");
     const safeKey = key.replace(/[^a-zA-Z0-9/_\-.]/g, "_");
-    return path.join(this.rootDir, safeKey);
+    return path.join(this.rootDir, safeNs, safeKey);
   }
 
-  async get(key: string): Promise<Buffer | string | undefined> {
-    const filePath = this.resolvePath(key);
+  async get(ns: string, key: string): Promise<Buffer | undefined> {
+    const filePath = this.resolvePath(ns, key);
     try {
       return await fs.readFile(filePath);
     } catch {
@@ -29,13 +30,14 @@ export class LocalDiskFSProvider extends FSProvider {
     }
   }
 
-  async put(key: string, value: Buffer | string): Promise<void> {
-    const filePath = this.resolvePath(key);
+  async put(ns: string, key: string, value: Buffer): Promise<void> {
+    const filePath = this.resolvePath(ns, key);
     await fs.mkdir(path.dirname(filePath), { recursive: true });
     await fs.writeFile(filePath, value);
   }
 
-  async list(): Promise<string[]> {
+  async list(ns: string): Promise<string[]> {
+    const dir = path.join(this.rootDir, ns.replace(/[^a-zA-Z0-9/_\-.]/g, "_"));
     const walk = async (dir: string, prefix: string): Promise<string[]> => {
       let results: string[] = [];
       try {
@@ -56,23 +58,24 @@ export class LocalDiskFSProvider extends FSProvider {
       }
       return results;
     };
-    return walk(this.rootDir, "");
+    return walk(dir, "");
   }
 
-  async remove(key: string): Promise<void> {
-    const filePath = this.resolvePath(key);
+  async remove(ns: string, key: string): Promise<void> {
+    const filePath = this.resolvePath(ns, key);
     try {
       await fs.unlink(filePath);
     } catch {
       // ignore if not exists
     }
   }
-  async getPublicUrl(key: string): Promise<string | undefined> {
-    const filePath = this.resolvePath(key);
+
+  async getPublicUrl(ns: string, key: string): Promise<string | undefined> {
+    const filePath = this.resolvePath(ns, key);
     try {
       await fs.access(filePath);
       const filename = path.basename(filePath);
-      return `/lark-files/${filename}`;
+      return `/lark-files/${ns}/${filename}`;
     } catch {
       return undefined;
     }

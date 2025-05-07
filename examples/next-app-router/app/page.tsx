@@ -3,12 +3,15 @@ import { Suspense } from "react";
 
 import LarkForm from "./components/LarkForm";
 import { setCredentials } from "@aokiapp/reark";
-import { getLarkInitialDataForSSR } from "@aokiapp/reark-server";
+import {
+  getLarkInitialDataForSSR,
+  setFsProvider,
+  LocalDiskFsProvider,
+} from "@aokiapp/reark-server";
 import LarkRendererCc from "./components/LarkRendererCc";
 import "@aokiapp/reark/style.css";
 import { PageProps } from "@/.next/types/app/page";
 
-const PUBLIC_DIR = "public/lark-files";
 // Server Component
 export default async function Page({ searchParams }: PageProps) {
   const documentId = (await searchParams).documentId as string | undefined;
@@ -22,7 +25,10 @@ export default async function Page({ searchParams }: PageProps) {
       throw new Error("LARK_APP_ID and LARK_APP_SECRET must be set in .env");
     }
     setCredentials(appId, appSecret);
-    initialData = await getLarkInitialDataForSSR(documentId, PUBLIC_DIR);
+    setFsProvider(
+      new LocalDiskFsProvider(process.cwd() + "/public/lark-files"),
+    );
+    initialData = await getLarkInitialDataForSSR(documentId);
   }
 
   return (

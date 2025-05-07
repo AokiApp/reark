@@ -29,7 +29,7 @@ export function extractFileTokens(blocks: Block[]): string[] {
 export async function getExistingTokenToFilename(): Promise<
   Record<string, string>
 > {
-  const files = await fsProvider.list();
+  const files = await fsProvider.list("files");
   const tokenToFilename: Record<string, string> = {};
   for (const file of files) {
     const filename = file.split("/").pop() || "";
@@ -47,11 +47,11 @@ export async function getExistingTokenToFilename(): Promise<
  */
 export async function downloadAndStoreFiles(
   tokens: string[],
-  s3Urls: Record<string, string>,
+  objectStorageUrl: Record<string, string>,
 ): Promise<Record<string, string>> {
   const tokenToUrl: Record<string, string> = {};
   for (const token of tokens) {
-    const url = s3Urls[token];
+    const url = objectStorageUrl[token];
     if (!url) {
       // No URL for this token
       continue;
@@ -64,8 +64,8 @@ export async function downloadAndStoreFiles(
       const ext = mime.extension(contentType) || "bin";
       const filename = `${token}.${ext}`;
       const key = filename;
-      await fsProvider.put(key, buffer);
-      const publicUrl = await fsProvider.getPublicUrl(key);
+      await fsProvider.put("files", key, buffer);
+      const publicUrl = await fsProvider.getPublicUrl("files", key);
       if (publicUrl) {
         tokenToUrl[token] = publicUrl;
       }

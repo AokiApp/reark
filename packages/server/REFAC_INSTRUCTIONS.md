@@ -2,18 +2,57 @@
 
 ## 3. 主要インターフェース / Key Interfaces
 
-### FSProvider
+### FsProvider
 
 ```ts
-export abstract class FSProvider {
+export abstract class FsProvider {
   abstract get(key: string): Promise<Buffer | string | undefined>;
   abstract put(key: string, value: Buffer | string): Promise<void>;
   abstract list(): Promise<string[]>;
   abstract remove(key: string): Promise<void>;
   abstract getPublicUrl(key: string): Promise<string | undefined>;
 }
-export const fsProvider: FSProvider; // グローバル変数
+export const fsProvider: FsProvider; // グローバル変数
 ```
+
+#### FsProvider拡張: 2キー・Buffer専用化 / FsProvider Extension: Two-Key & Buffer-Only
+
+**2025/05 追加リファクタ / Additional Refactor (May 2025):**
+
+FsProviderインターフェースを以下の通り拡張・変更した。
+
+- すべてのメソッドが `ns: string`（ネームスペース）と `key: string`（ファイルキー）の2つの引数を取る。
+- ファイル内容は常に `Buffer` 型のみを受け付け、`string` は不可。
+- これに伴い、全実装（LocalDiskFsProvider, MemoryFsProvider, FailingFsProvider）と全利用箇所を修正。
+
+**新インターフェース例 / New Interface Example:**
+
+```ts
+export abstract class FsProvider {
+  abstract get(ns: string, key: string): Promise<Buffer | undefined>;
+  abstract put(ns: string, key: string, value: Buffer): Promise<void>;
+  abstract list(ns: string): Promise<string[]>;
+  abstract remove(ns: string, key: string): Promise<void>;
+  abstract getPublicUrl(ns: string, key: string): Promise<string | undefined>;
+}
+```
+
+- 典型的なネームスペース:
+  - `"cache"`: ブロックキャッシュ (`blockCache.ts`)
+  - `"files"`: 公開ファイル・ダウンロードファイル (`fileManager.ts`, `ssr.ts`)
+- 既存の論理パス（例: `"cache/doc_123.json"`）は、`ns="cache"`, `key="doc_123.json"` のように分割して指定する。
+- すべてのファイル操作はBufferのみで行い、保存・読込時に明示的にエンコーディング変換を行うこと。
+
+**移行理由 / Rationale:**
+
+- ストレージの論理分割（キャッシュ・公開ファイル等）を明確化し、クラウドストレージ等への拡張性を高めるため。
+- ファイル内容の型をBufferに統一することで、バイナリ・テキストの区別なく安全に扱えるようにするため。
+
+**実装・利用箇所の主な修正点 / Main Implementation & Usage Changes:**
+
+- `blockCache.ts`: `fsProvider.get("cache", key)` など、"cache"ネームスペースで利用。
+- `fileManager.ts`, `ssr.ts`: `fsProvider.put("files", key, buffer)` など、"files"ネームスペースで利用。
+- すべてのput/getでBuffer型を明示的に使用。
 
 - `key` は論理パス（例: `"cache/doc_123.json"`）。ローカル実装ではルートディレクトリ配下にマッピング。
 - `getPublicUrl` は静的公開URL（例: `/lark-files/filename.ext`）を返す。
@@ -57,14 +96,14 @@ export const fsProvider: FSProvider; // グローバル変数
 ### `fs/fsProvider.ts` 抜粋
 
 ```ts
-export abstract class FSProvider {
+export abstract class FsProvider {
   abstract get(key: string): Promise<Buffer | string | undefined>;
   abstract put(key: string, value: Buffer | string): Promise<void>;
   abstract list(): Promise<string[]>;
   abstract remove(key: string): Promise<void>;
   abstract getPublicUrl(key: string): Promise<string | undefined>;
 }
-export const fsProvider: FSProvider = new LocalDiskFSProvider(...);
+export const fsProvider: FsProvider = new LocalDiskFsProvider(...);
 ```
 
 ### `lark/fileManager.ts` 抜粋
