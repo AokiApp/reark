@@ -1,5 +1,14 @@
 # @aokiapp/reark
 
+## 0.4.2
+
+### Patch Changes
+
+- 2217fe0: fix build
+- Updated dependencies [2217fe0]
+  - @aokiapp/reark-lark-api@0.4.2
+  - @aokiapp/reark-renderer@0.4.2
+
 ## 0.4.1
 
 ### Patch Changes

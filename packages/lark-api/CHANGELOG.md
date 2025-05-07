@@ -1,5 +1,11 @@
 # @aokiapp/reark-lark-api
 
+## 0.4.2
+
+### Patch Changes
+
+- 2217fe0: fix build
+
 ## 0.4.1
 
 ### Patch Changes

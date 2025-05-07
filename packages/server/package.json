@@ -1,6 +1,6 @@
 {
   "name": "@aokiapp/reark-server",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "private": false,
   "publishConfig": {
     "access": "public"
@@ -17,7 +17,7 @@
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "@aokiapp/reark-lark-api": "0.4.1",
+    "@aokiapp/reark-lark-api": "0.4.2",
     "mime-types": "^2.1.35"
   },
   "devDependencies": {
