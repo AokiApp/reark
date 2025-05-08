@@ -1,6 +1,6 @@
 {
   "name": "@aokiapp/reark",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "private": false,
   "publishConfig": {
     "access": "public"
@@ -31,6 +31,6 @@
   },
   "dependencies": {
     "@aokiapp/reark-lark-api": "0.4.3",
-    "@aokiapp/reark-renderer": "0.4.3"
+    "@aokiapp/reark-renderer": "0.4.4"
   }
 }

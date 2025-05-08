@@ -1,6 +1,6 @@
 {
   "name": "@aokiapp/reark-renderer",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "description": "Lark to React renderer core for Aokiapp monorepo",
   "main": "dist/index.js",
   "module": "dist/index.js",

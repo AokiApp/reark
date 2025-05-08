@@ -1,5 +1,12 @@
 # @aokiapp/reark
 
+## 0.4.4
+
+### Patch Changes
+
+- Updated dependencies
+  - @aokiapp/reark-renderer@0.4.4
+
 ## 0.4.3
 
 ### Patch Changes
