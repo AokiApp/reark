@@ -1,5 +1,11 @@
 # @aokiapp/reark-lark-api
 
+## 0.4.4
+
+### Patch Changes
+
+- cloudflare r2
+
 ## 0.4.3
 
 ### Patch Changes

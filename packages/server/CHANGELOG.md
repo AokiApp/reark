@@ -1,5 +1,13 @@
 # @aokiapp/reark-server
 
+## 0.4.4
+
+### Patch Changes
+
+- cloudflare r2
+- Updated dependencies
+  - @aokiapp/reark-lark-api@0.4.4
+
 ## 0.4.3
 
 ### Patch Changes
