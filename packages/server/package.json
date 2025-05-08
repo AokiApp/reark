@@ -24,6 +24,12 @@
     "@types/mime-types": "^2.1.4",
     "typescript": "^5.0.0"
   },
+  "peerDependencies": {
+    "@aws-sdk/client-s3": "^3.500.0"
+  },
+  "optionalDependencies": {
+    "@aws-sdk/client-s3": "^3.500.0"
+  },
   "sideEffects": false,
   "license": "MIT"
 }

@@ -5,7 +5,8 @@ import LarkForm from "./components/LarkForm";
 import {
   getLarkInitialDataForSSR,
   setFsProvider,
-  LocalDiskFsProvider,
+  // LocalDiskFsProvider,
+  CloudflareR2FsProvider,
   setCredentials,
 } from "@aokiapp/reark-server";
 import LarkRendererCc from "./components/LarkRendererCc";
@@ -25,8 +26,27 @@ export default async function Page({ searchParams }: PageProps) {
       throw new Error("LARK_APP_ID and LARK_APP_SECRET must be set in .env");
     }
     setCredentials(appId, appSecret);
+    // Cloudflare R2 credentials from env
+    const r2Bucket = process.env.R2_BUCKET;
+    const r2AccessKeyId = process.env.R2_ACCESS_KEY_ID;
+    const r2SecretAccessKey = process.env.R2_SECRET_ACCESS_KEY;
+    const r2Endpoint = process.env.R2_ENDPOINT;
+    const r2PublicUrlBase = process.env.R2_PUBLIC_URL_BASE; // optional
+
+    if (!r2Bucket || !r2AccessKeyId || !r2SecretAccessKey || !r2Endpoint) {
+      throw new Error(
+        "R2_BUCKET, R2_ACCESS_KEY_ID, R2_SECRET_ACCESS_KEY, and R2_ENDPOINT must be set in .env",
+      );
+    }
+
     setFsProvider(
-      new LocalDiskFsProvider(process.cwd() + "/public/lark-files"),
+      new CloudflareR2FsProvider({
+        bucket: r2Bucket,
+        accessKeyId: r2AccessKeyId,
+        secretAccessKey: r2SecretAccessKey,
+        endpoint: r2Endpoint,
+        publicUrlBase: r2PublicUrlBase,
+      }),
     );
     initialData = await getLarkInitialDataForSSR(documentId);
   }
