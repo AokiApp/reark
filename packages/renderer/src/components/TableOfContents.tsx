@@ -42,6 +42,10 @@ function extractHeadings(blocks: Block[]): TOCEntry[] {
 
 export type TableOfContentsProps = {
   blocks: Block[];
+  /**
+   * どのレベル以上をデフォルトで開くか（例: 3ならlevel3以上はopen、1,2は閉じる）
+   */
+  openLevelThreshold?: number;
 };
 
 /**
@@ -74,7 +78,10 @@ function buildTOCTree(headings: TOCEntry[]): TOCEntryTree[] {
 /**
  * 再帰的にTOCを描画
  */
-const TOCList: React.FC<{ nodes: TOCEntryTree[] }> = ({ nodes }) => {
+const TOCList: React.FC<{
+  nodes: TOCEntryTree[];
+  openLevelThreshold: number;
+}> = ({ nodes, openLevelThreshold }) => {
   return (
     <ul>
       {nodes.map((node) => (
@@ -83,11 +90,14 @@ const TOCList: React.FC<{ nodes: TOCEntryTree[] }> = ({ nodes }) => {
           className={`reark-toc__item reark-toc__item--level${node.level}`}
         >
           {node.children.length > 0 ? (
-            <details open>
+            <details open={node.level >= openLevelThreshold}>
               <summary>
                 <a href={`#${node.blockId}`}>{node.text}</a>
               </summary>
-              <TOCList nodes={node.children} />
+              <TOCList
+                nodes={node.children}
+                openLevelThreshold={openLevelThreshold}
+              />
             </details>
           ) : (
             <a href={`#${node.blockId}`}>{node.text}</a>
@@ -98,7 +108,10 @@ const TOCList: React.FC<{ nodes: TOCEntryTree[] }> = ({ nodes }) => {
   );
 };
 
-export const TableOfContents: React.FC<TableOfContentsProps> = ({ blocks }) => {
+export const TableOfContents: React.FC<TableOfContentsProps> = ({
+  blocks,
+  openLevelThreshold,
+}) => {
   const headings = extractHeadings(blocks);
 
   if (headings.length === 0) {
@@ -106,10 +119,11 @@ export const TableOfContents: React.FC<TableOfContentsProps> = ({ blocks }) => {
   }
 
   const tocTree = buildTOCTree(headings);
+  const threshold = openLevelThreshold ?? 3;
 
   return (
     <nav className="reark-toc">
-      <TOCList nodes={tocTree} />
+      <TOCList nodes={tocTree} openLevelThreshold={threshold} />
     </nav>
   );
 };
