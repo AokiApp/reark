@@ -1,3 +1,4 @@
+import autoprefixer from "autoprefixer";
 export default {
-  plugins: [(await import("autoprefixer")).default],
+  plugins: [autoprefixer],
 };

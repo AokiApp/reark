@@ -8,6 +8,8 @@ import { fsProvider } from "../fs/fsProvider";
 import {
   getComments,
   batchGetTmpDownloadUrlsChunked,
+  getDocumentRevision,
+  fetchAllDocumentBlocks,
   type Block,
   type CommentData,
 } from "@aokiapp/reark-lark-api";
@@ -23,9 +25,6 @@ export type LarkInitialData = {
  * Get blocks with cache using fsProvider-based cache.
  */
 async function getBlocksWithCache(documentId: string): Promise<Block[]> {
-  const { getDocumentRevision, fetchAllDocumentBlocks } = await import(
-    "@aokiapp/reark-lark-api"
-  );
   const revisionId = await getDocumentRevision(documentId);
   const cached = await loadBlockCache(documentId, revisionId);
   if (cached) {

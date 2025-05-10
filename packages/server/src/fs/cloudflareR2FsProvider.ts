@@ -1,5 +1,12 @@
 import { FsProvider } from "./fsProvider";
-import type { S3Client, ListObjectsV2CommandOutput } from "@aws-sdk/client-s3";
+import {
+  S3Client,
+  GetObjectCommand,
+  PutObjectCommand,
+  ListObjectsV2Command,
+  DeleteObjectCommand,
+} from "@aws-sdk/client-s3";
+import type { ListObjectsV2CommandOutput } from "@aws-sdk/client-s3";
 
 /**
  * CloudflareR2FsProvider implements FsProvider using Cloudflare R2 (S3-compatible).
@@ -39,8 +46,7 @@ export class CloudflareR2FsProvider extends FsProvider {
     endpoint: string;
     region?: string;
   }) {
-    const mod = await import("@aws-sdk/client-s3");
-    this.s3 = new mod.S3Client({
+    this.s3 = new S3Client({
       region: options.region || "auto",
       endpoint: options.endpoint,
       credentials: {
@@ -66,7 +72,6 @@ export class CloudflareR2FsProvider extends FsProvider {
 
   async get(ns: string, key: string): Promise<Buffer | undefined> {
     const s3 = await this.getS3();
-    const { GetObjectCommand } = await import("@aws-sdk/client-s3");
     try {
       const res = await s3.send(
         new GetObjectCommand({
@@ -100,7 +105,6 @@ export class CloudflareR2FsProvider extends FsProvider {
 
   async put(ns: string, key: string, value: Buffer): Promise<void> {
     const s3 = await this.getS3();
-    const { PutObjectCommand } = await import("@aws-sdk/client-s3");
     await s3.send(
       new PutObjectCommand({
         Bucket: this.bucket,
@@ -112,7 +116,6 @@ export class CloudflareR2FsProvider extends FsProvider {
 
   async list(ns: string): Promise<string[]> {
     const s3 = await this.getS3();
-    const { ListObjectsV2Command } = await import("@aws-sdk/client-s3");
     const prefix = ns.replace(/[^a-zA-Z0-9/_\-.]/g, "_") + "/";
     let continuationToken: string | undefined = undefined;
     const keys: string[] = [];
@@ -138,7 +141,6 @@ export class CloudflareR2FsProvider extends FsProvider {
 
   async remove(ns: string, key: string): Promise<void> {
     const s3 = await this.getS3();
-    const { DeleteObjectCommand } = await import("@aws-sdk/client-s3");
     await s3.send(
       new DeleteObjectCommand({
         Bucket: this.bucket,
