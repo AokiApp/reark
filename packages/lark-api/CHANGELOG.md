@@ -1,5 +1,11 @@
 # @aokiapp/reark-lark-api
 
+## 0.5.0
+
+### Minor Changes
+
+- fix styles
+
 ## 0.4.4
 
 ### Patch Changes
