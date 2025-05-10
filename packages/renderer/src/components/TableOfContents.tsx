@@ -90,7 +90,7 @@ const TOCList: React.FC<{
           className={`reark-toc__item reark-toc__item--level${node.level}`}
         >
           {node.children.length > 0 ? (
-            <details open={node.level >= openLevelThreshold}>
+            <details open={node.level < openLevelThreshold}>
               <summary>
                 <a href={`#${node.blockId}`}>{node.text}</a>
               </summary>
@@ -110,7 +110,7 @@ const TOCList: React.FC<{
 
 export const TableOfContents: React.FC<TableOfContentsProps> = ({
   blocks,
-  openLevelThreshold,
+  openLevelThreshold = 3,
 }) => {
   const headings = extractHeadings(blocks);
 
@@ -119,11 +119,10 @@ export const TableOfContents: React.FC<TableOfContentsProps> = ({
   }
 
   const tocTree = buildTOCTree(headings);
-  const threshold = openLevelThreshold ?? 3;
 
   return (
     <nav className="reark-toc">
-      <TOCList nodes={tocTree} openLevelThreshold={threshold} />
+      <TOCList nodes={tocTree} openLevelThreshold={openLevelThreshold} />
     </nav>
   );
 };
