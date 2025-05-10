@@ -1,6 +1,6 @@
 import { BlockInnerComponent } from "../../types";
 import { CODE_LANGUAGE } from "../../constants/codeLanguage";
-import { Text } from "./Text";
+import { TextInner } from "./Text";
 import type { TextElement } from "@aokiapp/reark-lark-api";
 
 export const CodeBlock: BlockInnerComponent = ({ block }) => {
@@ -44,7 +44,7 @@ export const CodeBlock: BlockInnerComponent = ({ block }) => {
         </button>
       </div>
       <pre className="reark-codeblock__pre">
-        <Text elements={code.elements} style={code.style} />
+        <TextInner elements={code.elements} />
       </pre>
     </div>
   );
