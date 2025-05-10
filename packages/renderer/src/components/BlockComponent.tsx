@@ -8,7 +8,7 @@ type Props = {
   blockId: string;
 };
 
-const DEV = true;
+const DEV = false;
 
 export function BlockComponent({ blockId }: Props) {
   const { blocks } = useBlockStore();
