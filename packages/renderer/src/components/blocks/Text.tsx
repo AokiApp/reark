@@ -4,11 +4,11 @@ import type {
   TextElementStyle,
   TextStyle,
 } from "@aokiapp/reark-lark-api";
-import { containsUrl } from "../../utils/utils";
 import { Comment } from "../Comment";
 import { useBlockStore } from "../../contexts/BlockStoreContext";
 import { InlineView } from "../FileUtils";
 import { MathJaxSvg } from "../MathJaxSvg";
+import { ReactNode } from "react";
 
 // Helper function to get text alignment style
 const getTextAlign = (align?: number): "left" | "center" | "right" => {
@@ -49,27 +49,44 @@ export const TextInner: React.FC<{
       textElementStyle = element.text_run.text_element_style;
       const classNames = buildTexElSty(textElementStyle);
 
-      // Handle URL links - either explicit links or text containing URLs
-      let url = textElementStyle?.link?.url;
-      let isUrl = false;
+      let frag: ReactNode;
 
-      if (url) {
-        url = decodeURIComponent(url);
-        isUrl = true;
-      } else if (containsUrl(element.text_run.content)) {
-        url = element.text_run.content;
-        isUrl = true;
+      if (element.text_run.text_element_style?.link) {
+        // Handle link element
+        const link = element.text_run.text_element_style.link;
+        const url = decodeURIComponent(link.url);
+        frag = (
+          <a
+            key={index}
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="reark-text--link"
+          >
+            {element.text_run.content}
+          </a>
+        );
+      } else if (/^https?:\/\//.test(element.text_run.content)) {
+        // Handle URL element
+        frag = (
+          <a
+            key={index}
+            href={element.text_run.content}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="reark-text--link"
+          >
+            {element.text_run.content}
+          </a>
+        );
+      } else {
+        // Handle plain text element
+        frag = element.text_run.content;
       }
 
       inner = (
         <span key={index} className={classNames}>
-          {isUrl ? (
-            <a href={url} target="_blank">
-              {element.text_run.content}
-            </a>
-          ) : (
-            element.text_run.content
-          )}
+          {frag}
         </span>
       );
     } else if (element.equation) {
