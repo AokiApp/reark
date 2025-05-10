@@ -1,5 +1,13 @@
 # @aokiapp/reark-renderer
 
+## 0.5.1
+
+### Patch Changes
+
+- 何故か治っていない怪異！
+- Updated dependencies
+  - @aokiapp/reark-lark-api@0.5.1
+
 ## 0.5.0
 
 ### Minor Changes

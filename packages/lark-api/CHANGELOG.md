@@ -1,5 +1,11 @@
 # @aokiapp/reark-lark-api
 
+## 0.5.1
+
+### Patch Changes
+
+- 何故か治っていない怪異！
+
 ## 0.5.0
 
 ### Minor Changes
